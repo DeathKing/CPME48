@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: Harbin Institute of Technology
+-- Engineer: DeathKing<dk@hit.edu.cn>
 --
 -- Create Date:   14:52:50 07/09/2014
 -- Design Name:   
