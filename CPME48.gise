@@ -26,33 +26,41 @@
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="test_beat_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="test_beat_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="test_beat_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="test_beat_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="test_insfetch_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="test_insfetch_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="test_insfetch_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="test_insfetch_stx_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1404888767" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1404888767">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1404889736" xil_pn:in_ck="-8326563581346182761" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1404889736">
+    <transform xil_pn:end_ts="1405067756" xil_pn:in_ck="-4027604377637056868" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1405067756">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="alu.vhd"/>
       <outfile xil_pn:name="beat.vhd"/>
+      <outfile xil_pn:name="insfetch.vhd"/>
+      <outfile xil_pn:name="memctrl.vhd"/>
+      <outfile xil_pn:name="memo.vhd"/>
       <outfile xil_pn:name="test_beat.vhd"/>
+      <outfile xil_pn:name="test_insfetch.vhd"/>
+      <outfile xil_pn:name="wrback.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1404888929" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-6616233871403582415" xil_pn:start_ts="1404888929">
+    <transform xil_pn:end_ts="1405067779" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-5105102782552066743" xil_pn:start_ts="1405067779">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1404888929" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="6190851025039309939" xil_pn:start_ts="1404888929">
+    <transform xil_pn:end_ts="1405067779" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="5683857759533910923" xil_pn:start_ts="1405067779">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -60,7 +68,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1404889739" xil_pn:in_ck="-8326563581346182761" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1404889739">
+    <transform xil_pn:end_ts="1405067758" xil_pn:in_ck="-4027604377637056868" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1405067758">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -68,14 +76,19 @@
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="alu.vhd"/>
       <outfile xil_pn:name="beat.vhd"/>
+      <outfile xil_pn:name="insfetch.vhd"/>
+      <outfile xil_pn:name="memctrl.vhd"/>
+      <outfile xil_pn:name="memo.vhd"/>
       <outfile xil_pn:name="test_beat.vhd"/>
+      <outfile xil_pn:name="test_insfetch.vhd"/>
+      <outfile xil_pn:name="wrback.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1404889744" xil_pn:in_ck="-8326563581346182761" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4938253340129885572" xil_pn:start_ts="1404889739">
+    <transform xil_pn:end_ts="1405067782" xil_pn:in_ck="-4027604377637056868" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6773027138637015500" xil_pn:start_ts="1405067779">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
@@ -83,20 +96,19 @@
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="test_beat_beh.prj"/>
-      <outfile xil_pn:name="test_beat_isim_beh.exe"/>
+      <outfile xil_pn:name="test_insfetch_beh.prj"/>
+      <outfile xil_pn:name="test_insfetch_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1404889744" xil_pn:in_ck="-4693160424163066774" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3731693567055424209" xil_pn:start_ts="1404889744">
+    <transform xil_pn:end_ts="1405067782" xil_pn:in_ck="985172761056365548" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-6324496565190114303" xil_pn:start_ts="1405067782">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="test_beat_isim_beh.wdb"/>
+      <outfile xil_pn:name="test_insfetch_isim_beh.wdb"/>
     </transform>
   </transforms>
 

@@ -28,7 +28,7 @@ architecture Behavioral of alu is
 
    type reg_group is array(7 downto 0) of STD_LOGIC_VECTOR(7 downto 0);
    
-   signal Reg is reg_group;
+   signal Reg : reg_group;
 
 begin
 

@@ -30,7 +30,9 @@ entity insfetch is
            IRnew    : in  STD_LOGIC_VECTOR (15 downto 0);
            PCnew    : in  STD_LOGIC_VECTOR (15 downto 0);
            PCupdate : in  STD_LOGIC;
-           PC       : out STD_LOGIC_VECTOR (15 downto 0));
+           PC       : out STD_LOGIC_VECTOR (15 downto 0);
+			  IRinspect : out STD_LOGIC_VECTOR (15 downto 0);
+           nRD      : out STD_LOGIC);
 end insfetch;
 
 architecture Behavioral of insfetch is
@@ -42,19 +44,23 @@ begin
 
    process (en)
    begin
-      if en'event then
-         case en is
-            when "0" => rPC <= rPC + 1;
-            when "1" => PC  <= rPC;
-                        nRD <= '0';
-         end case;
+      if en'event and en = '1' then
+			nRD <= '0';
+		elsif en'event and en = '0' then
+			nRD <= '1';
+      --   case en is
+      --      when '0' => rPC <= rPC + 1;
+      --      when '1' => --PC  <= rPC;
+      --                  nRD <= '0';
+      --      when others => NULL;
+      --   end case;
       end if;
    end process;
    
    process (IRnew)
    begin
-      if en = 1 then
-         rIR <= IR;
+      if en = '1' then
+         rIR <= IRnew;
       end if;
    end process;
    
@@ -67,5 +73,7 @@ begin
       end if;
    end process;
    
+   PC <= rPC;
+   IRinspect <= rIR;
 end Behavioral;
 
