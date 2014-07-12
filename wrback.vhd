@@ -26,7 +26,7 @@ entity wrback is
     Port ( en    : in   STD_LOGIC;
 			  IRin  : in   STD_LOGIC_VECTOR (15 downto 0);
 	        Addr  : in   STD_LOGIC_VECTOR (15 downto 0);
-	        PCold : in   STD_LOGIC_VECTOR (15 downto 0);
+	        PC    : in   STD_LOGIC_VECTOR (15 downto 0);
 			  Raddr : out  STD_LOGIC_VECTOR (15 downto 0);
            Rdata : out  STD_LOGIC_VECTOR (15 downto 0);
            PCnew : out  STD_LOGIC_VECTOR (15 downto 0);
@@ -58,18 +58,21 @@ begin
 
 	process (IR)
 	begin
-		if OP = _JMP or OP = _JZ then
-			PCnew <= Addr;
-		else
-			PCnew <= PCold + 1;
-		end if;
-		PCupdate <= '1';
+		
 	end process;
 	
 	process (en)
 	begin
 		if en'event and en = '0' then
+         Rupdate <= '0';
 			PCupdate <= '0';
+      else if en'event and en = '1' then
+         case OP is
+            when _JMP => PCnew <= Addr;
+            when _JZ  => PCnew <= Addr;
+            when others => PCnew <= PC + 1;
+         end case;
+         PCupdate <= '1';
 		end if;
 	end process;
 

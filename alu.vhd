@@ -22,7 +22,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity alu is
    Port ( en : in STD_LOGIC;
-          IR : in STD_LOGIC_VECTOR  );
+          Rupdate : in STD_LOGIC;
+          Rdata : in STD_LOGIC_VECTOR(7 downto 0);
+          Rtemp : in STD_LOGIC_VECTOR(7 downto 0);
+          IR : in STD_LOGIC_VECTOR(15 downto 0);
+          ALUout: out STD_LOGIC_VECTOR(7 downto 0));
 end alu;
 
 architecture Behavioral of alu is
@@ -58,19 +62,37 @@ begin
       if en'event and en = '1' then
          case op is
             when _ADD => ALUout <= Reg(Ad1(IR)) + Reg(Ad2(IR));
+                           Addr <= Ad1(IR);
             when _SUB => ALUout <= Reg(Ad1(IR)) - Reg(Ad2(IR));
+                           Addr <= Ad1(IR);
             when _MOV => ALUout <= Reg(Ad2(IR));
+                           Addr <= Ad1(IR);
             when _MVI => ALUout <= X;
+                           Addr <= Ad1(IR);
             when _STA => ALUout <= Reg(Ad1(IR));
-                         Addr <= Reg(7) & X;
-                         nRW <= '0';
+                           Addr <= Reg(7) & X;
+                            nRW <= '0';
             when _LDA => ALUout <= (others => 'Z');
-                         Addr <= Reg(7) & X;
-                         nRD <= '0';
+                           Addr <= Reg(7) & X;
+                            nRD <= '0';
+            when _JZ  => ALuout <= (others => 'z');
+                         PCnew  <= (Reg(Ad1(IR)) and Ad(IR)) or
+                                   (not Reg(Ad1(IR)) and (PC + 1));
+            when _JMP => ALUout <= ;
+                          PCnew <= Ad(IR);
             when others => NULL;
          end case;
       elsif en'event and en = '0' then
          Rtemp <= (others => 'Z');
+         nRD <= '1';
+         nWR <= '1';
+      end if;
+   end process;
+   
+   process (Rupdate)
+   begin
+      if Rupdate'event and Rupdate = '1' and en = '1' then
+         Reg(Raddr) <= Rdata;
       end if;
    end process;
 
