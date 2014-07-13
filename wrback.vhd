@@ -37,36 +37,33 @@ end wrback;
 architecture Behavioral of wrback is
 
    -- Aliases 
-	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 12);
+	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 11);
 	alias AD1 : STD_LOGIC_VECTOR(2 downto 0) is IR(10 downto 8);
    alias AD2 : STD_LOGIC_VECTOR(2 downto 0) is IR(2 downto 2); -- Register to register
    alias AD  : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Others type
-	
+   alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
+
 	-- instructions table
-	constant _JMP : STD_LOGIC_VECTOR := "00000";
-	constant _JZ  : STD_LOGIC_VECTOR := "00010";
-	constant _SUB : STD_LOGIC_VECTOR := "00100";
-	constant _ADD : STD_LOGIC_VECTOR := "00110";
-	constant _MVI : STD_LOGIC_VECTOR := "01000";
-	constant _MOV : STD_LOGIC_VECTOR := "01010";
-	constant _STA : STD_LOGIC_VECTOR := "01100";
-	constant _LDA : STD_LOGIC_VECTOR := "01110";
-	constant _OUT : STD_LOGIC_VECTOR := "10000";
-	constant _IN  : STD_LOGIC_VECTOR := "10010";
+	constant iJMP : STD_LOGIC_VECTOR := "00000";
+	constant iJZ  : STD_LOGIC_VECTOR := "00010";
+	constant iSUB : STD_LOGIC_VECTOR := "00100";
+	constant iADD : STD_LOGIC_VECTOR := "00110";
+	constant iMVI : STD_LOGIC_VECTOR := "01000";
+	constant iMOV : STD_LOGIC_VECTOR := "01010";
+	constant iSTA : STD_LOGIC_VECTOR := "01100";
+	constant iLDA : STD_LOGIC_VECTOR := "01110";
+	constant iOUT : STD_LOGIC_VECTOR := "10000";
+	constant iIN  : STD_LOGIC_VECTOR := "10010";
 
 begin
 
-	process (IR)
-	begin
-		
-	end process;
 	
 	process (en)
 	begin
 		if en'event and en = '0' then
          Rupdate <= '0';
 			PCupdate <= '0';
-      else if en'event and en = '1' then
+      elsif en'event and en = '1' then
          case OP is
             when _JMP => PCnew <= Addr;
             when _JZ  => PCnew <= Addr;
