@@ -45,7 +45,7 @@ ARCHITECTURE behavior OF test_alu IS
          rst : IN  std_logic;
          Rupdate : IN  std_logic;
          Rdata : IN  std_logic_vector(7 downto 0);
-         Rtemp : IN  std_logic_vector(7 downto 0);
+         Raddr : IN  std_logic_vector(2 downto 0);
          IR : IN  std_logic_vector(15 downto 0);
          nRD : OUT  std_logic;
          nWR : OUT  std_logic;
@@ -59,7 +59,7 @@ ARCHITECTURE behavior OF test_alu IS
    signal rst : std_logic := '0';
    signal Rupdate : std_logic := '0';
    signal Rdata : std_logic_vector(7 downto 0) := (others => '0');
-   signal Rtemp : std_logic_vector(7 downto 0) := (others => '0');
+   signal Raddr : std_logic_vector(2 downto 0) := (others => '0');
    signal IR : std_logic_vector(15 downto 0) := (others => '0');
 
  	--Outputs
@@ -70,6 +70,19 @@ ARCHITECTURE behavior OF test_alu IS
    -- appropriate port name 
  
    constant en_period : time := 10 ns;
+   
+   -- instruction tables
+   constant iNOP : STD_LOGIC_VECTOR := "00000";
+	constant iJMP : STD_LOGIC_VECTOR := "00001";
+	constant iJZ  : STD_LOGIC_VECTOR := "00010";
+	constant iSUB : STD_LOGIC_VECTOR := "00100";
+	constant iADD : STD_LOGIC_VECTOR := "00110";
+	constant iMVI : STD_LOGIC_VECTOR := "01000";
+	constant iMOV : STD_LOGIC_VECTOR := "01010";
+	constant iSTA : STD_LOGIC_VECTOR := "01100";
+	constant iLDA : STD_LOGIC_VECTOR := "01110";
+	constant iOUT : STD_LOGIC_VECTOR := "10000";
+	constant iIN  : STD_LOGIC_VECTOR := "10010";
  
 BEGIN
  
@@ -79,7 +92,7 @@ BEGIN
           rst => rst,
           Rupdate => Rupdate,
           Rdata => Rdata,
-          Rtemp => Rtemp,
+          Raddr => Raddr,
           IR => IR,
           nRD => nRD,
           nWR => nWR,
@@ -100,10 +113,26 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
-
-      wait for en_period*10;
-
+      wait for en_period/2;
+      rst <= '1';
+      wait for en_period/2;
+      ---
+      rst <= '0';
+      Rupdate <= '1';
+      Raddr <= "000";
+      Rdata <= "10101010";
+      wait for en_period/2;
+      Rupdate <= '0';
+      wait for en_period/2;
+      ---
+      Rupdate <= '1';
+      Raddr <= "001";
+      Rdata <= "01010101";
+      wait for en_period/2;
+      Rupdate <= '0';
+      wait for en_period/2;
+      ---
+      IR <= iADD & "000" & "00000" & "001";
       -- insert stimulus here 
 
       wait;

@@ -39,7 +39,7 @@ architecture Behavioral of wrback is
    -- Aliases 
 	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 11);
 	alias AD1 : STD_LOGIC_VECTOR(2 downto 0) is IR(10 downto 8);
-   alias AD2 : STD_LOGIC_VECTOR(2 downto 0) is IR(2 downto 2); -- Register to register
+   alias AD2 : STD_LOGIC_VECTOR(2 downto 0) is IR(2 downto 0); -- Register to register
    alias AD  : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Others type
    alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
 
