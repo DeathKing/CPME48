@@ -29,8 +29,6 @@ entity alu is
           Rdata : in STD_LOGIC_VECTOR(7 downto 0);
           Raddr : in STD_LOGIC_VECTOR(2 downto 0);
           IR : in STD_LOGIC_VECTOR(15 downto 0);
-          nRD : out STD_LOGIC;
-          nWR : out STD_LOGIC;
           Addr : out STD_LOGIC_VECTOR(15 downto 0);
           ALUout: out STD_LOGIC_VECTOR(7 downto 0));
 end alu;
@@ -64,9 +62,9 @@ architecture Behavioral of alu is
 
 begin
 
-   process (en)
+   process (en,rst, op)
    begin
-      if en'event and en = '1' then
+      if en'event and en = '1' and rst = '0' then
          case op is
             when iADD => ALUout <= Reg(CONV_INTEGER(Ad1)) + Reg(CONV_INTEGER(Ad2));
             when iSUB => ALUout <= Reg(CONV_INTEGER(Ad1)) - Reg(CONV_INTEGER(Ad2));
@@ -74,32 +72,20 @@ begin
             when iMVI => ALUout <= X;
             when iSTA => ALUout <= Reg(CONV_INTEGER(Ad1));
                            Addr <= Reg(7) & X;
-                            nWR <= '0';
             when iLDA => ALUout <= (others => 'Z');
                            Addr <= Reg(7) & X;
-                            nRD <= '0';
-            when iJZ  => ALuout <= (others => 'Z');
+            when iJZ  => ALUout <= (others => 'Z');
             when iJMP => ALUout <= (others => 'Z');
             -- when _OUT
             -- when _IN
             when others => NULL;
          end case;
-      elsif en'event and en = '0' then
-         nRD <= '1';
-         nWR <= '1';
-      end if;
-   end process;
-   
-   process (Rupdate, Rdata, Raddr)
-   begin
-      if Rupdate'event and Rupdate = '1' then
-         Reg(CONV_INTEGER(Raddr)) <= Rdata;
       end if;
    end process;
 
-   process (rst)
+   process (rst, Rupdate, Rdata, Raddr)
    begin
-      if rst'event and rst = '1' then
+      if rst = '1' then
          Reg(0) <= "00000000";
          Reg(1) <= "00000000";
          Reg(2) <= "00000000";
@@ -108,6 +94,8 @@ begin
          Reg(5) <= "00000000";
          Reg(6) <= "00000000";
          Reg(7) <= "00000000";
+		elsif rst ='0' and Rupdate'event and Rupdate = '1' then
+         Reg(CONV_INTEGER(Raddr)) <= Rdata;
       end if;
    end process;
    

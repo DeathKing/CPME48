@@ -23,13 +23,14 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity wrback is
-    Port ( en    : in   STD_LOGIC;
-			  IRin  : in   STD_LOGIC_VECTOR (15 downto 0);
-	        Addr  : in   STD_LOGIC_VECTOR (15 downto 0);
-	        PC    : in   STD_LOGIC_VECTOR (15 downto 0);
-			  Raddr : out  STD_LOGIC_VECTOR (15 downto 0);
-           Rdata : out  STD_LOGIC_VECTOR (15 downto 0);
-           PCnew : out  STD_LOGIC_VECTOR (15 downto 0);
+    Port ( en     : in   STD_LOGIC;
+			  ALUout : in   STD_LOGIC_VECTOR(7 downto 0);
+			  IR     : in   STD_LOGIC_VECTOR(15 downto 0);
+	        Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
+	        PC     : in   STD_LOGIC_VECTOR(15 downto 0);
+			  Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
+           Rdata  : out  STD_LOGIC_VECTOR(7 downto 0);
+           PCnew  : out  STD_LOGIC_VECTOR(15 downto 0);
            PCupdate : out  STD_LOGIC;
            Rupdate  : out  STD_LOGIC);
 end wrback;
@@ -44,7 +45,8 @@ architecture Behavioral of wrback is
    alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
 
 	-- instructions table
-	constant iJMP : STD_LOGIC_VECTOR := "00000";
+   constant iNOP : STD_LOGIC_VECTOR := "00000";
+	constant iJMP : STD_LOGIC_VECTOR := "00001";
 	constant iJZ  : STD_LOGIC_VECTOR := "00010";
 	constant iSUB : STD_LOGIC_VECTOR := "00100";
 	constant iADD : STD_LOGIC_VECTOR := "00110";
@@ -56,7 +58,6 @@ architecture Behavioral of wrback is
 	constant iIN  : STD_LOGIC_VECTOR := "10010";
 
 begin
-
 	
 	process (en)
 	begin
@@ -65,10 +66,16 @@ begin
 			PCupdate <= '0';
       elsif en'event and en = '1' then
          case OP is
-            when _JMP => PCnew <= Addr;
-            when _JZ  => PCnew <= Addr;
-            when others => PCnew <= PC + 1;
+            when iJMP => PCnew <= Addr;
+            when iJZ  => PCnew <= Addr;
+				when iSUB => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+				when iAdd => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+				when iMOV => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+				when iMVI => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+				when iLDA => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+            when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
+			Rdata <= ALUout;
          PCupdate <= '1';
 		end if;
 	end process;

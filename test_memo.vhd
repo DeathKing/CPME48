@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   10:44:18 07/13/2014
+-- Create Date:   17:45:59 07/13/2014
 -- Design Name:   
--- Module Name:   D:/Code/VHDL/CPME48/test_alu.vhd
+-- Module Name:   E:/CPME48/test_memo.vhd
 -- Project Name:  CPME48
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: alu
+-- VHDL Test Bench Created by ISE for module: memo
 -- 
 -- Dependencies:
 -- 
@@ -27,50 +27,62 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.std_logic_UNSIGNED.all;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY test_alu IS
-END test_alu;
+ENTITY test_memo IS
+END test_memo;
  
-ARCHITECTURE behavior OF test_alu IS 
+ARCHITECTURE behavior OF test_memo IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT alu
+    COMPONENT memo
     PORT(
          en : IN  std_logic;
-         rst : IN  std_logic;
-         Rupdate : IN  std_logic;
-         Rdata : IN  std_logic_vector(7 downto 0);
-         Raddr : IN  std_logic_vector(2 downto 0);
          IR : IN  std_logic_vector(15 downto 0);
-         ALUout : OUT  std_logic_vector(7 downto 0);
-			Addr : OUT std_logic_vector(15 downto 0)
+         Addr : IN  std_logic_vector(15 downto 0);
+         Data : IN  std_logic_vector(7 downto 0);
+         ALUout : IN  std_logic_vector(7 downto 0);
+         Rtemp : IN  std_logic_vector(7 downto 0);
+         nWR : OUT  std_logic;
+         nRD : OUT  std_logic;
+         MAR : OUT  std_logic_vector(15 downto 0);
+         MDR : OUT  std_logic_vector(7 downto 0);
+         ACSout : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
    signal en : std_logic := '0';
-   signal rst : std_logic := '0';
-   signal Rupdate : std_logic := '0';
-   signal Rdata : std_logic_vector(7 downto 0) := (others => '0');
-   signal Raddr : std_logic_vector(2 downto 0) := (others => '0');
    signal IR : std_logic_vector(15 downto 0) := (others => '0');
+   signal Addr : std_logic_vector(15 downto 0) := (others => '0');
+   signal Data : std_logic_vector(7 downto 0) := (others => '0');
+   signal ALUout : std_logic_vector(7 downto 0) := (others => '0');
+   signal Rtemp : std_logic_vector(7 downto 0) := (others => '0');
 
  	--Outputs
-   signal ALUout : std_logic_vector(7 downto 0);
-	signal Addr : std_logic_vector(15 downto 0);
+   signal nWR : std_logic;
+   signal nRD : std_logic;
+   signal MAR : std_logic_vector(15 downto 0);
+   signal MDR : std_logic_vector(7 downto 0);
+   signal ACSout : std_logic_vector(7 downto 0);
    -- No clocks detected in port list. Replace en below with 
    -- appropriate port name 
  
    constant en_period : time := 10 ns;
-   
-   -- instruction tables
+
+   -- Aliases 
+	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 11);
+	alias AD1 : STD_LOGIC_VECTOR(2 downto 0) is IR(10 downto 8);
+   alias AD2 : STD_LOGIC_VECTOR(2 downto 0) is IR(2 downto 0); -- Register to register
+   alias AD  : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Others type
+   alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
+
+	-- instructions table
    constant iNOP : STD_LOGIC_VECTOR := "00000";
 	constant iJMP : STD_LOGIC_VECTOR := "00001";
 	constant iJZ  : STD_LOGIC_VECTOR := "00010";
@@ -82,19 +94,22 @@ ARCHITECTURE behavior OF test_alu IS
 	constant iLDA : STD_LOGIC_VECTOR := "01110";
 	constant iOUT : STD_LOGIC_VECTOR := "10000";
 	constant iIN  : STD_LOGIC_VECTOR := "10010";
- 
+
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: alu PORT MAP (
+   uut: memo PORT MAP (
           en => en,
-          rst => rst,
-          Rupdate => Rupdate,
-          Rdata => Rdata,
-          Raddr => Raddr,
           IR => IR,
+          Addr => Addr,
+          Data => Data,
           ALUout => ALUout,
-			 Addr => Addr
+          Rtemp => Rtemp,
+          nWR => nWR,
+          nRD => nRD,
+          MAR => MAR,
+          MDR => MDR,
+          ACSout => ACSout
         );
 
    -- Clock process definitions
@@ -110,57 +125,26 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-      wait for en_period/2;
-      rst <= '1';
-      wait for en_period/2;
-      rst <= '0';
-      wait for en_period;
-      ---
-      Rupdate <= '1';
-      Raddr <= "000";
-      Rdata <= "10101010";
-      wait for en_period/2;
-      Rupdate <= '0';
-      wait for en_period/2;
-      ---
-      Rupdate <= '1';
-      Raddr <= "001";
-      Rdata <= "01010101";
-      wait for en_period/2;
-      Rupdate <= '0';
-      wait for en_period/2;
-      ---
-      Rupdate <= '1';
-      Raddr <= "111";
-      Rdata <= "11111111";
-      wait for en_period/2;
-      Rupdate <= '0';
-      wait for en_period/2;
-      ---
-      IR <= iADD & "000" & "00000" & "001";
+		IR <= iSTA & "000" & "11111111";
+		ALUout <= "11111111";
+		Addr <= "0000000011111111";
 		wait for en_period;
-      --
-		IR <= iSUB & "000" & "00000" & "001";
+		
+      IR <= iLDA & "000" & "11111111";
+		Addr <= "0000000011111111";
+		wait for 6 ns;
+		Rtemp <= "00001111";
+		wait for 4 ns;
+		
+		IR <= iJZ & "000" & "11111111";
+		Addr <= "0000000011111111";
 		wait for en_period;
-		--
-		IR <= iMOV & "000" & "00000" & "001";
+		
+		IR <= iAdd & "000" & "11111111";
+		ALUout <= "11110000";
+		Addr <= "0000000011111111";
 		wait for en_period;
-		--
-		IR <= iMVI & "000" & "11111111";
-		wait for en_period;
-		--
-		IR <= iJMP & "000" & "11110000";
-		wait for en_period;
-		--
-		IR <= iJZ  & "000" & "00001111";
-		wait for en_period;
-      --
-		IR <= iSTA & "000" & "10101010";
-		wait for en_period;
-		--
-		IR <= iLDA & "000" & "01010101";
-		wait for en_period;
+		
       wait;
    end process;
 
