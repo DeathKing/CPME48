@@ -28,10 +28,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
 ENTITY test_insfetch IS
 END test_insfetch;
  
@@ -46,7 +42,7 @@ ARCHITECTURE behavior OF test_insfetch IS
          PCnew : IN  std_logic_vector(15 downto 0);
          PCupdate : IN  std_logic;
          PC : OUT  std_logic_vector(15 downto 0);
-			IRinspect : OUT  std_logic_vector(15 downto 0);
+			IRout : OUT  std_logic_vector(15 downto 0);
          nRD : OUT  std_logic
         );
     END COMPONENT;
@@ -61,7 +57,7 @@ ARCHITECTURE behavior OF test_insfetch IS
  	--Outputs
    signal PC : std_logic_vector(15 downto 0);
    signal nRD : std_logic;
-	signal IRinspect : std_logic_vector(15 downto 0);
+	signal IRout : std_logic_vector(15 downto 0);
    -- No clocks detected in port list. Replace clk below with 
    -- appropriate port name 
  
@@ -77,7 +73,7 @@ BEGIN
           PCupdate => PCupdate,
           PC => PC,
           nRD => nRD,
-			 IRinspect => IRinspect
+			 IRout => IRout
         );
 
    -- Clock process definitions

@@ -62,33 +62,49 @@ begin
 	process (en)
 	begin
 		if en'event and en = '1' then
-			case op is
+			case OP is
 				when iJMP => MAR <= Addr;
 				when iJZ  => MAR <= Addr;
 				when iSub => ACSout <= ALUout;
 				when iADD => ACSout <= ALUout;
 				when iMVI => ACSout <= ALUout;
 				when iMOV => ACSout <= ALUout;
-				when iSTA => MAR <= Addr;
-								 MDR <= ALUout;
-								 nWR <= '0';
-				when iLDA => MAR <= Addr;
-								 nRD <= '0';
-								 ACSout <= Rtemp;
-				-- when iOUT => ;
-				-- when iIN  => ;
+				when iSTA => MAR    <= Addr;
+								 MDR    <= ALUout;
+								 nWR    <= '0';
+				when iLDA => MAR    <= Addr; nRD    <= '0';
+				when iOUT => nPREQ  <= '0';  nPWR <= '0';
+				when iIN  => nPREQ  <= '0';  nPRD <= '0';
 				when others => NULL;
 			end case;
-		else
+		elsif en'event and en = '0' then
+         -- reset all flags
 			nWR <= '1';
 			nRD <= '1';
 		end if;
+      
 	end process;
 	
 	process (Rtemp)
 	begin
-		ACSout <= Rtemp;
+      case OP is
+         when iLDA => ACSout <= Rtemp;
+         when iIN  => ACSout <= Rtemp;
+         when others => NULL;
 	end process;
+   
+   process (rst)
+   begin
+      if rst'event and rst = '1' then
+         ACSout <= "00000000";
+         nRD <= '1';
+         nWR <= '1';
+         nPRD <= '1';
+         nPWR <= '1';
+         nMERQ <= '1';
+         nPREQ <= '1';
+      end if;
+   end process;
 	
 end Behavioral;
 

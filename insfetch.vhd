@@ -31,7 +31,7 @@ entity insfetch is
            PCnew    : in  STD_LOGIC_VECTOR (15 downto 0);
            PCupdate : in  STD_LOGIC;
            PC       : out STD_LOGIC_VECTOR (15 downto 0);
-			  IRinspect : out STD_LOGIC_VECTOR (15 downto 0);
+			  IRout    : out STD_LOGIC_VECTOR (15 downto 0);
            nRD      : out STD_LOGIC);
 end insfetch;
 
@@ -48,12 +48,6 @@ begin
 			nRD <= '0';
 		elsif en'event and en = '0' then
 			nRD <= '1';
-      --   case en is
-      --      when '0' => rPC <= rPC + 1;
-      --      when '1' => --PC  <= rPC;
-      --                  nRD <= '0';
-      --      when others => NULL;
-      --   end case;
       end if;
    end process;
    
@@ -74,6 +68,7 @@ begin
    end process;
    
    PC <= rPC;
-   IRinspect <= rIR;
+   IRout <= rIR;
+   
 end Behavioral;
 
