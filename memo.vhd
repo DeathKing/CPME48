@@ -91,6 +91,7 @@ begin
          when iLDA => ACSout <= Rtemp;
          when iIN  => ACSout <= Rtemp;
          when others => NULL;
+      end case;
 	end process;
    
    process (rst)

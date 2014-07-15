@@ -99,13 +99,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>uut - beat - Behavioral (D:/Code/VHDL/CPME48/beat.vhd)</SelectedItem>
+         <SelectedItem>uut - memo - Behavioral (D:/Code/VHDL/CPME48/memo.vhd)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >2</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >6</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000013d000000020000000000000000000000000200000064ffffffff0000008100000003000000020000013d0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>uut - beat - Behavioral (D:/Code/VHDL/CPME48/beat.vhd)</CurrentItem>
+      <CurrentItem>uut - memo - Behavioral (D:/Code/VHDL/CPME48/memo.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>

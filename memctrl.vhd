@@ -28,20 +28,23 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- nBHE:  Memory high byte access enable.
 -- nLHE:  Memory low byte access enable.
 entity memctrl is
-    Port ( PC    : in    STD_LOGIC_VECTOR(15 downto 0);
-           Addr  : in    STD_LOGIC_VECTOR(15 downto 0);
-           data  : in    STD_LOGIC_VECTOR(15 downto 0);
-           bst   : in    STD_LOGIC_VECTOR(3 downto 0);
-           nfRD  : in    STD_LOGIC;
-           niRD  : in    STD_LOGIC;
-           niWR  : in    STD_LOGIC;
-           nRD   : out   STD_LOGIC;
-           nWR   : out   STD_LOGIC;
-           nBHE  : out   STD_LOGIC;
-           nLHE  : out   STD_LOGIC;
-           nMREQ : out   STD_LOGIC;
-           abus  : out   STD_LOGIC_VECTOR(15 downto 0);
-           dbus  : inout STD_LOGIC_VECTOR(15 downto 0));
+    Port ( PC     : in    STD_LOGIC_VECTOR(15 downto 0);
+           Addr   : in    STD_LOGIC_VECTOR(15 downto 0);
+           Data   : in    STD_LOGIC_VECTOR(15 downto 0);
+           ALUout : in    STD_LOGIC_VECTOR(7 downto 0);
+           bst    : in    STD_LOGIC_VECTOR(3 downto 0);
+           nfRD   : in    STD_LOGIC;
+           niRD   : in    STD_LOGIC;
+           niWR   : in    STD_LOGIC;
+           IRnew  : out   STD_LOGIC_VECTOR(15 downto 0);
+           Rtemp  : out   STD_LOGIC_VECTOR(7 downto 0);
+           nRD    : out   STD_LOGIC;
+           nWR    : out   STD_LOGIC;
+           nBHE   : out   STD_LOGIC;
+           nLHE   : out   STD_LOGIC;
+           nMREQ  : out   STD_LOGIC;
+           abus   : out   STD_LOGIC_VECTOR(15 downto 0);
+           dbus   : inout STD_LOGIC_VECTOR(15 downto 0));
 end memctrl;
 
 architecture Behavioral of memctrl is
@@ -54,10 +57,10 @@ begin
    process (bst)
    begin
       case bst is
-      when "1000" => nMREQ <= '0';
-      when "0100" => nMREQ <= '1';
-      when "0010" => nMREQ <= '0';
-      when "0001" => nMREQ <= '1';
+         when "1000" => nMREQ <= '0';
+         when "0100" => nMREQ <= '1';
+         when "0010" => nMREQ <= '0';
+         when "0001" => nMREQ <= '1';
       when others => NULL;
       end case;
       nRD <= nfRD and niRD;
@@ -67,8 +70,28 @@ begin
    process (DBUS)
    begin
       case bst is
-      when "1000" => IRfetch <= dbus;
-      when 
+         when "1000" => IRnew <= dbus;
+         when "0100" => DBUS  <= "ZZZZZZZZ";
+         when "0010" =>
+            if op = iSTA then
+               DBUS(7 downto 0) <= ALUout(7 downto 0);
+            elsif op = iLDA then
+               Rtemp(7 downto 0) <= DBUS(7 downto 0);
+            end if;
+         when "0001" => DBUS  <= "ZZZZZZZZ";
+         when others => NULL;
+      end case;
+   end process;
+   
+   process (PC, ADDR)
+   begin
+      case bst is
+         when "1000" => ABUS <= PC;
+         when "0100" => ABUS <= "UUUUUUUU";
+         when "0010" => ABUS <= ADDR;
+         when "0001" => ABUS <= "UUUUUUUU";
+         when others => NULL;
+      end case;
    end process;
 
 end Behavioral;
