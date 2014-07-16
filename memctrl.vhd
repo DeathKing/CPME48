@@ -43,24 +43,21 @@ entity memctrl is
            nBHE   : out   STD_LOGIC;
            nLHE   : out   STD_LOGIC;
            nMREQ  : out   STD_LOGIC;
-           abus   : out   STD_LOGIC_VECTOR(15 downto 0);
-           dbus   : inout STD_LOGIC_VECTOR(15 downto 0));
+           ABUS   : out   STD_LOGIC_VECTOR(15 downto 0);
+           DBUS   : inout STD_LOGIC_VECTOR(15 downto 0));
 end memctrl;
 
 architecture Behavioral of memctrl is
-
-   signal rMDR : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
-   signal rMAR : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
 
 begin
 
    process (bst)
    begin
       case bst is
-         when "1000" => nMREQ <= '0';
-         when "0100" => nMREQ <= '1';
-         when "0010" => nMREQ <= '0';
-         when "0001" => nMREQ <= '1';
+         when "1000" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '0';
+         when "0100" => nMREQ <= '1'; nLHE <= '1'; nBHE <= '1';
+         when "0010" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '1';
+         when "0001" => nMREQ <= '1'; nLHE <= '1'; nBHE <= '1';
       when others => NULL;
       end case;
       nRD <= nfRD and niRD;
@@ -70,12 +67,12 @@ begin
    process (DBUS)
    begin
       case bst is
-         when "1000" => IRnew <= dbus;
+         when "1000" => IRnew <= DBUS;
          when "0100" => DBUS  <= "ZZZZZZZZ";
          when "0010" =>
-            if op = iSTA then
+            if nWR = '0' then
                DBUS(7 downto 0) <= ALUout(7 downto 0);
-            elsif op = iLDA then
+            elsif nRD = '0' then
                Rtemp(7 downto 0) <= DBUS(7 downto 0);
             end if;
          when "0001" => DBUS  <= "ZZZZZZZZ";

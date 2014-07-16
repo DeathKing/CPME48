@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   17:45:59 07/13/2014
+-- Create Date:   09:54:17 07/16/2014
 -- Design Name:   
--- Module Name:   E:/CPME48/test_memo.vhd
+-- Module Name:   D:/Code/VHDL/CPME48/test_memo.vhd
 -- Project Name:  CPME48
 -- Target Device:  
 -- Tool versions:  
@@ -42,15 +42,20 @@ ARCHITECTURE behavior OF test_memo IS
     COMPONENT memo
     PORT(
          en : IN  std_logic;
+         rst : IN std_logic;
          IR : IN  std_logic_vector(15 downto 0);
          Addr : IN  std_logic_vector(15 downto 0);
-         Data : IN  std_logic_vector(7 downto 0);
          ALUout : IN  std_logic_vector(7 downto 0);
          Rtemp : IN  std_logic_vector(7 downto 0);
          nWR : OUT  std_logic;
          nRD : OUT  std_logic;
+         nPREQ : OUT  std_logic;
+         nPWR : OUT  std_logic;
+         nPRD : OUT  std_logic;
          MAR : OUT  std_logic_vector(15 downto 0);
          MDR : OUT  std_logic_vector(7 downto 0);
+         IOAD : INOUT  std_logic_vector(2 downto 0);
+         IODB : INOUT  std_logic_vector(7 downto 0);
          ACSout : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
@@ -58,15 +63,22 @@ ARCHITECTURE behavior OF test_memo IS
 
    --Inputs
    signal en : std_logic := '0';
+   signal rst : std_logic := '0';
    signal IR : std_logic_vector(15 downto 0) := (others => '0');
    signal Addr : std_logic_vector(15 downto 0) := (others => '0');
-   signal Data : std_logic_vector(7 downto 0) := (others => '0');
    signal ALUout : std_logic_vector(7 downto 0) := (others => '0');
    signal Rtemp : std_logic_vector(7 downto 0) := (others => '0');
+
+	--BiDirs
+   signal IOAD : std_logic_vector(2 downto 0);
+   signal IODB : std_logic_vector(7 downto 0);
 
  	--Outputs
    signal nWR : std_logic;
    signal nRD : std_logic;
+   signal nPREQ : std_logic;
+   signal nPWR : std_logic;
+   signal nPRD : std_logic;
    signal MAR : std_logic_vector(15 downto 0);
    signal MDR : std_logic_vector(7 downto 0);
    signal ACSout : std_logic_vector(7 downto 0);
@@ -75,14 +87,7 @@ ARCHITECTURE behavior OF test_memo IS
  
    constant en_period : time := 10 ns;
 
-   -- Aliases 
-	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 11);
-	alias AD1 : STD_LOGIC_VECTOR(2 downto 0) is IR(10 downto 8);
-   alias AD2 : STD_LOGIC_VECTOR(2 downto 0) is IR(2 downto 0); -- Register to register
-   alias AD  : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Others type
-   alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
-
-	-- instructions table
+   	-- instructions table
    constant iNOP : STD_LOGIC_VECTOR := "00000";
 	constant iJMP : STD_LOGIC_VECTOR := "00001";
 	constant iJZ  : STD_LOGIC_VECTOR := "00010";
@@ -100,15 +105,20 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: memo PORT MAP (
           en => en,
+          rst => rst,
           IR => IR,
           Addr => Addr,
-          Data => Data,
           ALUout => ALUout,
           Rtemp => Rtemp,
           nWR => nWR,
           nRD => nRD,
+          nPREQ => nPREQ,
+          nPWR => nPWR,
+          nPRD => nPRD,
           MAR => MAR,
           MDR => MDR,
+          IOAD => IOAD,
+          IODB => IODB,
           ACSout => ACSout
         );
 
@@ -125,26 +135,38 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-		IR <= iSTA & "000" & "11111111";
-		ALUout <= "11111111";
-		Addr <= "0000000011111111";
-		wait for en_period;
-		
-      IR <= iLDA & "000" & "11111111";
-		Addr <= "0000000011111111";
-		wait for 6 ns;
-		Rtemp <= "00001111";
-		wait for 4 ns;
-		
-		IR <= iJZ & "000" & "11111111";
-		Addr <= "0000000011111111";
-		wait for en_period;
-		
-		IR <= iAdd & "000" & "11111111";
-		ALUout <= "11110000";
-		Addr <= "0000000011111111";
-		wait for en_period;
-		
+      -- reset modular
+      wait for 1 ns;
+      rst <= '1';
+      wait for 2 ns;
+      rst <= '0';
+      wait for 1 ns;
+      ---
+      -- Test LDA R0,FF00H
+      -- Suppose [FF00H] fetched back after 2 ns
+      IR <= iLDA & "000" & "00000000";
+      Addr <= "1111111100000000";
+      wait for 2 ns;
+      Rtemp <= "10101010";
+      wait for 8 ns;
+      -- Test STA R0,ABCDH
+      -- Suppose R0 is 22H
+      IR <= iSTA & "000" & "11001101";
+      Addr <= "1010101111001101";
+      ALUout <= "00100010";
+      wait for en_period;
+      -- Test IN R1,P2
+      -- IN instruction need no addr
+      IR <= iIN & "001" & "00000" & "001";
+      wait for 2 ns;
+      IODB <= "00110011";
+      wait for en_period;
+      -- Test OUT R1,P2
+      -- Suppose R1 is F0H
+      IODB <= "ZZZZZZZZ";
+      IR <= iOUT & "001" & "00000" & "010";
+      ALUout <= "11110000";
+      wait for en_period;
       wait;
    end process;
 
