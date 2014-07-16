@@ -42,21 +42,24 @@ architecture Behavioral of insfetch is
 
 begin
 
-   process (en)
+   process (en, IRnew)
    begin
       if en'event and en = '1' then
 			nRD <= '0';
 		elsif en'event and en = '0' then
 			nRD <= '1';
+		elsif en = '1' then
+		report("1");
+			rIR <= IRnew;
       end if;
    end process;
    
-   process (IRnew)
-   begin
-      if en = '1' then
-         rIR <= IRnew;
-      end if;
-   end process;
+--   process (IRnew)
+--   begin
+--      if en = '1' then
+--         rIR <= IRnew;
+--      end if;
+--   end process;
    
    -- Some jump instructions like JMP JZ will affect PC
    -- so insfetch must update rPC

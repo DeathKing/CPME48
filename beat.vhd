@@ -24,14 +24,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Beat Generator
 entity beat is
-    Port ( clk : in  STD_LOGIC;
-           rst : in  STD_LOGIC;
-           bst : out STD_LOGIC_VECTOR(0 to 3));
+    Port ( clk   : in  STD_LOGIC;
+           rst   : in  STD_LOGIC;
+           reset : out STD_LOGIC;
+           bst   : out STD_LOGIC_VECTOR(3 downto 0));
 end beat;
 
 architecture Behavioral of beat is
 
-   signal state : STD_LOGIC_VECTOR(0 to 3) := "1000";
+   signal state : STD_LOGIC_VECTOR(3 downto 0) := "0001";
    
 begin
 
@@ -40,14 +41,15 @@ begin
 	begin
 	
       if rst = '1' then
-         state <= "1000";
+         state <= "0001";
       elsif clk'event and clk='1' then
-         state <= state(3) & state(0 to 2);
+         state <= state(0) & state(3 downto 1);
       end if;
       
 	end process;
 	
    bst <= state;
+   reset <= rst;
    
 end Behavioral;
 

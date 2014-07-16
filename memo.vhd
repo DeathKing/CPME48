@@ -34,7 +34,7 @@ entity memo is
            nPRD   : out   STD_LOGIC;
 			  MAR    : out   STD_LOGIC_VECTOR(15 downto 0);
 			  MDR    : out   STD_LOGIC_VECTOR(7 downto 0);
-           IOAD   : inout STD_LOGIC_VECTOR(2 downto 0);
+           IOAD   : out   STD_LOGIC_VECTOR(2 downto 0);
            IODB   : inout STD_LOGIC_VECTOR(7 downto 0);
 			  ACSout : out   STD_LOGIC_VECTOR(7 downto 0));
 end memo;
@@ -67,6 +67,7 @@ begin
 	begin
       if rst'event and rst = '1' then
          ACSout <= "00000000";
+			IODB <= "ZZZZZZZZ";
          nRD <= '1';
          nWR <= '1';
          nPRD <= '1';
@@ -97,6 +98,7 @@ begin
          nPWR <= '1';
          nPRD <= '1';
          nPREQ <= '1';
+			IODB <= "ZZZZZZZZ";
       elsif en = '1' then
          case OP is
             when iLDA => ACSout <= Rtemp;
