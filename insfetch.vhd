@@ -48,24 +48,18 @@ begin
 			nRD <= '0';
 		elsif en'event and en = '0' then
 			nRD <= '1';
-		elsif en = '1' then
-		report("1");
+		end if;
+      if en = '1' then
+         report("1");
 			rIR <= IRnew;
       end if;
    end process;
-   
---   process (IRnew)
---   begin
---      if en = '1' then
---         rIR <= IRnew;
---      end if;
---   end process;
    
    -- Some jump instructions like JMP JZ will affect PC
    -- so insfetch must update rPC
    process (PCupdate)
    begin
-      if PCupdate = '1' then
+      if PCupdate'event and PCupdate = '1' then
          rPC <= PCnew;
       end if;
    end process;

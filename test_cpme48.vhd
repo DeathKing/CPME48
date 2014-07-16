@@ -4,7 +4,7 @@
 --
 -- Create Date:   16:49:43 07/16/2014
 -- Design Name:   
--- Module Name:   D:/CPME48/test_cpme48.vhd
+-- Module Name:   CPME48/test_cpme48.vhd
 -- Project Name:  CPME48
 -- Target Device:  
 -- Tool versions:  
@@ -132,6 +132,7 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
+      IODB <= "ZZZZZZZZ";
 		DBUS <= "ZZZZZZZZZZZZZZZZ";
 		rst <= '1';
 		wait for 1 ns;

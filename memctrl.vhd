@@ -96,7 +96,7 @@ begin
 --   end process;
 	
 	
-	process (bst, PC, ADDR, DBUS, rst, nfRD, niRD, niWR)
+	process (bst, PC, ADDR, DBUS, rst, nfRD, niRD, niWR, ALUout)
 	begin
 		if rst'event and rst = '1' then
 			ABUS <= "UUUUUUUUUUUUUUUU";
