@@ -59,6 +59,10 @@
     <transform xil_pn:end_ts="1405517166" xil_pn:in_ck="7693603942882754711" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1405517166">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="alu.vhd"/>
       <outfile xil_pn:name="beat.vhd"/>
       <outfile xil_pn:name="cpme48.vhd"/>
