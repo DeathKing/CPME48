@@ -1,0 +1,7 @@
+vhdl work "wrback.vhd"
+vhdl work "memo.vhd"
+vhdl work "memctrl.vhd"
+vhdl work "insfetch.vhd"
+vhdl work "beat.vhd"
+vhdl work "alu.vhd"
+vhdl work "cpme48.vhd"

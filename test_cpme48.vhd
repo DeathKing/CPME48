@@ -139,6 +139,9 @@ BEGIN
 		rst <= '0';
 		wait for 4 ns;
 		---
+		DBUS <= iJZ  & "000" & "11111111";
+		wait for clk_period * 4;
+		---
 		DBUS <= iMVI & "000" & "11110000";
 		wait for clk_period * 4;
 		---

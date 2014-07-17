@@ -61,13 +61,14 @@ begin
 	
 	process (en)
 	begin
-		if en'event and en = '0' then
-         Rupdate <= '0';
-			PCupdate <= '0';
-      elsif en'event and en = '1' then
+		if en'event and en = '1' then
          case OP is
             when iJMP => PCnew <= Addr;
-            when iJZ  => PCnew <= Addr;
+            when iJZ  => if ALUout = 0 then
+									PCnew <= Addr;
+								 else
+									PCnew <= PC + 1;
+								 end if;
 				when iSUB => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
 				when iAdd => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
 				when iMOV => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
@@ -77,6 +78,10 @@ begin
          end case;
 			Rdata <= ALUout;
          PCupdate <= '1';
+		end if;
+		if en = '0' then
+         Rupdate <= '0';
+			PCupdate <= '0';
 		end if;
 	end process;
 

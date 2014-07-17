@@ -35,7 +35,8 @@ entity memo is
 			  MAR    : out   STD_LOGIC_VECTOR(15 downto 0);
 			  MDR    : out   STD_LOGIC_VECTOR(7 downto 0);
            IOAD   : out   STD_LOGIC_VECTOR(2 downto 0);
-           IODB   : inout STD_LOGIC_VECTOR(7 downto 0);
+           IOin   : in    STD_LOGIC_VECTOR(7 downto 0);
+           IOout  : out   STD_LOGIC_VECTOR(7 downto 0);
 			  ACSout : out   STD_LOGIC_VECTOR(7 downto 0));
 end memo;
 
@@ -63,52 +64,58 @@ architecture Behavioral of memo is
 
 begin
 
-	process (Rtemp, IODB, en, rst)
+	process (Rtemp, IOin, en, rst)
 	begin
-      if rst'event and rst = '1' then
+      if rst = '1' then
          ACSout <= "00000000";
-			IODB <= "ZZZZZZZZ";
+			IOout <= "ZZZZZZZZ";
          nRD <= '1';
          nWR <= '1';
          nPRD <= '1';
          nPWR <= '1';
          nPREQ <= '1';
-		elsif en'event and en = '1' then
-			case OP is
-				when iJMP => MAR <= Addr;
-				when iJZ  => MAR <= Addr;
-				when iSub => ACSout <= ALUout;
-				when iADD => ACSout <= ALUout;
-				when iMVI => ACSout <= ALUout;
-				when iMOV => ACSout <= ALUout;
-				when iSTA => MAR    <= Addr;
-								 MDR    <= ALUout;
-								 nWR    <= '0';
-				when iLDA => MAR    <= Addr; nRD  <= '0';
-				when iOUT => nPREQ  <= '0';  nPWR <= '0';
-                         IODB <= ALUout; IOAD <= Ad2;
-				when iIN  => nPREQ  <= '0';  nPRD <= '0';
-                         IODB <= "ZZZZZZZZ"; IOAD <= Ad2;
-				when others => NULL;
-			end case;
-		elsif en'event and en = '0' then
-         -- reset all flags
-			nWR <= '1';
-			nRD <= '1';
-         nPWR <= '1';
-         nPRD <= '1';
-         nPREQ <= '1';
-			IODB <= "ZZZZZZZZ";
-      elsif en = '1' then
-         case OP is
-            when iLDA => ACSout <= Rtemp;
-            when iIN  => ACSout <= IODB;
-            when others => NULL;
-         end case;
-		end if;
+		else
+			if en'event and en = '1' then
+				case OP is
+					when iJMP => MAR <= Addr;
+					when iJZ  => MAR <= Addr;
+					when iSub => ACSout <= ALUout;
+					when iADD => ACSout <= ALUout;
+					when iMVI => ACSout <= ALUout;
+					when iMOV => ACSout <= ALUout;
+					when iSTA => MAR    <= Addr;
+									 MDR    <= ALUout;
+									 nWR    <= '0';
+					when iLDA => MAR    <= Addr; nRD  <= '0'; ACSout <= Rtemp;
+					when iOUT => nPREQ  <= '0';  nPWR <= '0'; ACSout <= ALUout;
+									 IOout <= ALUout; IOAD <= Ad2;
+					when iIN  => nPREQ  <= '0';  nPRD <= '0';
+									 ACSout <= IOin; IOAD <= Ad2;
+					when others => NULL;
+				end case;
+			end if;
+			
+			if en = '0' then
+				-- reset all flags
+				nWR <= '1';
+				nRD <= '1';
+				nPWR <= '1';
+				nPRD <= '1';
+				nPREQ <= '1';
+				IOout <= "ZZZZZZZZ";
+			end if;
       
+		end if;
+		
 	end process;
 	
+--		if en = '1' then
+--         case OP is
+--            when iLDA => ACSout <= Rtemp;
+--            when iIN  => ACSout <= IODB;
+--            when others => NULL;
+--         end case;
+--		end if;
 	
 end Behavioral;
 

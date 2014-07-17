@@ -25,15 +25,19 @@ entity cpme48 is
       rst   : in    STD_LOGIC;
       clk   : in    STD_LOGIC;
       ABUS  : out   STD_LOGIC_VECTOR(15 downto 0);
+		ABUSout : out STD_LOGIC_VECTOR(15 downto 0);
       DBUS  : inout STD_LOGIC_VECTOR(15 downto 0);
+		DBUSout : out STD_LOGIC_VECTOR(15 downto 0);
 		IR    : out   STD_LOGIC_VECTOR(15 downto 0);
       nMREQ : out   STD_LOGIC;
       nRD   : out   STD_LOGIC;
       nWR   : out   STD_LOGIC;
 		nBHE  : out   STD_LOGIC;
-		nLHE  : out   STD_LOGIC;
+		nBLE  : out   STD_LOGIC;
       IOAD  : out   STD_LOGIC_VECTOR(2 downto 0);
-      IODB  : inout STD_LOGIC_VECTOR(7 downto 0);
+		IOin  : in    STD_LOGIC_VECTOR(7 downto 0);
+		IOout : out   STD_LOGIC_VECTOR(7 downto 0);
+		bst   : out   STD_LOGIC_VECTOR(3 downto 0);
       nPREQ : out   STD_LOGIC;
       nPRD  : out   STD_LOGIC;
       nPWR  : out   STD_LOGIC
@@ -54,12 +58,12 @@ architecture Behavioral of cpme48 is
    -- Instruction Fetch Declare
    component insfetch
 		Port ( en       : in  STD_LOGIC;
+				 rst      : in  STD_LOGIC;
              IRnew    : in  STD_LOGIC_VECTOR (15 downto 0);
              PCnew    : in  STD_LOGIC_VECTOR (15 downto 0);
              PCupdate : in  STD_LOGIC;
              PC       : out STD_LOGIC_VECTOR (15 downto 0);
-			    IRout    : out STD_LOGIC_VECTOR (15 downto 0);
-             nRD      : out STD_LOGIC);
+			    IRout    : out STD_LOGIC_VECTOR (15 downto 0));
 	end component;
 	
 	-- ALU Declare
@@ -90,7 +94,8 @@ architecture Behavioral of cpme48 is
 			    MAR    : out   STD_LOGIC_VECTOR(15 downto 0);
 			    MDR    : out   STD_LOGIC_VECTOR(7 downto 0);
              IOAD   : out   STD_LOGIC_VECTOR(2 downto 0);
-             IODB   : inout STD_LOGIC_VECTOR(7 downto 0);
+             IOin   : in    STD_LOGIC_VECTOR(7 downto 0);
+             IOout  : out   STD_LOGIC_VECTOR(7 downto 0);
 			    ACSout : out   STD_LOGIC_VECTOR(7 downto 0));
 	end component;
 
@@ -115,7 +120,6 @@ architecture Behavioral of cpme48 is
              ALUout : in    STD_LOGIC_VECTOR(7 downto 0);
              bst    : in    STD_LOGIC_VECTOR(3 downto 0);
 			    rst    : in    STD_LOGIC;
-             nfRD   : in    STD_LOGIC;
              niRD   : in    STD_LOGIC;
              niWR   : in    STD_LOGIC;
              IRnew  : out   STD_LOGIC_VECTOR(15 downto 0);
@@ -131,6 +135,7 @@ architecture Behavioral of cpme48 is
 	  
 	  signal wire_bst : STD_LOGIC_VECTOR(3 downto 0);
 	  signal wire_rst : STD_LOGIC;
+	  signal wire_abus : STD_LOGIC_VECTOR(15 downto 0);
 	  signal wire_mc2if_mdr2ir : STD_LOGIC_VECTOR(15 downto 0);
 	  signal wire_wb2if_pcn2pc : STD_LOGIC_VECTOR(15 downto 0);
 	  signal wire_wb2if_pcu2pcu : STD_LOGIC;
@@ -163,12 +168,12 @@ begin
    -- import fetch instruction unit
    uinsfetch: insfetch port map(
       en       => wire_bst(3),
+		rst      => wire_rst,
 		IRnew    => wire_mc2if_mdr2ir,
 		PCnew    => wire_wb2if_pcn2pc,
 		PCupdate => wire_wb2if_pcu2pcu,
 		PC       => wire_if2mc_pc2pc,
-		IRout    => wire_if2all_irbus,
-		nRD      => wire_if2mc_nrd2nfrd
+		IRout    => wire_if2all_irbus
    );
 
    -- import ALU
@@ -199,7 +204,8 @@ begin
 		MAR    => wire_mm2mc_adr2adr,
 		MDR    => wire_mm2mc_mdr2mdr,
 		IOAD   => IOAD,
-		IODB   => IODB,
+		IOin   => IOin,
+		IOout  => IOout,
 		ACSout => wire_mm2wb_acs2ao
    );
    
@@ -224,7 +230,6 @@ begin
 		PC => wire_if2mc_pc2pc,
 		Addr => wire_mm2mc_adr2adr,
 		ALUout => wire_mm2mc_mdr2mdr,
-		nfRD => wire_if2mc_nrd2nfrd,
 		niRD => wire_mm2mc_nrd2nird,
 		niWR => wire_mm2mc_nwr2niwr,
 		IRnew => wire_mc2if_mdr2ir,
@@ -232,12 +237,17 @@ begin
 		nRD => nRD,
 		nWR => nWR,
 		nBHE => nBHE,
-		nLHE => nLHE,
+		nLHE => nBLE,
 		nMREQ => nMREQ,
-		ABUS  => ABUS,
+		ABUS  => wire_ABUS,
       DBUS => DBUS
    );
 
 	IR <= wire_if2all_irbus;
+	bst <= wire_bst;
+	
+	DBUSOut <= DBUS;
+	ABUSout <= wire_ABUS;
+	ABUS <= wire_ABUS;
 end Behavioral;
 

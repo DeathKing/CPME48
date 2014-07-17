@@ -1,5 +1,8 @@
+net "clk"  loc = "p75";
 net "rst"  loc = "p51";
+NET "rst" CLOCK_DEDICATED_ROUTE = FALSE;
 
+# [Checked]IR: S1S0
 net "ir<0>"  loc = "p4";
 net "ir<1>"  loc = "p5";
 net "ir<2>"  loc = "p8";
@@ -20,67 +23,100 @@ net "ir<13>"  loc = "p25";
 net "ir<14>"  loc = "p28";
 net "ir<15>"  loc = "p29";
 
-net "ABUS<8>"  loc = "p31";
-net "ABUS<9>"  loc = "p33";
-net "ABUS<10>"  loc = "p34";
-net "ABUS<11>"  loc = "p35";
+# [Checked]ABUS: Memory high address and low address
+net "ABUS<0>"  loc = "p179";
+net "ABUS<1>"  loc = "p178";
+net "ABUS<2>"  loc = "p177";
+net "ABUS<3>"  loc = "p172";
 
-net "ABUS<12>"  loc = "p36";
-net "ABUS<13>"  loc = "p39";
-net "ABUS<14>"  loc = "p40";
-net "ABUS<15>"  loc = "p41";
+net "ABUS<4>"  loc = "p171";
+net "ABUS<5>"  loc = "p151";
+net "ABUS<6>"  loc = "p150";
+net "ABUS<7>"  loc = "p147";
 
-net "DBUS<0>"  loc = "p42";
-net "DBUS<1>"  loc = "p45";
-net "DBUS<2>"  loc = "p47";
-net "DBUS<3>"  loc = "p48";
+net "ABUS<8>"  loc = "p146";
+net "ABUS<9>"  loc = "p113";
+net "ABUS<10>"  loc = "p115";
+net "ABUS<11>"  loc = "p116";
 
-net "DBUS<4>"  loc = "p49";
-net "DBUS<5>"  loc = "p50";
-net "DBUS<6>"  loc = "p55";
-net "DBUS<7>"  loc = "p56";
+net "ABUS<12>"  loc = "p119";
+net "ABUS<13>"  loc = "p140";
+net "ABUS<14>"  loc = "p144";
+net "ABUS<15>"  loc = "p145";
 
-net "DBUS<8>"  loc = "p60";
-net "DBUS<9>"  loc = "p61";
-net "DBUS<10>"  loc = "p62";
-net "DBUS<11>"  loc = "p63";
 
-net "DBUS<12>"  loc = "p2";
-net "DBUS<13>"  loc = "p108";
-net "DBUS<14>"  loc = "p109";
-net "DBUS<15>"  loc = "p112";
+# [Checked]ABUS: inspect
+net "ABUSout<0>"  loc = "p126";
+net "ABUSout<1>"  loc = "p127";
+net "ABUSout<2>"  loc = "p129";
+net "ABUSout<3>"  loc = "p202";
 
-net "ABUS<0>"  loc = "p126";
-net "ABUS<1>"  loc = "p127";
-net "ABUS<2>"  loc = "p129";
-net "ABUS<3>"  loc = "p202";
+net "ABUSout<4>"  loc = "p203";
+net "ABUSout<5>"  loc = "p205";
+net "ABUSout<6>"  loc = "p206";
+net "ABUSout<7>"  loc = "p103";
 
-net "ABUS<4>"  loc = "p203";
-net "ABUS<5>"  loc = "p205";
-net "ABUS<6>"  loc = "p206";
-net "ABUS<7>"  loc = "p103";
+net "ABUSout<8>"  loc = "p31";
+net "ABUSout<9>"  loc = "p33";
+net "ABUSout<10>"  loc = "p34";
+net "ABUSout<11>"  loc = "p35";
 
-net "nPRD"  loc = "p102";
-net "nPWR"  loc = "p100";
-net "nPREQ"  loc = "p99";
+net "ABUSout<12>"  loc = "p36";
+net "ABUSout<13>"  loc = "p39";
+net "ABUSout<14>"  loc = "p40";
+net "ABUSout<15>"  loc = "p41";
 
-net "nWR"  loc = "p98";
-net "nBLE"  loc = "p83";
-net "nBHE"  loc = "p82";
-net "nRD"  loc = "p77";
-net "nMREQ"  loc = "p185";
+# [checked]DBUS inspect
+net "DBUSout<0>"  loc = "p42";
+net "DBUSout<1>"  loc = "p45";
+net "DBUSout<2>"  loc = "p47";
+net "DBUSout<3>"  loc = "p48";
 
-net "bst<3>"  loc = "p196";
-net "bst<2>"  loc = "p193";
-net "bst<1>"  loc = "p192";
-net "bst<0>"  loc = "p190";
+net "DBUSout<4>"  loc = "p49";
+net "DBUSout<5>"  loc = "p50";
+net "DBUSout<6>"  loc = "p55";
+net "DBUSout<7>"  loc = "p56";
 
-net "nMREQ"  loc = "p168";
-net "nWR"  loc = "p152";
-net "nRD"  loc = "p139";
-net "nBHE"  loc = "p138";
-net "nBLE"  loc = "p137";
+net "DBUSout<8>"  loc = "p60";
+net "DBUSout<9>"  loc = "p61";
+net "DBUSout<10>"  loc = "p62";
+net "DBUSout<11>"  loc = "p63";
 
+net "DBUSout<12>"  loc = "p2";
+net "DBUSout<13>"  loc = "p108";
+net "DBUSout<14>"  loc = "p109";
+net "DBUSout<15>"  loc = "p112";
+
+
+#net "nPRD"  loc = "p102";
+#net "nPWR"  loc = "p100";
+#net "nPREQ"  loc = "p99";
+#
+#net "nWR"  loc = "p98";
+#net "nBLE"  loc = "p83";
+#net "nBHE"  loc = "p82";
+#net "nRD"  loc = "p77";
+#net "nMREQ"  loc = "p185";
+#
+#
+net "nMREQ"  loc = "p102";
+net "nWR"  loc = "p100";
+net "nRD"  loc = "p99";
+#net "nBHE"  loc = "p138";
+#net "nBLE"  loc = "p137";
+
+# A7-A4
+net "bst<3>"  loc = "p185";
+net "bst<2>"  loc = "p77";
+net "bst<1>"  loc = "p82";
+net "bst<0>"  loc = "p83";
+#net "bst<3>"  loc = "p196";
+#net "bst<2>"  loc = "p193";
+#net "bst<1>"  loc = "p192";
+#net "bst<0>"  loc = "p190";
+
+
+# [Checked] DBUS to memory
 net "DBUS<0>" loc ="p167";
 net "DBUS<1>" loc ="p165";
 net "DBUS<2>" loc ="p164";
@@ -98,37 +134,57 @@ net "DBUS<13>" loc ="p133";
 net "DBUS<14>" loc ="p134";
 net "DBUS<15>" loc ="p135";
 
-net "IODB<0>"  loc = "p154";
-net "IODB<1>"  loc = "p148";
-net "IODB<2>"  loc = "p142";
-net "IODB<3>"  loc = "p136";
-net "IODB<4>"  loc = "p130";
-net "IODB<5>"  loc = "p124";
-net "IODB<6>"  loc = "p118";
-net "IODB<7>"  loc = "p110";
+#net "IODB<0>"  loc = "p154";
+#net "IODB<1>"  loc = "p148";
+#net "IODB<2>"  loc = "p142";
+#net "IODB<3>"  loc = "p136";
+#net "IODB<4>"  loc = "p130";
+#net "IODB<5>"  loc = "p124";
+#net "IODB<6>"  loc = "p118";
+#net "IODB<7>"  loc = "p110";
 
-net "IODB<0>"  loc = "p186";
-net "IODB<1>"  loc = "p187";
-net "IODB<2>"  loc = "p189";
-net "IODB<3>"  loc = "p179";
-net "IODB<4>"  loc = "p178";
-net "IODB<5>"  loc = "p177";
-net "IODB<6>"  loc = "p172";
-net "IODB<7>"  loc = "p171";
+# [Checked]IOin: K2
+net "IOin<0>"  loc = "p94";
+net "IOin<1>"  loc = "p93";
+net "IOin<2>"  loc = "p91";
+net "IOin<3>"  loc = "p90";
+net "IOin<4>"  loc = "p89";
+net "IOin<5>"  loc = "p87";
+net "IOin<6>"  loc = "p80";
+net "IOin<7>"  loc = "p78";
 
-net "ABUS<0>" loc ="p179";
-net "ABUS<1>" loc ="p178";
-net "ABUS<2>" loc ="p177";
-net "ABUS<3>" loc ="p172";
-net "ABUS<4>" loc ="p171";
-net "ABUS<5>" loc ="p151";
-net "ABUS<6>" loc ="p150";
-net "ABUS<7>" loc ="p147";
-net "ABUS<8>" loc ="p146";
-net "ABUS<9>" loc ="p113";
-net "ABUS<10>" loc ="p115";
-net "ABUS<11>" loc ="p116";
-net "ABUS<12>" loc ="p119";
-net "ABUS<13>" loc ="p140";
-net "ABUS<14>" loc ="p144";
-net "ABUS<15>" loc ="p145";
+# [Checked]IOout: Ax
+#net "IOout<0>"  loc = "p102";
+#net "IOout<1>"  loc = "p100";
+#net "IOout<2>"  loc = "p99";
+#net "IOout<3>"  loc = "p98";
+#net "IOout<4>"  loc = "p83";
+#net "IOout<5>"  loc = "p82";
+#net "IOout<6>"  loc = "p77";
+#net "IOout<7>"  loc = "p185";
+
+net "IOout<0>"  loc = "p196";
+net "IOout<1>"  loc = "p193";
+net "IOout<2>"  loc = "p192";
+net "IOout<3>"  loc = "p190";
+net "IOout<4>"  loc = "p3";
+net "IOout<5>"  loc = "p200";
+net "IOout<6>"  loc = "p199";
+net "IOout<7>"  loc = "p197";
+
+#net "ABUS<0>" loc ="p179";
+#net "ABUS<1>" loc ="p178";
+#net "ABUS<2>" loc ="p177";
+#net "ABUS<3>" loc ="p172";
+#net "ABUS<4>" loc ="p171";
+#net "ABUS<5>" loc ="p151";
+#net "ABUS<6>" loc ="p150";
+#net "ABUS<7>" loc ="p147";
+#net "ABUS<8>" loc ="p146";
+#net "ABUS<9>" loc ="p113";
+#net "ABUS<10>" loc ="p115";
+#net "ABUS<11>" loc ="p116";
+#net "ABUS<12>" loc ="p119";
+#net "ABUS<13>" loc ="p140";
+#net "ABUS<14>" loc ="p144";
+#net "ABUS<15>" loc ="p145";

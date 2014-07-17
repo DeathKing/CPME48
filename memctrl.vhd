@@ -33,7 +33,6 @@ entity memctrl is
            ALUout : in    STD_LOGIC_VECTOR(7 downto 0);
            bst    : in    STD_LOGIC_VECTOR(3 downto 0);
 			  rst    : in    STD_LOGIC;
-           nfRD   : in    STD_LOGIC;
            niRD   : in    STD_LOGIC;
            niWR   : in    STD_LOGIC;
            IRnew  : out   STD_LOGIC_VECTOR(15 downto 0);
@@ -96,26 +95,27 @@ begin
 --   end process;
 	
 	
-	process (bst, PC, ADDR, DBUS, rst, nfRD, niRD, niWR, ALUout)
+	process (bst, PC, ADDR, DBUS, rst, niRD, niWR, ALUout)
 	begin
-		if rst'event and rst = '1' then
-			ABUS <= "UUUUUUUUUUUUUUUU";
+		if rst = '1' then
+			ABUS <= "0000000000000000";
 			DBUS <= "ZZZZZZZZZZZZZZZZ";
 		else
 			case bst is
-				when "1000" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '0'; ABUS <= PC; IRnew <= DBUS;
-				when "0100" => nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; ABUS <= "UUUUUUUUUUUUUUUU"; DBUS  <= "ZZZZZZZZZZZZZZZZ";
-				when "0010" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '1'; ABUS <= ADDR;
+				when "1000" => ABUS <= PC; IRnew <= DBUS;
+				               nMREQ <= '0'; nLHE <= '0'; nBHE <= '0'; nRD <= '0'; nWR <= '1';
+				when "0100" => DBUS  <= "ZZZZZZZZZZZZZZZZ";
+									nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; nRD <= '1'; nWR <= '1';
+				when "0010" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '1'; ABUS <= ADDR; nRD <= niRD; nWR <= niWR;
 					if niWR = '0' then
 						DBUS(7 downto 0) <= ALUout(7 downto 0);
-					elsif (nfRD and niRD) = '0' then
+					elsif niRD = '0' then
 						Rtemp(7 downto 0) <= DBUS(7 downto 0);
 					end if;
-				when "0001" => nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; ABUS <= "UUUUUUUUUUUUUUUU"; DBUS  <= "ZZZZZZZZZZZZZZZZ";
+				when "0001" => DBUS  <= "ZZZZZZZZZZZZZZZZ";
+									nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; nRD <= '1'; nWR <= '1';
 			when others => NULL;
 			end case;
-			nRD <= nfRD and niRD;
-			nWR <= niWR;
 		end if;
 	end process;
 	

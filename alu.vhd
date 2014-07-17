@@ -74,7 +74,8 @@ begin
                            Addr <= Reg(7) & X;
             when iLDA => ALUout <= (others => 'Z');
                            Addr <= Reg(7) & X;
-            when iJZ  => ALUout <= (others => 'Z');
+            when iJZ  => ALUout <= Reg(CONV_INTEGER(Ad1));
+				               Addr <= Reg(7) & X;
             when iJMP => ALUout <= (others => 'Z');
             when iOUT => ALUout <= Reg(CONV_INTEGER(Ad1));
             when others => NULL;
