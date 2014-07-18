@@ -50,9 +50,10 @@ ARCHITECTURE behavior OF test_cpme48 IS
          nRD : OUT  std_logic;
          nWR : OUT  std_logic;
          nBHE : OUT  std_logic;
-         nLHE : OUT  std_logic;
+         nBLE : OUT  std_logic;
          IOAD : OUT  std_logic_vector(2 downto 0);
-         IODB : INOUT  std_logic_vector(7 downto 0);
+         IOin  : in    STD_LOGIC_VECTOR(7 downto 0);
+         IOout : out   STD_LOGIC_VECTOR(7 downto 0);
          nPREQ : OUT  std_logic;
          nPRD : OUT  std_logic;
          nPWR : OUT  std_logic
@@ -66,7 +67,8 @@ ARCHITECTURE behavior OF test_cpme48 IS
 
 	--BiDirs
    signal DBUS : std_logic_vector(15 downto 0);
-   signal IODB : std_logic_vector(7 downto 0);
+   signal IOin : std_logic_vector(7 downto 0);
+   signal IOout : std_logic_vector(7 downto 0);
 
  	--Outputs
    signal ABUS : std_logic_vector(15 downto 0);
@@ -74,7 +76,7 @@ ARCHITECTURE behavior OF test_cpme48 IS
    signal nRD : std_logic;
    signal nWR : std_logic;
    signal nBHE : std_logic;
-   signal nLHE : std_logic;
+   signal nBLE : std_logic;
    signal IOAD : std_logic_vector(2 downto 0);
    signal nPREQ : std_logic;
    signal nPRD : std_logic;
@@ -110,9 +112,10 @@ BEGIN
           nRD => nRD,
           nWR => nWR,
           nBHE => nBHE,
-          nLHE => nLHE,
+          nBLE => nBLE,
           IOAD => IOAD,
-          IODB => IODB,
+          IOin => IOin,
+          IOout => IOout,
           nPREQ => nPREQ,
           nPRD => nPRD,
           nPWR => nPWR
@@ -132,7 +135,7 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      IODB <= "ZZZZZZZZ";
+      --IODB <= "ZZZZZZZZ";
 		DBUS <= "ZZZZZZZZZZZZZZZZ";
 		rst <= '1';
 		wait for 1 ns;
@@ -152,18 +155,22 @@ BEGIN
 		wait for clk_period * 4;
 		---
 		DBUS <= iSTA & "000" & "00000000";
-		wait for clk_period * 2;
+		wait for clk_period * 1;
+      wait for 2 ns;
 		DBUS <= "ZZZZZZZZZZZZZZZZ";
+      wait for 8 ns;
 		wait for clk_period * 2;
 		---
 		DBUS <= iOUT & "000" & "00000" & "000";
 		wait for clk_period * 4;
 		---
 		DBUS <= iIN & "011" & "00000" & "000";
-		wait for clk_period;
+		wait for clk_period * 1;
+      wait for 2 ns;
 		DBUS <= "ZZZZZZZZZZZZZZZZ";
-		IODB <= "11111111";
-		wait for clk_period * 3;
+      IOin <= "11111111";
+      wait for 8 ns;
+		wait for clk_period * 2;
    end process;
 
 END;

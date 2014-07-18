@@ -55,7 +55,8 @@ ARCHITECTURE behavior OF test_memo IS
          MAR : OUT  std_logic_vector(15 downto 0);
          MDR : OUT  std_logic_vector(7 downto 0);
          IOAD : INOUT  std_logic_vector(2 downto 0);
-         IODB : INOUT  std_logic_vector(7 downto 0);
+         IOin : IN  std_logic_vector(7 downto 0);
+         IOout : OUT  std_logic_vector(7 downto 0);
          ACSout : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
@@ -71,7 +72,8 @@ ARCHITECTURE behavior OF test_memo IS
 
 	--BiDirs
    signal IOAD : std_logic_vector(2 downto 0);
-   signal IODB : std_logic_vector(7 downto 0);
+   signal IOin : std_logic_vector(7 downto 0);
+   signal IOout : std_logic_vector(7 downto 0);
 
  	--Outputs
    signal nWR : std_logic;
@@ -118,7 +120,8 @@ BEGIN
           MAR => MAR,
           MDR => MDR,
           IOAD => IOAD,
-          IODB => IODB,
+          IOin => IOin,
+          IOout => IOout,
           ACSout => ACSout
         );
 
@@ -159,11 +162,10 @@ BEGIN
       -- IN instruction need no addr
       IR <= iIN & "001" & "00000" & "001";
       wait for 2 ns;
-      IODB <= "00110011";
+      IOin <= "00110011";
       wait for en_period;
       -- Test OUT R1,P2
       -- Suppose R1 is F0H
-      IODB <= "ZZZZZZZZ";
       IR <= iOUT & "001" & "00000" & "010";
       ALUout <= "11110000";
       wait for en_period;

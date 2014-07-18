@@ -54,10 +54,10 @@ begin
    process (rst, en, PCupdate, PCnew, IRnew)
    begin
 		if rst = '1' then
-			rIR <= (others => '1');
+			rIR <= (others => '0');
 			rPC <= (others => '0');
       else
-			if PCupdate'event and PCupdate = '1' then
+			if PCupdate = '1' then
 				rPC <= PCnew;
 			end if;
 			if en = '1' then
@@ -65,7 +65,6 @@ begin
 			end if;
       end if;
    end process;
-	
 	
    PC <= rPC;
    IRout <= rIR;

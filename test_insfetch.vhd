@@ -37,26 +37,36 @@ ARCHITECTURE behavior OF test_insfetch IS
  
     COMPONENT insfetch
     PORT(
-         en : IN  std_logic;
-         IRnew : IN  std_logic_vector(15 downto 0);
-         PCnew : IN  std_logic_vector(15 downto 0);
-         PCupdate : IN  std_logic;
-         PC : OUT  std_logic_vector(15 downto 0);
-			IRout : OUT  std_logic_vector(15 downto 0);
-         nRD : OUT  std_logic
+         en       : IN   std_logic;
+         rst      : IN   std_logic;
+         IRnew    : IN   std_logic_vector(15 downto 0);
+         PCnew    : IN   std_logic_vector(15 downto 0);
+         PCupdate : IN   std_logic;
+         PC       : OUT  std_logic_vector(15 downto 0);
+			IRout    : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
     
+    COMPONENT beat
+    PORT(
+         clk : IN  std_logic;
+         rst : IN  std_logic;
+         reset : out STD_LOGIC;
+         bst : OUT  std_logic_vector(3 downto 0)
+        );
+    END COMPONENT;
 
    --Inputs
    signal en : std_logic := '0';
+   signal rst : std_logic := '0';
+   signal bst : std_logic_vector(3 downto 0);
    signal IRnew : std_logic_vector(15 downto 0) := (others => '0');
    signal PCnew : std_logic_vector(15 downto 0) := (others => '0');
    signal PCupdate : std_logic := '0';
 
  	--Outputs
+   signal wire_rst : std_logic;
    signal PC : std_logic_vector(15 downto 0);
-   signal nRD : std_logic;
 	signal IRout : std_logic_vector(15 downto 0);
    -- No clocks detected in port list. Replace clk below with 
    -- appropriate port name 
@@ -67,14 +77,21 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: insfetch PORT MAP (
-          en => en,
+          en => bst(3),
+          rst => wire_rst,
           IRnew => IRnew,
           PCnew => PCnew,
           PCupdate => PCupdate,
           PC => PC,
-          nRD => nRD,
 			 IRout => IRout
         );
+
+   ubeat: beat port MAP (
+      clk => en,
+      rst => rst,
+      reset => wire_rst,
+      bst => bst
+   );
 
    -- Clock process definitions
    clk_process :process
@@ -89,23 +106,29 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin
-		wait for clk_period / 2;
+      wait for clk_period / 2;
+      rst <= '1';
+      wait for clk_period * 1;
+      rst <= '0';
+      wait for clk_period * 2;
       PCnew <= "0101000011110000";
       PCupdate <= '1';
+      wait for clk_period * 1;
+      ---      
+      PCupdate <= '0';
 		IRnew <= "1111111111111111";
 		wait for 6 ns;
 		IRnew <= "0010101010000000";
-      --wait for clk_period;
 		wait for 4 ns;
-      PCupdate <= '0';
-		-- wait for 3 ns;
-		PCnew <= "1111111111111111";
-		IRnew <= "0000000000000000";
-      wait for clk_period;
-      PCnew <= "0101000000000000";
-		IRnew <= "1010101010101010";
+      wait for clk_period * 2;
+      PCnew <= "1111111111111111";
       PCupdate <= '1';
-      wait for clk_period;
+      wait for 4 ns;
+      PCupdate <= '0';
+      wait for 6 ns; 
+      ---
+		IRnew <= "0000000000000000";
+      wait for clk_period * 4;
       wait;
    end process;
 

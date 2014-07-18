@@ -39,7 +39,7 @@ ARCHITECTURE behavior OF test_beat IS
     PORT(
          clk : IN  std_logic;
          rst : IN  std_logic;
-         bst : OUT  std_logic_vector(0 to 3)
+         bst : OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
 
@@ -49,7 +49,7 @@ ARCHITECTURE behavior OF test_beat IS
    signal rst : std_logic := '0';
 
  	--Outputs
-   signal bst : std_logic_vector(0 to 3);
+   signal bst : std_logic_vector(3 downto 0);
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
