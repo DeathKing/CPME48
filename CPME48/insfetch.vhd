@@ -41,13 +41,6 @@ architecture Behavioral of insfetch is
    signal rIR : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
 
 begin
-
---   process (IRnew)
---   begin
---      if en = '1' then
---			rIR <= IRnew;
---      end if;
---   end process;
    
    -- Some jump instructions like JMP JZ will affect PC
    -- so insfetch must update rPC
