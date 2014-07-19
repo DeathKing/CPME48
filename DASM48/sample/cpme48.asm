@@ -20,7 +20,5 @@ start:
     OUT     R1,0
 goback:
     JMP     start
-
-PUBLIC start
-
+    
 END

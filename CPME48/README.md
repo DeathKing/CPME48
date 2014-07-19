@@ -51,18 +51,20 @@ INC   Ri       ; Ri←Ri+1
 DEC   Ri       ; Ri←Ri-1
 
 CALL  X        ; M(SP)←PC+1 then PC←CS+[00H//X]
-RET   Ri       ; AX←Ri
+RET   Ri       ; PC←M(SP) then SP←SP-1
 
-PUSH  Ri       ; M(SP)←Ri then SP←SP-1
-POP   Ri       ; SP←SP+1 then Ri←M(SP)
+PUSH  Ri       ; SP←SP+1 then M(SP)←Ri
+POP   Ri       ; Ri←M(SP) then SP←SP-1
 
+;; 通常用于在函数调用时取得参数
 AMOV  Ri, X    ; Ri←M(BP+X)
 
 ;; 特殊寄存器压栈，Rs的取值范围为{PC, FLAG}
-SPSH  Rs       ; M(SP)←Rs then SP←SP-1
-SPOP  Rs       ; SP←SP+1 then Rs←M(SP)
+SPSH  Rs       ; SP←SP+1 then M(SP)←Rs
+SPOP  Rs       ; Rs←M(SP) then SP←SP-1
 
 ;; 引入IR48*后，IR48的部分指令语义改变
+;; LDA和STA在IR48*语义下只能操作运行时栈（局部变量空间）
 LDA   Ri,X     ; Ri←[BP-00H//X]
 STA   Ri,X     ; [BP-00H//X]←Ri 
 

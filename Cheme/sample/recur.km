@@ -1,0 +1,7 @@
+;;; Recursionally Function Call sample
+(defun (recur (int x))
+	(if (= x 0)
+		(ret)
+		(ret (recur (- x 1)))))
+
+(recur 2)
