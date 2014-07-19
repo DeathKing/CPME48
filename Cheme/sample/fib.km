@@ -1,0 +1,7 @@
+;;; Recursionally Function Call sample
+(defun (fib (int x))
+	(if (or (= x 0) (= x 1))
+		(ret 1)
+		(ret (+ (fib (- x 1)) (fib (- x 2))))))
+
+(output (fib 5))
