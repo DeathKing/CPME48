@@ -40,7 +40,10 @@ entity cpme48 is
 		bst   : out   STD_LOGIC_VECTOR(3 downto 0);
       nPREQ : out   STD_LOGIC;
       nPRD  : out   STD_LOGIC;
-      nPWR  : out   STD_LOGIC
+      nPWR  : out   STD_LOGIC;
+      nMREQout : out   STD_LOGIC;
+      nRDout   : out   STD_LOGIC;
+      nWRout   : out   STD_LOGIC
    ); 
 
 end cpme48;
@@ -72,6 +75,10 @@ architecture Behavioral of cpme48 is
              rst     : in STD_LOGIC;
              Rupdate : in STD_LOGIC;
              Rdata   : in STD_LOGIC_VECTOR(7 downto 0);
+				 
+				 Reg0 : out STD_LOGIC_VECTOR(7 downto 0);
+				 Reg1 : out STD_LOGIC_VECTOR(7 downto 0);
+				 
              Raddr   : in STD_LOGIC_VECTOR(2 downto 0);
              IR      : in STD_LOGIC_VECTOR(15 downto 0);
              Addr    : out STD_LOGIC_VECTOR(15 downto 0);
@@ -154,6 +161,10 @@ architecture Behavioral of cpme48 is
 	  signal wire_mm2mc_mdr2mdr  : STD_LOGIC_VECTOR(7 downto 0);
 	  
 	  signal wire_mm2wb_acs2ao   : STD_LOGIC_VECTOR(7 downto 0);
+	  
+	  signal wire_nWR : STD_LOGIC;
+	  signal wire_nRD : STD_LOGIC;
+	  signal wire_nMREQ : STD_LOGIC;
  
 begin
 
@@ -183,6 +194,10 @@ begin
 		Rupdate  => wire_wb2alu_ru2ru,
       Rdata    => wire_wb2alu_rd2rd,
 		Raddr    => wire_wb2alu_rad2rad,
+		
+		Reg0     => DBUSout(7 downto 0),
+		Reg1     => DBUSout(15 downto 8),
+		
 		IR       => wire_if2all_irbus,
 		Addr     => wire_alu2mm_adr2adr,
 		ALUout   => wire_alu2mm_ao2ao
@@ -234,11 +249,11 @@ begin
 		niWR => wire_mm2mc_nwr2niwr,
 		IRnew => wire_mc2if_mdr2ir,
 		Rtemp => wire_mc2mm_mdr2rt,
-		nRD => nRD,
-		nWR => nWR,
+		nRD => wire_nRD,
+		nWR => wire_nWR,
 		nBHE => nBHE,
 		nLHE => nBLE,
-		nMREQ => nMREQ,
+		nMREQ => wire_nMREQ,
 		ABUS  => wire_ABUS,
       DBUS => DBUS
    );
@@ -246,8 +261,17 @@ begin
 	IR <= wire_if2all_irbus;
 	bst <= wire_bst;
 	
-	DBUSOut <= DBUS;
+	-- DBUSOut <= DBUS;
 	ABUSout <= wire_ABUS;
 	ABUS <= wire_ABUS;
+	
+	nWR <= wire_nWR;
+	nRD <= wire_nRD;
+	nMREQ <= wire_nMREQ;
+	
+	nWRout <= wire_nWR;
+	nRDout <= wire_nRD;
+	nMREQout <= wire_nMREQ;
+	
 end Behavioral;
 

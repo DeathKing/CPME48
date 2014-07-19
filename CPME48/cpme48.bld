@@ -1,11 +1,11 @@
-Release 14.4 ngdbuild P.49d (nt)
+Release 14.3 ngdbuild P.40xd (nt)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-Command Line: D:\Xilinx\14.4\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -intstyle
+Command Line: C:\Xilinx\14.3\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -intstyle
 ise -dd _ngo -nt timestamp -uc cpme48.ucf -p xc3s500e-pq208-4 cpme48.ngc
 cpme48.ngd
 
-Reading NGO file "D:/Code/VHDL/CPME48/cpme48.ngc" ...
+Reading NGO file "F:/CPME48/cpme48.ngc" ...
 Gathering constraint information from source properties...
 Done.
 
@@ -27,10 +27,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 118724 kilobytes
+Total memory usage is 93216 kilobytes
 
 Writing NGD file "cpme48.ngd" ...
-Total REAL time to NGDBUILD completion:  4 sec
+Total REAL time to NGDBUILD completion:  3 sec
 Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "cpme48.bld"...

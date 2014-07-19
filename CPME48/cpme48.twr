@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------------
-Release 14.4 Trace  (nt)
+Release 14.3 Trace  (nt)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-D:\Xilinx\14.4\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 4 -n
+C:\Xilinx\14.3\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 4 -n
 3 -fastpaths -xml cpme48.twx cpme48.ncd -o cpme48.twr cpme48.pcf -ucf
 cpme48.ucf
 
 Design file:              cpme48.ncd
 Physical constraint file: cpme48.pcf
-Device,package,speed:     xc3s500e,pq208,-4 (PRODUCTION 1.27 2012-12-04)
+Device,package,speed:     xc3s500e,pq208,-4 (PRODUCTION 1.27 2012-10-12)
 Report level:             verbose report
 
 Environment Variable      Effect 
@@ -45,22 +45,22 @@ Setup/Hold to clock rst
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-DBUS<0>     |   -0.005(R)|    2.240(R)|rst_IBUF          |   0.000|
-DBUS<1>     |    0.404(R)|    1.931(R)|rst_IBUF          |   0.000|
-DBUS<2>     |    0.803(R)|    1.589(R)|rst_IBUF          |   0.000|
-DBUS<3>     |   -0.072(R)|    1.950(R)|rst_IBUF          |   0.000|
-DBUS<4>     |    0.875(R)|    1.722(R)|rst_IBUF          |   0.000|
-DBUS<5>     |    1.239(R)|    1.701(R)|rst_IBUF          |   0.000|
-DBUS<6>     |    0.746(R)|    1.523(R)|rst_IBUF          |   0.000|
-DBUS<7>     |    0.797(R)|    1.824(R)|rst_IBUF          |   0.000|
-DBUS<8>     |    0.231(R)|    1.685(R)|rst_IBUF          |   0.000|
-DBUS<9>     |   -0.095(R)|    1.947(R)|rst_IBUF          |   0.000|
-DBUS<10>    |    0.225(R)|    1.691(R)|rst_IBUF          |   0.000|
-DBUS<11>    |    0.203(R)|    1.708(R)|rst_IBUF          |   0.000|
-DBUS<12>    |   -0.394(R)|    2.188(R)|rst_IBUF          |   0.000|
-DBUS<13>    |   -0.666(R)|    2.406(R)|rst_IBUF          |   0.000|
-DBUS<14>    |   -0.662(R)|    2.401(R)|rst_IBUF          |   0.000|
-DBUS<15>    |   -0.709(R)|    2.439(R)|rst_IBUF          |   0.000|
+DBUS<0>     |   -0.522(R)|    3.834(R)|rst_IBUF          |   0.000|
+DBUS<1>     |   -0.766(R)|    3.799(R)|rst_IBUF          |   0.000|
+DBUS<2>     |   -0.746(R)|    3.866(R)|rst_IBUF          |   0.000|
+DBUS<3>     |   -1.178(R)|    3.792(R)|rst_IBUF          |   0.000|
+DBUS<4>     |   -0.436(R)|    3.837(R)|rst_IBUF          |   0.000|
+DBUS<5>     |   -0.937(R)|    3.718(R)|rst_IBUF          |   0.000|
+DBUS<6>     |   -0.814(R)|    3.737(R)|rst_IBUF          |   0.000|
+DBUS<7>     |   -0.545(R)|    3.105(R)|rst_IBUF          |   0.000|
+DBUS<8>     |    1.818(R)|    2.767(R)|rst_IBUF          |   0.000|
+DBUS<9>     |    1.813(R)|    2.773(R)|rst_IBUF          |   0.000|
+DBUS<10>    |    1.813(R)|    2.773(R)|rst_IBUF          |   0.000|
+DBUS<11>    |    1.806(R)|    2.781(R)|rst_IBUF          |   0.000|
+DBUS<12>    |    1.805(R)|    2.782(R)|rst_IBUF          |   0.000|
+DBUS<13>    |    1.805(R)|    2.782(R)|rst_IBUF          |   0.000|
+DBUS<14>    |    1.807(R)|    2.780(R)|rst_IBUF          |   0.000|
+DBUS<15>    |    1.807(R)|    2.780(R)|rst_IBUF          |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk to Pad
@@ -68,10 +68,21 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-bst<0>      |    9.318(R)|clk_BUFGP         |   0.000|
-bst<1>      |    8.719(R)|clk_BUFGP         |   0.000|
-bst<2>      |    8.821(R)|clk_BUFGP         |   0.000|
-bst<3>      |    9.452(R)|clk_BUFGP         |   0.000|
+IOout<0>    |   13.104(R)|clk_BUFGP         |   0.000|
+IOout<1>    |   12.811(R)|clk_BUFGP         |   0.000|
+IOout<2>    |   13.080(R)|clk_BUFGP         |   0.000|
+IOout<3>    |   12.531(R)|clk_BUFGP         |   0.000|
+IOout<4>    |   14.262(R)|clk_BUFGP         |   0.000|
+IOout<5>    |   13.144(R)|clk_BUFGP         |   0.000|
+IOout<6>    |   13.405(R)|clk_BUFGP         |   0.000|
+IOout<7>    |   13.146(R)|clk_BUFGP         |   0.000|
+bst<0>      |    9.223(R)|clk_BUFGP         |   0.000|
+bst<1>      |    9.065(R)|clk_BUFGP         |   0.000|
+bst<2>      |   13.101(R)|clk_BUFGP         |   0.000|
+bst<3>      |    9.658(R)|clk_BUFGP         |   0.000|
+nPRD        |   13.900(R)|clk_BUFGP         |   0.000|
+nPREQ       |   13.921(R)|clk_BUFGP         |   0.000|
+nPWR        |   13.746(R)|clk_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock rst to Pad
@@ -79,65 +90,73 @@ Clock rst to Pad
             | clk (edge) |                               | Clock  |
 Destination |   to PAD   |Internal Clock(s)              | Phase  |
 ------------+------------+-------------------------------+--------+
-ABUS<0>     |   13.261(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<1>     |   13.261(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<2>     |   13.261(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<3>     |   12.939(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<4>     |   12.939(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<5>     |   13.083(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<6>     |   13.083(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<7>     |   12.992(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<8>     |   12.992(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<9>     |   13.339(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<10>    |   13.336(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<11>    |   13.336(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<12>    |   13.346(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<13>    |   13.002(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<14>    |   12.993(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUS<15>    |   12.993(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<0>  |   13.210(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<1>  |   13.210(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<2>  |   13.203(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<3>  |   13.026(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<4>  |   13.026(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<5>  |   13.035(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<6>  |   13.035(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<7>  |   13.435(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<8>  |   13.296(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<9>  |   13.291(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<10> |   13.291(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<11> |   13.283(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<12> |   13.283(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<13> |   13.299(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<14> |   13.299(F)|umemctrl/ABUS_not0001          |   0.000|
-ABUSout<15> |   13.303(F)|umemctrl/ABUS_not0001          |   0.000|
-DBUS<0>     |   13.949(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<1>     |   13.972(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<2>     |   13.972(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<3>     |   14.782(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<4>     |   14.782(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<5>     |   14.104(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<6>     |   14.104(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-DBUS<7>     |   14.109(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
-IOAD<0>     |   10.246(R)|rst_IBUF                       |   0.000|
-IOAD<1>     |   10.095(R)|rst_IBUF                       |   0.000|
-IOAD<2>     |    9.694(R)|rst_IBUF                       |   0.000|
-IOout<0>    |   13.375(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<1>    |   13.316(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<2>    |   13.316(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<3>    |   13.461(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<4>    |   14.150(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<5>    |   13.311(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<6>    |   13.311(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-IOout<7>    |   13.375(F)|umemo/Mtrien_IOout_not0001     |   0.000|
-nBHE        |    9.361(R)|rst_IBUF                       |   0.000|
-nBLE        |   11.688(R)|rst_IBUF                       |   0.000|
-nMREQ       |   11.958(R)|rst_IBUF                       |   0.000|
-nPRD        |   14.997(F)|umemo/nPRD_not0001             |   0.000|
-nPREQ       |   15.271(F)|umemo/nPRD_not0001             |   0.000|
-nPWR        |   15.266(F)|umemo/nPRD_not0001             |   0.000|
-nRD         |   11.524(R)|rst_IBUF                       |   0.000|
-nWR         |   11.205(R)|rst_IBUF                       |   0.000|
+ABUS<0>     |   12.753(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<1>     |   12.775(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<2>     |   12.775(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<3>     |   12.483(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<4>     |   12.483(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<5>     |   12.569(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<6>     |   12.569(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<7>     |   12.572(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<8>     |   12.572(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<9>     |   12.711(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<10>    |   12.625(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<11>    |   12.625(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<12>    |   12.619(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<13>    |   12.453(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<14>    |   12.579(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUS<15>    |   12.579(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<0>  |   12.632(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<1>  |   12.632(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<2>  |   12.460(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<3>  |   12.754(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<4>  |   12.754(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<5>  |   12.648(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<6>  |   12.648(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<7>  |   12.669(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<8>  |   12.611(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<9>  |   12.622(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<10> |   12.622(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<11> |   12.629(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<12> |   12.629(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<13> |   12.755(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<14> |   12.755(F)|umemctrl/ABUS_not0001          |   0.000|
+ABUSout<15> |   12.747(F)|umemctrl/ABUS_not0001          |   0.000|
+DBUS<0>     |   15.052(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<1>     |   14.858(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<2>     |   14.858(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<3>     |   15.668(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<4>     |   15.668(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<5>     |   14.987(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<6>     |   14.987(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+DBUS<7>     |   14.992(F)|umemctrl/Mtrien_DBUS<0>_not0001|   0.000|
+IOAD<0>     |   11.739(R)|rst_IBUF                       |   0.000|
+IOAD<1>     |   11.504(R)|rst_IBUF                       |   0.000|
+IOAD<2>     |   12.812(R)|rst_IBUF                       |   0.000|
+IOout<0>    |   14.438(R)|rst_IBUF                       |   0.000|
+            |   17.802(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<1>    |   14.015(R)|rst_IBUF                       |   0.000|
+            |   17.302(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<2>    |   14.123(R)|rst_IBUF                       |   0.000|
+            |   17.077(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<3>    |   13.924(R)|rst_IBUF                       |   0.000|
+            |   17.040(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<4>    |   15.468(R)|rst_IBUF                       |   0.000|
+            |   18.797(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<5>    |   14.730(R)|rst_IBUF                       |   0.000|
+            |   18.140(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<6>    |   14.963(R)|rst_IBUF                       |   0.000|
+            |   18.903(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+IOout<7>    |   14.410(R)|rst_IBUF                       |   0.000|
+            |   18.091(F)|ualu/Mtrien_ALUout_not0001     |   0.000|
+nBHE        |   12.135(R)|rst_IBUF                       |   0.000|
+nBLE        |   11.924(R)|rst_IBUF                       |   0.000|
+nMREQ       |   12.525(R)|rst_IBUF                       |   0.000|
+nMREQout    |   12.854(R)|rst_IBUF                       |   0.000|
+nRD         |   12.563(R)|rst_IBUF                       |   0.000|
+nRDout      |   12.514(R)|rst_IBUF                       |   0.000|
+nWR         |   13.221(R)|rst_IBUF                       |   0.000|
+nWRout      |   12.811(R)|rst_IBUF                       |   0.000|
 ------------+------------+-------------------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -145,7 +164,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    1.476|         |         |         |
+clk            |    1.738|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock rst
@@ -153,41 +172,36 @@ Clock to Setup on destination clock rst
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    8.522|         |   10.960|         |
-rst            |    2.150|   13.652|    7.508|    7.727|
+clk            |    8.374|         |   14.342|         |
+rst            |    6.300|    6.853|    8.588|    8.588|
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+---------------+---------+
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
-DBUS<0>        |DBUSout<0>     |    8.740|
-DBUS<1>        |DBUSout<1>     |   10.220|
-DBUS<2>        |DBUSout<2>     |    9.113|
-DBUS<3>        |DBUSout<3>     |    9.106|
-DBUS<4>        |DBUSout<4>     |    9.341|
-DBUS<5>        |DBUSout<5>     |    9.358|
-DBUS<6>        |DBUSout<6>     |    9.321|
-DBUS<7>        |DBUSout<7>     |    9.195|
-DBUS<8>        |DBUSout<8>     |    7.955|
-DBUS<9>        |DBUSout<9>     |    8.068|
-DBUS<10>       |DBUSout<10>    |    7.766|
-DBUS<11>       |DBUSout<11>    |    8.049|
-DBUS<12>       |DBUSout<12>    |    8.347|
-DBUS<13>       |DBUSout<13>    |    6.487|
-DBUS<14>       |DBUSout<14>    |    6.433|
-DBUS<15>       |DBUSout<15>    |    6.595|
+rst            |IOout<0>       |   14.161|
+rst            |IOout<1>       |   13.868|
+rst            |IOout<2>       |   14.137|
+rst            |IOout<3>       |   13.588|
+rst            |IOout<4>       |   15.319|
+rst            |IOout<5>       |   14.201|
+rst            |IOout<6>       |   14.462|
+rst            |IOout<7>       |   14.203|
+rst            |nPRD           |   15.743|
+rst            |nPREQ          |   14.973|
+rst            |nPWR           |   14.803|
 ---------------+---------------+---------+
 
 
-Analysis completed Fri Jul 18 10:43:12 2014 
+Analysis completed Fri Jul 18 18:08:46 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 127 MB
+Peak Memory Usage: 105 MB
 
 
 

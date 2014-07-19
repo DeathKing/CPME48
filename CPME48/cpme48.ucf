@@ -1,6 +1,7 @@
 net "clk"  loc = "p75";
 net "rst"  loc = "p51";
 NET "rst" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "clk" CLOCK_DEDICATED_ROUTE = FALSE;
 
 # [Checked]IR: S1S0
 net "ir<0>"  loc = "p4";
@@ -88,20 +89,21 @@ net "DBUSout<14>"  loc = "p109";
 net "DBUSout<15>"  loc = "p112";
 
 
-#net "nPRD"  loc = "p102";
-#net "nPWR"  loc = "p100";
-#net "nPREQ"  loc = "p99";
+net "nPRD"  loc = "p102";
+net "nPWR"  loc = "p100";
+net "nPREQ"  loc = "p99";
 #
-#net "nWR"  loc = "p98";
-#net "nBLE"  loc = "p83";
-#net "nBHE"  loc = "p82";
-#net "nRD"  loc = "p77";
-#net "nMREQ"  loc = "p185";
+net "nWR"  loc = "p152";
+net "nBLE"  loc = "p137";
+net "nBHE"  loc = "p138";
+net "nRD"  loc = "p139";
+net "nMREQ"  loc = "p168";
 #
-#
-net "nMREQ"  loc = "p102";
-net "nWR"  loc = "p100";
-net "nRD"  loc = "p99";
+
+#[Checked] inspect
+#net "nMREQout"  loc = "p102";
+#net "nWRout"  loc = "p100";
+#net "nRDout"  loc = "p99";
 #net "nBHE"  loc = "p138";
 #net "nBLE"  loc = "p137";
 

@@ -30,6 +30,8 @@ entity alu is
           Raddr : in STD_LOGIC_VECTOR(2 downto 0);
           IR : in STD_LOGIC_VECTOR(15 downto 0);
           Addr : out STD_LOGIC_VECTOR(15 downto 0);
+			 Reg0 : out STD_LOGIC_VECTOR(7 downto 0);
+			 Reg1 : out STD_LOGIC_VECTOR(7 downto 0);
           ALUout: out STD_LOGIC_VECTOR(7 downto 0));
 end alu;
 
@@ -38,7 +40,7 @@ architecture Behavioral of alu is
    subtype registr is STD_LOGIC_VECTOR (7 downto 0);
    type    reg_group is array (0 to 7) of registr;
    
-   signal Reg : reg_group;
+   signal Reg : reg_group := (others => "00000000");
    
    -- Aliases 
 	alias OP  : STD_LOGIC_VECTOR(4 downto 0) is IR(15 downto 11);
@@ -62,9 +64,18 @@ architecture Behavioral of alu is
 
 begin
 
-   process (en,rst, op)
+   process (en, rst, op, IR, Rupdate, Rdata, Raddr, Reg)
    begin
-      if en'event and en = '1' and rst = '0' then
+		if rst = '1' then
+			Reg(0) <= "00000000";
+         Reg(1) <= "00000000";
+         Reg(2) <= "00000000";
+         Reg(3) <= "00000000";
+         Reg(4) <= "00000000";
+         Reg(5) <= "00000000";
+         Reg(6) <= "00000000";
+         Reg(7) <= "00000000";
+      elsif en = '1' then
          case op is
             when iADD => ALUout <= Reg(CONV_INTEGER(Ad1)) + Reg(CONV_INTEGER(Ad2));
             when iSUB => ALUout <= Reg(CONV_INTEGER(Ad1)) - Reg(CONV_INTEGER(Ad2));
@@ -77,27 +88,33 @@ begin
             when iJZ  => ALUout <= Reg(CONV_INTEGER(Ad1));
 				               Addr <= Reg(7) & X;
             when iJMP => ALUout <= (others => 'Z');
+									Addr <= Reg(7) & X;
             when iOUT => ALUout <= Reg(CONV_INTEGER(Ad1));
             when others => NULL;
          end case;
-      end if;
+      elsif Rupdate = '1'then
+			Reg(CONV_INTEGER(Raddr)) <= Rdata;
+		end if;
    end process;
+	
+	Reg0 <= Reg(0);
+	Reg1 <= Reg(1);
 
-   process (rst, Rupdate, Rdata, Raddr)
-   begin
-      if rst = '1' then
-         Reg(0) <= "00000000";
-         Reg(1) <= "00000000";
-         Reg(2) <= "00000000";
-         Reg(3) <= "00000000";
-         Reg(4) <= "00000000";
-         Reg(5) <= "00000000";
-         Reg(6) <= "00000000";
-         Reg(7) <= "00000000";
-		elsif rst ='0' and Rupdate'event and Rupdate = '1' then
-         Reg(CONV_INTEGER(Raddr)) <= Rdata;
-      end if;
-   end process;
-   
+--   process (rst, Rupdate, Rdata, Raddr)
+--   begin
+--      if rst = '1' then
+--         Reg(0) <= "00000000";
+--         Reg(1) <= "00000000";
+--         Reg(2) <= "00000000";
+--         Reg(3) <= "00000000";
+--         Reg(4) <= "00000000";
+--         Reg(5) <= "00000000";
+--         Reg(6) <= "00000000";
+--         Reg(7) <= "00000000";
+--		elsif rst ='0' and Rupdate'event and Rupdate = '1' then
+--         Reg(CONV_INTEGER(Raddr)) <= Rdata;
+--      end if;
+--   end process;
+--   
 end Behavioral;
 

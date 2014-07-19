@@ -37,48 +37,63 @@ OUT   Ri,PORT  ; [PORT]←Ri
 
 ## IR48\*
 
-IR48\*在IR48的基础上扩充了几条8086指令，并优化了内存布局。：
+IR48\*在IR48的基础上扩充了几条8086指令，并优化了内存布局。IR48\*指令主要分布在0x1XXXX区域（详见[指令分布表](#指令分布表)，IR48\*指令的语义如下：
 
 ```asm
-CMP   Ri,Rj    ; EFLAG←Ri-Rj
+CMP   Ri,Rj    ; FLAG←Ri-Rj
 
-JNE   X        ; if(EFLAG.ZF≠0); Then PC←[DX//X]
-JE    X        ; if(EFLAG.ZF=0); Then PC←[DX//X]
-JFR   X        ; PC←PC+X
-JBR   X        ; PC←PC-X
+JNE   X        ; if(FLAG.ZF≠1); Then PC←CS+[00H//X]
+JE    X        ; if(FLAG.ZF=1); Then PC←CS+[00H//X]
+JFR   X        ; PC←PC+[00H//X]
+JBR   X        ; PC←PC-[00H//X]
 
 INC   Ri       ; Ri←Ri+1
 DEC   Ri       ; Ri←Ri-1
 
-RET   Ri       ; EAX←Ri
+CALL  X        ; M(SP)←PC+1 then PC←CS+[00H//X]
+RET   Ri       ; AX←Ri
 
-PUSH  Ri       ; M(ESP)←Ri, ESP←ESP-1
-POP   Ri       ; ESP←ESP+1, Ri←M(ESP)
+PUSH  Ri       ; M(SP)←Ri then SP←SP-1
+POP   Ri       ; SP←SP+1 then Ri←M(SP)
 
-CLF            ; FLAG←00000000
-PSHF           ; M(ESP)←FLAG, ESP←ESP-1
-POPF           ; ESP←ESP+1, FLAG←M(ESP)
+AMOV  Ri, X    ; Ri←M(BP+X)
+
+;; 特殊寄存器压栈，Rs的取值范围为{PC, FLAG}
+SPSH  Rs       ; M(SP)←Rs then SP←SP-1
+SPOP  Rs       ; SP←SP+1 then Rs←M(SP)
 
 ;; 引入IR48*后，IR48的部分指令语义改变
-LDA   Ri,X     ; Ri←[EBP - DX//X]
-STA   Ri,X     ; [EBP - DX//X]←Ri 
+LDA   Ri,X     ; Ri←[BP-00H//X]
+STA   Ri,X     ; [BP-00H//X]←Ri 
 
-JMP   X        ; PC←[CS + DX//X]
-JZ    Ri,X     ; If(Ri=0); Then PC←[CS + DX//X]
+JMP   X        ; PC←[CS+00H//X]
+JZ    Ri,X     ; If(Ri=0); Then PC←[CS+00H//X]
 ```
 
-| 助记符 | 机器码 | 影响标志  | 说明                 |
-| :---: | :----: |:-------: | :----------------    |
-|  CMP  |  10110 | OF,ZF    |  CMP不回写运算结果至Ri |
-|  JNE  |  11100 | OF,ZF    | |
-|  JE   |  11010 |          | |
-|  JFR  |  11100 |          | 前进相对跳转，JFR 1跳转至下一条指令 |
-|  JBR  |  11101 |          | 后退相对跳转, JBR 1跳转至前一条指令 |
-|  PUSH |  10001 |          | |
-|  POP  |  11110 |          | |
-|  PSHF |  11011 |          | |
-|  POPF |  10011 | OF,ZF    | |
-|  RET  |  11111 |          | |
-|  CLF  |  11000 | OF,ZF    | 清除状态位FLAGS       |
-|  INC  |  10101 | OF,ZF    |  |
-|  DEC  |  10111 | OF,ZF    |  |
+| 助记符 | 机器码 | 影响标志  | 说明                                        |
+| :---: | :----: |:-------: | :------------------------------------------ |
+|  AMOV |  10001 |          | 通常用于获得参数，`AMOV R0,2` 将第一个参数送R0 |
+|  CMP  |  10110 | OF,ZF    |  CMP不回写运算结果至Ri                       |
+|  JNE  |  11100 | OF,ZF    |                                             |
+|  JE   |  11010 |          |                                             |
+|  JFR  |  10100 |          | 前进相对跳转，`JFR 1`跳转至下一条指令          |
+|  JBR  |  11101 |          | 后退相对跳转, `JBR 1`跳转至前一条指令          |
+|  PUSH |  11001 |          |                                             |
+|  POP  |  11110 |          |                                             |
+|  SPSH |  11011 |          |                                             |
+|  SPOP |  10011 |          |                                             |
+|  CALL |  11000 |          |                                             |
+|  RET  |  11111 |          |                                             |
+|  INC  |  10101 | OF,ZF    |                                             |
+|  DEC  |  10111 | OF,ZF    |                                             |
+
+## 指令分布表
+
+由于CPME48的操作码仅占5位，故至多可有2^5=32条指令，下图描述了IR48与IR48*的所有指令分布：
+
+|       | 00000 | 00001 | 00010 | 00011 | 00100 | 00101 | 00110 | 00111 |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| 00000 |  NOP  |       |       |       |  SUB  |       |  ADD  |       |
+| 01000 |  MVI  |       |  MOV  |       |  STA  |       |  LDA  |       |
+| 10000 |  OUT  |  AMOV |   IN  |  SPOP |  JFR  |  INC  |  CMP  |  DEC  |
+| 11000 |  CALL |  PUSH |   JE  |  SPSH |  JNE  |  JBR  |  POP  |  RET  |

@@ -47,20 +47,21 @@ begin
    process (rst, en, PCupdate, PCnew, IRnew)
    begin
 		if rst = '1' then
-			rIR <= (others => '0');
+			IRout <= (others => '0');
 			rPC <= (others => '0');
       else
 			if PCupdate = '1' then
 				rPC <= PCnew;
 			end if;
 			if en = '1' then
-				rIR <= IRnew;
+				--rIR <= IRnew;
+				IRout <= IRnew;
 			end if;
       end if;
    end process;
 	
    PC <= rPC;
-   IRout <= rIR;
+   --IRout <= rIR;
    
 end Behavioral;
 

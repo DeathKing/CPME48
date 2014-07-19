@@ -59,24 +59,25 @@ architecture Behavioral of wrback is
 
 begin
 	
-	process (en)
+	process (en, ALUout, Addr)
 	begin
 		if en'event and en = '1' then
          case OP is
-            when iJMP => PCnew <= Addr;
+            when iJMP => PCnew <= Addr; Rupdate <= '0';
             when iJZ  => if ALUout = 0 then
 									PCnew <= Addr;
 								 else
 									PCnew <= PC + 1;
 								 end if;
-				when iSUB => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
-				when iAdd => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
-				when iMOV => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
-				when iMVI => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
-				when iLDA => PCnew <= PC + 1; Raddr <= AD1; Rupdate <= '1';
+								 Rupdate <= '0';
+				when iSUB => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iADD => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iMOV => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iMVI => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iLDA => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iIN  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
             when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
-			Rdata <= ALUout;
          PCupdate <= '1';
 		end if;
 		if en = '0' then

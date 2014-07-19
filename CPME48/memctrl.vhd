@@ -57,10 +57,10 @@ begin
 			ABUS <= "0000000000000000";
 			DBUS <= "ZZZZZZZZZZZZZZZZ";
 		else
-      report("1");
 			case bst is
-				when "1000" => ABUS  <= PC; IRnew <= DBUS;
-				               nMREQ <= '0'; nLHE <= '0'; nBHE <= '0'; nRD <= '0'; nWR <= '1';
+				when "1000" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '0'; nRD <= '0'; nWR <= '1';
+									ABUS  <= PC; IRnew(15 downto 0) <= DBUS(15 downto 0);
+									DBUS <= (others => 'Z');
 				when "0100" => DBUS  <= "ZZZZZZZZZZZZZZZZ";
 									nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; nRD <= '1'; nWR <= '1';
 				when "0010" => nMREQ <= '0'; nLHE <= '0'; nBHE <= '1'; ABUS <= ADDR; nRD <= niRD; nWR <= niWR;
@@ -68,6 +68,7 @@ begin
 						DBUS(7 downto 0) <= ALUout(7 downto 0);
 					elsif niRD = '0' then
 						Rtemp(7 downto 0) <= DBUS(7 downto 0);
+						DBUS <= (others => 'Z');
 					end if;
 				when "0001" => DBUS  <= "ZZZZZZZZZZZZZZZZ";
 									nMREQ <= '1'; nLHE <= '1'; nBHE <= '1'; nRD <= '1'; nWR <= '1';
