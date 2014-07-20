@@ -9,8 +9,17 @@
 
 .CODE
 
-RECUR PROC
-    AMOV    AX,2
+    MVI     BX,1
+    PUSH    BX
+    CALL    RECUR
+    DEC     SP
+    JMP     Over
+
+RECUR:
+    PUSH    BP
+    MOV     BP,SP
+    MVI     AX,22H
+    AMOV    AX,1
     MVI     BX,0
     CMP     AX,BX
     JE      Finish
@@ -22,10 +31,7 @@ Finish:
     MOV     SP,BP
     POP     BP
     RET
-RECUR ENDP
+Over:
+    NOP
 
-    MVI     BX,2
-    PUSH    BX
-    CALL    RECUR
-
-END
+.END
