@@ -28,6 +28,7 @@ entity wrback is
 			  IR     : in   STD_LOGIC_VECTOR(15 downto 0);
 	        Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
 	        PC     : in   STD_LOGIC_VECTOR(15 downto 0);
+           CS     : in   STD_LOGIC_VECTOR(15 downto 0);
 			  Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
            Rdata  : out  STD_LOGIC_VECTOR(7 downto 0);
            PCnew  : out  STD_LOGIC_VECTOR(15 downto 0);
@@ -44,6 +45,10 @@ architecture Behavioral of wrback is
    alias AD  : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Others type
    alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
 
+   -- Flag alias
+   alias fZF : STD_LOGIC is ALUout(7);
+   alias fOF : STD_LOGIC is ALUout(6);
+
 	-- instructions table
    constant iNOP : STD_LOGIC_VECTOR := "00000";
 	constant iJMP : STD_LOGIC_VECTOR := "00001";
@@ -57,25 +62,65 @@ architecture Behavioral of wrback is
 	constant iOUT : STD_LOGIC_VECTOR := "10000";
 	constant iIN  : STD_LOGIC_VECTOR := "10010";
 
+   -- IR48*
+   constant iAMOV : STD_LOGIC_VECTOR := "10001";
+	constant iCMP  : STD_LOGIC_VECTOR := "10110";
+	constant iJNE  : STD_LOGIC_VECTOR := "11100";
+	constant iJE   : STD_LOGIC_VECTOR := "11010";
+	constant iJFR  : STD_LOGIC_VECTOR := "10100";
+	constant iJBR  : STD_LOGIC_VECTOR := "11101";
+	constant iPUSH : STD_LOGIC_VECTOR := "11001";
+	constant iPOP  : STD_LOGIC_VECTOR := "11110";
+	constant iSPSH : STD_LOGIC_VECTOR := "11011";
+	constant iSPOP : STD_LOGIC_VECTOR := "10011";
+	constant iCALL : STD_LOGIC_VECTOR := "11000";
+	constant iRET  : STD_LOGIC_VECTOR := "11111";
+	constant iINC  : STD_LOGIC_VECTOR := "10101";
+	constant iDEC  : STD_LOGIC_VECTOR := "10111";
+
+
 begin
 	
-	process (en, ALUout, Addr)
+	process (en, ALUout, Addr, CS)
 	begin
 		if en'event and en = '1' then
          case OP is
-            when iJMP => PCnew <= Addr; Rupdate <= '0';
-            when iJZ  => if ALUout = 0 then
-									PCnew <= Addr;
-								 else
-									PCnew <= PC + 1;
-								 end if;
-								 Rupdate <= '0';
-				when iSUB => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iADD => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iMOV => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iMVI => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iLDA => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iIN  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+            when iJMP  => PCnew <= Addr; Rupdate <= '0';
+            when iJZ   => if ALUout = 0 then
+                              PCnew <= Addr;
+				 				  else
+					 			      PCnew <= PC + 1;
+					 			  end if;
+						 		  Rupdate <= '0';
+				when iSUB  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iADD  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iMOV  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iMVI  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iLDA  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iIN   => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+            -- IR48*
+            when iDEC  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iINC  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+            when iAMOV => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+            when iCMP  => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
+            when iJE   => if fZF = '1' then
+                              PCnew <= Addr;
+                          else
+                              PCnew <= PC + 1;
+                          end if;
+                          Rupdate <= '0';
+            when iJNE  => if fZf = '0' then
+                              PCnew <= Addr;
+                          else
+                              PCnew <= PC + 1;
+                          end if;
+                          Rupdate <= '0';
+            when iJFR  => PCnew <= Addr; Rupdate <= '0';
+            when iJBR  => PCnew <= Addr; Rupdate <= '0';
+            when iPOP  => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
+            when iSPOP => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
+            when iRET  => PCnew <= ADddr;                   Rupdate <= '0';
+            when iCALL => PCnew <= CS + ("00000000" & X);   Rupdate <= '0';
             when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
          PCupdate <= '1';
