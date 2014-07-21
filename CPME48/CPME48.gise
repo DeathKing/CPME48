@@ -191,41 +191,39 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="test_cpme48_isim_beh.wdb"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-1694525792974777130" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-1694525792974777130" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-2700269812020366219" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-2700269812020366219" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2039830924179502444" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2039830924179502444" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-3893270297145852409" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-3893270297145852409" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405677520" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-3945965338346344321" xil_pn:start_ts="1405677520">
+    <transform xil_pn:end_ts="1405839691" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-3945965338346344321" xil_pn:start_ts="1405839691">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405678090" xil_pn:in_ck="-5989744408197706321" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-678683293903496110" xil_pn:start_ts="1405678079">
+    <transform xil_pn:end_ts="1405850762" xil_pn:in_ck="-5989744408197706321" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-678683293903496110" xil_pn:start_ts="1405850748">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="cpme48.lso"/>
@@ -241,25 +239,23 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1405677531" xil_pn:in_ck="4757032672821597" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="97466572701318217" xil_pn:start_ts="1405677531">
+    <transform xil_pn:end_ts="1405839707" xil_pn:in_ck="4757032672821597" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="97466572701318217" xil_pn:start_ts="1405839707">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1405678095" xil_pn:in_ck="-6281477855401660876" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="6315957001609395970" xil_pn:start_ts="1405678090">
+    <transform xil_pn:end_ts="1405850767" xil_pn:in_ck="-6281477855401660876" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="6315957001609395970" xil_pn:start_ts="1405850762">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="cpme48.bld"/>
       <outfile xil_pn:name="cpme48.ngd"/>
       <outfile xil_pn:name="cpme48_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1405678099" xil_pn:in_ck="-6279946276416396427" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="1340085993303162660" xil_pn:start_ts="1405678095">
+    <transform xil_pn:end_ts="1405850771" xil_pn:in_ck="-6279946276416396427" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="1340085993303162660" xil_pn:start_ts="1405850767">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
@@ -272,11 +268,10 @@
       <outfile xil_pn:name="cpme48_summary.xml"/>
       <outfile xil_pn:name="cpme48_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1405678126" xil_pn:in_ck="7585246968730197838" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-5563652517805085498" xil_pn:start_ts="1405678099">
+    <transform xil_pn:end_ts="1405850792" xil_pn:in_ck="7585246968730197838" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-5563652517805085498" xil_pn:start_ts="1405850771">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="cpme48.ncd"/>
       <outfile xil_pn:name="cpme48.pad"/>
@@ -288,11 +283,10 @@
       <outfile xil_pn:name="cpme48_pad.txt"/>
       <outfile xil_pn:name="cpme48_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1405678137" xil_pn:in_ck="4757032672813972" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1405678126">
+    <transform xil_pn:end_ts="1405850804" xil_pn:in_ck="4757032672813972" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1405850792">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="cpme48.bgn"/>
       <outfile xil_pn:name="cpme48.bit"/>
@@ -302,10 +296,9 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1405678126" xil_pn:in_ck="-6482114702471303695" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1405678123">
+    <transform xil_pn:end_ts="1405850792" xil_pn:in_ck="-6482114702471303695" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416186" xil_pn:start_ts="1405850789">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="cpme48.twr"/>
       <outfile xil_pn:name="cpme48.twx"/>

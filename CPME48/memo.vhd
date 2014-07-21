@@ -62,6 +62,23 @@ architecture Behavioral of memo is
 	constant iOUT : STD_LOGIC_VECTOR := "10000";
 	constant iIN  : STD_LOGIC_VECTOR := "10010";
 
+   -- IR48*
+   constant iAMOV : STD_LOGIC_VECTOR := "10001";
+	constant iCMP  : STD_LOGIC_VECTOR := "10110";
+	constant iJNE  : STD_LOGIC_VECTOR := "11100";
+	constant iJE   : STD_LOGIC_VECTOR := "11010";
+	constant iJFR  : STD_LOGIC_VECTOR := "10100";
+	constant iJBR  : STD_LOGIC_VECTOR := "11101";
+	constant iPUSH : STD_LOGIC_VECTOR := "11001";
+	constant iPOP  : STD_LOGIC_VECTOR := "11110";
+	constant iSPSH : STD_LOGIC_VECTOR := "11011";
+	constant iSPOP : STD_LOGIC_VECTOR := "10011";
+	constant iCALL : STD_LOGIC_VECTOR := "11000";
+	constant iRET  : STD_LOGIC_VECTOR := "11111";
+	constant iINC  : STD_LOGIC_VECTOR := "10101";
+	constant iDEC  : STD_LOGIC_VECTOR := "10111";
+
+
 begin
 
 	process (ALUout, IOin, Addr, Rtemp, IOin, en, rst, IR, OP)
@@ -79,19 +96,37 @@ begin
 				case OP is
 					when iJMP => MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					when iJZ  => MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					when iSUB => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					when iADD => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					when iMVI => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					when iMOV => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					when iSTA => MAR    <= Addr;   nRD <= '1'; nWR <= '0'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iSUB => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iADD => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iMVI => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iMOV => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iJE  => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iDEC => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iINC => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					-- when iCMP => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					when iPOP => MAR    <= Addr;   nRD <= '0'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+					             IOout  <= (others => 'Z'); ACSout <= Rtemp;
+					when iSPOP=> MAR    <= Addr;   nRD <= '0'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+					             IOout  <= (others => 'Z'); ACSout <= Rtemp;
+					when iPUSH=> MAR    <= Addr;   nRD <= '1'; nWR <= '0'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+									 MDR    <= ALUout; IOout <= (others => 'Z');
+					when iSPSH=> MAR    <= Addr;   nRD <= '1'; nWR <= '0'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+									 MDR    <= ALUout; IOout <= (others => 'Z');
+					when iSTA => MAR    <= Addr;   nRD <= '1'; nWR <= '0'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
                             MDR    <= ALUout; IOout <= (others => 'Z');
+					when iAMOV=> MAR    <= Addr;   nRD <= '0'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+                            IOout <= (others => 'Z'); ACSout <= Rtemp;
+					when iCALL=> MAR    <= Addr;   nRD <= '1'; nWR <= '0'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+									 MDR    <= ALUout; IOout <= (others => 'Z');
+					when iRET => MAR    <= Addr;   nRD <= '0'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+                            IOout <= (others => 'Z'); ACSout <= Rtemp;
 					when iLDA => MAR    <= Addr;   nRD <= '0'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
                             IOout <= (others => 'Z'); ACSout <= Rtemp;
 					when iOUT => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '0'; nPREQ <= '0';
                             IOout <= ALUout; IOAD <= Ad2;
 					when iIN  => ACSout <= IOin;   nRD <= '1'; nWR <= '1'; nPRD <= '0'; nPWR <= '1'; nPREQ <= '0';
                             IOout <= (others => 'Z'); IOAD <= Ad2;
-					when others => IOout <= (others => 'Z'); nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1';
+					when others => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 				end case;
 			end if;
 			

@@ -76,11 +76,14 @@ architecture Behavioral of cpme48 is
              Rupdate : in STD_LOGIC;
              Rdata   : in STD_LOGIC_VECTOR(7 downto 0);
 				 
-				 Reg0 : out STD_LOGIC_VECTOR(7 downto 0);
-				 Reg1 : out STD_LOGIC_VECTOR(7 downto 0);
+				 Reg0  : out STD_LOGIC_VECTOR(7 downto 0);
+				 Reg1  : out STD_LOGIC_VECTOR(7 downto 0);
+				 CSout : out STD_LOGIC_VECTOR(15 downto 0);
+				 FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
 				 
              Raddr   : in STD_LOGIC_VECTOR(2 downto 0);
              IR      : in STD_LOGIC_VECTOR(15 downto 0);
+             PC      : in STD_LOGIC_VECTOR(15 downto 0);
              Addr    : out STD_LOGIC_VECTOR(15 downto 0);
              ALUout  : out STD_LOGIC_VECTOR(7 downto 0));
 	end component;
@@ -111,6 +114,7 @@ architecture Behavioral of cpme48 is
 		Port ( en     : in   STD_LOGIC;
 			    ALUout : in   STD_LOGIC_VECTOR(7 downto 0);
 			    IR     : in   STD_LOGIC_VECTOR(15 downto 0);
+				 CS     : in   STD_LOGIC_VECTOR(15 downto 0);
 	          Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
 	          PC     : in   STD_LOGIC_VECTOR(15 downto 0);
 			    Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
@@ -165,6 +169,10 @@ architecture Behavioral of cpme48 is
 	  signal wire_nWR : STD_LOGIC;
 	  signal wire_nRD : STD_LOGIC;
 	  signal wire_nMREQ : STD_LOGIC;
+	  
+	  signal wire_CS : STD_LOGIC_VECTOR(15 downto 0);
+	  signal wire_flagout : STD_LOGIC_VECTOR(7 downto 0);
+	  signal wire_null : STD_LOGIC_VECTOR(7 downto 0);
  
 begin
 
@@ -197,10 +205,13 @@ begin
 		
 		Reg0     => DBUSout(7 downto 0),
 		Reg1     => DBUSout(15 downto 8),
+		CSout    => wire_CS,
+		PC       => wire_if2mc_pc2pc,
 		
 		IR       => wire_if2all_irbus,
 		Addr     => wire_alu2mm_adr2adr,
-		ALUout   => wire_alu2mm_ao2ao
+		ALUout   => wire_alu2mm_ao2ao,
+		FLAGout  => wire_flagout
    );
 
    -- import memory access unit
@@ -226,14 +237,15 @@ begin
    
    -- import written back unit
    uwrback: wrback port map(
-		en => wire_bst(0),
-		ALUout=> wire_mm2wb_acs2ao,
-		IR  => wire_if2all_irbus,
-		Addr => wire_mm2mc_adr2adr,
-		PC => wire_if2mc_pc2pc,
-		Raddr => wire_wb2alu_rad2rad,
-		Rdata => wire_wb2alu_rd2rd,
-		PCnew => wire_wb2if_pcn2pc,
+		en       => wire_bst(0),
+		ALUout   => wire_mm2wb_acs2ao,
+		IR       => wire_if2all_irbus,
+		CS       => wire_CS,
+		Addr     => wire_mm2mc_adr2adr,
+		PC       => wire_if2mc_pc2pc,
+		Raddr    => wire_wb2alu_rad2rad,
+		Rdata    => wire_wb2alu_rd2rd,
+		PCnew    => wire_wb2if_pcn2pc,
       PCupdate => wire_wb2if_pcu2pcu,
 		Rupdate  => wire_wb2alu_ru2ru
    );
@@ -262,7 +274,8 @@ begin
 	bst <= wire_bst;
 	
 	-- DBUSOut <= DBUS;
-	ABUSout <= wire_ABUS;
+	ABUSout(7 downto 0) <= wire_ABUS(7 downto 0);
+	ABUSout(15 downto 8) <= wire_flagout(7 downto 0);
 	ABUS <= wire_ABUS;
 	
 	nWR <= wire_nWR;
