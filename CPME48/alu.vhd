@@ -29,10 +29,13 @@ entity alu is
           Rdata   : in STD_LOGIC_VECTOR(7 downto 0);
           Raddr   : in STD_LOGIC_VECTOR(2 downto 0);
           IR      : in STD_LOGIC_VECTOR(15 downto 0);
+			 PC      : in STD_LOGIC_VECTOR(15 downto 0);
           Addr    : out STD_LOGIC_VECTOR(15 downto 0);
           CSout   : out STD_LOGIC_VECTOR(15 downto 0);
+			 SPout   : out STD_LOGIC_VECTOR(7 downto 0);
 			 Reg0    : out STD_LOGIC_VECTOR(7 downto 0);
 			 Reg1    : out STD_LOGIC_VECTOR(7 downto 0);
+			 FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
           ALUout  : out STD_LOGIC_VECTOR(7 downto 0));
 end alu;
 
@@ -47,11 +50,11 @@ architecture Behavioral of alu is
    
    signal CS : ext_reg := "0000000000000001";
    signal DS : ext_reg := "0000000100000000";
-   signal SS : ext_reg := "0000111111111111";
+   signal SS : ext_reg := "0000001000000000";
    signal FLAG : registr := "00000000";
    
-   alias fZF : STD_LOGIC is FLAG(7);
-   alias fOF : STD_LOGIC is FLAG(6);
+   alias fZF : STD_LOGIC is FLAG(0);
+   alias fOF : STD_LOGIC is FLAG(1);
    
    -- New Register name in IR48*
    alias AX : registr is Reg(0);
@@ -115,13 +118,14 @@ begin
          
          CS <= "0000000000000001";
          DS <= "0000000100000000";
-         SS <= "0000111111111111";
+         SS <= "0000001000000000";
          
          FLAG <= "00000000";
          
       elsif en = '1' then
-         Addr   <= (others => 'Z');
-         ALUout <= (others => 'Z');
+         -- Addr   <= (others => 'Z');
+         -- ALUout <= (others => 'Z');
+			SPout <= SP;
          case op is
             -- update to IR48
             when iADD  => ALUout <= Reg(CONV_INTEGER(Ad1)) + Reg(CONV_INTEGER(Ad2));
@@ -136,6 +140,7 @@ begin
             when iJMP  =>   Addr <= CS + ("00000000" & X);
             when iOUT  => ALUout <= Reg(CONV_INTEGER(Ad1));
             -- IR48*
+				when iCMP  => ALUout <= Reg(CONV_INTEGER(Ad1)) - Reg(CONV_INTEGER(Ad2));
             when iJE   => ALUout <= FLAG;
                             Addr <= CS + ("00000000" & X);
             when iJNE  => ALUout <= FLAG;
@@ -152,33 +157,38 @@ begin
                           end if;
             when iPOP  =>   Addr <= SS + ("00000000" & SP);
             when iSPOP =>   Addr <= SS + ("00000000" & SP);
-            when iAMOV =>   Addr <= SS + ("00000000" & (BP - X));
+            when iAMOV =>   Addr <= SS + ("00000000" & (BP - X - 1));
             when iDEC  => ALUout <= Reg(CONV_INTEGER(Ad1)) - 1;
-            when iINC  => ALUout <= Reg(CONV_INTEGER(Ad2)) - 1;
+            when iINC  => ALUout <= Reg(CONV_INTEGER(Ad1)) + 1;
             when iCALL => ALUout <= PC(7 downto 0) + 1;
-                            Addr <= SS + ("00000000" & SP);
+                            Addr <= SS + 1 +("00000000" & SP);
             when iRET  =>   Addr <= SS + ("00000000" & SP);
             when others => NULL;
          end case;
-      elsif Rupdate = '1' then
+      elsif Rupdate'event and Rupdate = '1' then
          -- Register write
          case op is
-            when iCMP  => FLAG <= Rdata;
+            when iCMP  => FLAG <= not Rdata;
             when iSPSH => SP   <= SP + 1;
             when iPUSH => SP   <= SP + 1;
             when iPOP  => SP   <= SP - 1;
             when iSPOP => SP   <= SP - 1;
             when iRET  => SP   <= SP - 1;
+				when iCALL => SP   <= SP + 1;
+				-- when iINC  => Reg(CONV_INTEGER(Ad1)) <= Reg(CONV_INTEGER(Ad1)) + 1;
+				when iMVI  => Reg(CONV_INTEGER(Ad1)) <= X;
+				when iMOV  => Reg(CONV_INTEGER(Raddr)) <= Rdata;
+				              Flagout <= Rdata;
             when others => Reg(CONV_INTEGER(Raddr)) <= Rdata;
          end case;
 		end if;
    end process;
 	
    -- For Inspect
-	Reg0 <= Reg(0);
-	Reg1 <= Reg(1);
+	Reg0 <= SP;
+	Reg1 <= BP;
    -- Share to wrback modular.
    CSout <= CS;
-
+	
 end Behavioral;
 

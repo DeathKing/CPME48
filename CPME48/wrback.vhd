@@ -46,8 +46,8 @@ architecture Behavioral of wrback is
    alias X   : STD_LOGIC_VECTOR(7 downto 0) is IR(7 downto 0); -- Operands
 
    -- Flag alias
-   alias fZF : STD_LOGIC is ALUout(7);
-   alias fOF : STD_LOGIC is ALUout(6);
+   alias fZF : STD_LOGIC is ALUout(0);
+   alias fOF : STD_LOGIC is ALUout(1);
 
 	-- instructions table
    constant iNOP : STD_LOGIC_VECTOR := "00000";
@@ -119,8 +119,10 @@ begin
             when iJBR  => PCnew <= Addr; Rupdate <= '0';
             when iPOP  => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
             when iSPOP => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
-            when iRET  => PCnew <= ADddr;                   Rupdate <= '0';
-            when iCALL => PCnew <= CS + ("00000000" & X);   Rupdate <= '0';
+            when iRET  => PCnew <= Addr;                    Rupdate <= '1';
+            when iCALL => PCnew <= CS + ("00000000" & X);   Rupdate <= '1';
+				when iPUSH => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
+				when iSPSH => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
             when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
          PCupdate <= '1';

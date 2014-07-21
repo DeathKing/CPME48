@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Fri Jul 18 18:08:21 2014">
+  <application stringID="par" timeStamp="Sun Jul 20 18:06:14 2014">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -16,11 +16,11 @@
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.3\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\\bin\nt;C:\Xilinx\Vivado_HLS\2012.3\bin;C:\Xilinx\14.3\ISE_DS\ISE\bin\nt;C:\Xilinx\14.3\ISE_DS\ISE\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\Vivado\2012.3\bin;C:\Xilinx\14.3\ISE_DS\PlanAhead\bin;C:\Xilinx\14.3\ISE_DS\EDK\bin\nt;C:\Xilinx\14.3\ISE_DS\EDK\lib\nt;C:\Xilinx\14.3\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.3\ISE_DS\common\bin\nt;C:\Xilinx\14.3\ISE_DS\common\lib\nt;C:\Ruby200\bin;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-15_0\lib3p;C:\sybase\OCS-15_0\dll;C:\sybase\OCS-15_0\bin;c:\program files\amd app\bin\x86;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;c:\program files\common files\thunder network\kankan\codecs;c:\program files\ati technologies\ati.ace\core-static;C:\Program Files\MATLAB71\bin\win32;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\backburner 2\;C:\Xilinx91i\bin\nt;C:\msys\bin;C:\msys\mingw\bin;C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT;C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin;C:\Program Files\Microsoft Visual Studio\Common\Tools;C:\Program Files\Microsoft Visual Studio\VC98\bin;C:\Modeltech_xe\win32xoem;C:\sybase\DBISQL\bin"/>
+          <item stringID="value" value="C:\Xilinx\14.3\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\\bin\nt;C:\Xilinx\Vivado_HLS\2012.3\bin;C:\Xilinx\14.3\ISE_DS\ISE\bin\nt;C:\Xilinx\14.3\ISE_DS\ISE\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\Vivado\2012.3\bin;C:\Xilinx\14.3\ISE_DS\PlanAhead\bin;C:\Xilinx\14.3\ISE_DS\EDK\bin\nt;C:\Xilinx\14.3\ISE_DS\EDK\lib\nt;C:\Xilinx\14.3\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.3\ISE_DS\common\bin\nt;C:\Xilinx\14.3\ISE_DS\common\lib\nt;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-15_0\lib3p;C:\sybase\OCS-15_0\dll;C:\sybase\OCS-15_0\bin;c:\program files\amd app\bin\x86;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;c:\program files\common files\thunder network\kankan\codecs;c:\program files\ati technologies\ati.ace\core-static;C:\Program Files\MATLAB71\bin\win32;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\backburner 2\;C:\Xilinx91i\bin\nt;C:\msys\bin;C:\msys\mingw\bin;C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT;C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin;C:\Program Files\Microsoft Visual Studio\Common\Tools;C:\Program Files\Microsoft Visual Studio\VC98\bin;C:\Modeltech_xe\win32xoem;C:\sybase\DBISQL\bin"/>
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="PATHEXT"/>
-          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.RB;.RBW"/>
+          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX"/>
@@ -51,7 +51,7 @@
         <item stringID="User_EnvOsname" value="Microsoft Windows XP Professional"/>
         <item stringID="User_EnvOsrelease" value="Service Pack 3  (build 2600)"/>
       </item>
-      <item stringID="User_EnvHost" value="PC712-03"/>
+      <item stringID="User_EnvHost" value="PC712-07"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
@@ -71,17 +71,17 @@
     </task>
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item AVAILABLE="4656" dataType="int" stringID="PAR_SLICES" value="227"></item>
+        <item AVAILABLE="4656" dataType="int" stringID="PAR_SLICES" value="345"></item>
       </section>
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="22 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="21 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="15 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="15 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="22 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="22 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="16 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="16 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -96,143 +96,72 @@
           <column label="Net Skew(ns)" stringID="NET_SKEW"/>
           <column label="Max Delay(ns)" stringID="MAX_DELAY"/>
           <row stringID="row" value="1">
+            <item label="Clock Net" stringID="CLOCK_NET" value="wire_wb2alu_ru2ru"/>
+            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
+            <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y10"/>
+            <item label="Locked" stringID="LOCKED" value="No"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="75.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.061000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="0.192000"/>
+          </row>
+          <row stringID="row" value="2">
             <item label="Clock Net" stringID="CLOCK_NET" value="rst_IBUF"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X1Y1"/>
             <item label="Locked" stringID="LOCKED" value="No"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="52.000000"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="50.000000"/>
             <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.066000"/>
             <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="0.186000"/>
           </row>
-          <row stringID="row" value="2">
+          <row stringID="row" value="3">
             <item label="Clock Net" stringID="CLOCK_NET" value="clk_BUFGP"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y0"/>
             <item label="Locked" stringID="LOCKED" value="No"/>
             <item dataType="float" label="Fanout" stringID="FANOUT" value="3.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.002000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.001000"/>
             <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="0.166000"/>
           </row>
-          <row stringID="row" value="3">
+          <row stringID="row" value="4">
             <item label="Clock Net" stringID="CLOCK_NET" value="ubeat/state&lt;0>"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y10"/>
+            <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y1"/>
             <item label="Locked" stringID="LOCKED" value="No"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="24.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.017000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="0.162000"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="22.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.024000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="0.157000"/>
           </row>
-          <row stringID="row" value="4">
+          <row stringID="row" value="5">
             <item label="Clock Net" stringID="CLOCK_NET" value="ubeat/state&lt;3>"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="35.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.290000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.122000"/>
-          </row>
-          <row stringID="row" value="5">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_0_not0001"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="12.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.578000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.435000"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="37.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.313000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.173000"/>
           </row>
           <row stringID="row" value="6">
+            <item label="Clock Net" stringID="CLOCK_NET" value="umemctrl/ABUS_not0001"/>
+            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
+            <item label="Resource" stringID="RESOURCE" value="Local"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="24.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.760000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.651000"/>
+          </row>
+          <row stringID="row" value="7">
             <item label="Clock Net" stringID="CLOCK_NET" value="ubeat/state&lt;1>"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="38.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.023000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.527000"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="41.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.535000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.137000"/>
           </row>
-          <row stringID="row" value="7">
+          <row stringID="row" value="8">
             <item label="Clock Net" stringID="CLOCK_NET" value="umemctrl/Mtrien_DBUS&lt;0>_not0001"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="Local"/>
             <item dataType="float" label="Fanout" stringID="FANOUT" value="8.000000"/>
             <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.810000"/>
             <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.588000"/>
-          </row>
-          <row stringID="row" value="8">
-            <item label="Clock Net" stringID="CLOCK_NET" value="wire_wb2alu_ru2ru"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.075000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.967000"/>
-          </row>
-          <row stringID="row" value="9">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_2_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.774000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.160000"/>
-          </row>
-          <row stringID="row" value="10">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_3_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.075000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.807000"/>
-          </row>
-          <row stringID="row" value="11">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_4_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.065000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.805000"/>
-          </row>
-          <row stringID="row" value="12">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_5_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.071000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.965000"/>
-          </row>
-          <row stringID="row" value="13">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_6_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.256000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.172000"/>
-          </row>
-          <row stringID="row" value="14">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_7_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="4.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.530000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.416000"/>
-          </row>
-          <row stringID="row" value="15">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Mtrien_ALUout_not0001"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="1.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.000000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.075000"/>
-          </row>
-          <row stringID="row" value="16">
-            <item label="Clock Net" stringID="CLOCK_NET" value="umemctrl/ABUS_not0001"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="32.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.322000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="2.293000"/>
-          </row>
-          <row stringID="row" value="17">
-            <item label="Clock Net" stringID="CLOCK_NET" value="ualu/Reg_1_cmp_eq0000"/>
-            <item label="Routed" stringID="ROUTED" value="ROUTED"/>
-            <item label="Resource" stringID="RESOURCE" value="Local"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="12.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="1.986000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="3.748000"/>
           </row>
         </table>
       </section>
@@ -269,7 +198,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="3">
@@ -585,10 +514,18 @@
           </row>
           <row stringID="row" value="30">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P30"/>
-            <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="DIFFM"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;2>"/>
+            <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L10P_3/LHCLK6"/>
-            <item stringID="Direction" value="UNUSED"/>
+            <item stringID="Direction" value="OUTPUT"/>
+            <item label="IO&#xA;Standard" sort="smart" stringID="IO_Standard" value="LVCMOS25*"/>
             <item label="IO Bank&#xA;Number" stringID="IO_Bank_Number" value="3"/>
+            <item label="Drive&#xA;(mA)" stringID="Drive" value="12"/>
+            <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
+            <item label="Termination" stringID="Termination" value="NONE**"/>
+            <item label="Constraint" stringID="Constraint" value="UNLOCATED"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
+            <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="31">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P31"/>
@@ -739,7 +676,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="43">
@@ -766,7 +703,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="46">
@@ -787,7 +724,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="48">
@@ -802,7 +739,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="49">
@@ -817,7 +754,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="50">
@@ -832,7 +769,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="51">
@@ -875,7 +812,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="56">
@@ -890,7 +827,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="57">
@@ -925,7 +862,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="61">
@@ -940,7 +877,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="62">
@@ -955,7 +892,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="63">
@@ -970,7 +907,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="64">
@@ -1157,18 +1094,10 @@
           </row>
           <row stringID="row" value="86">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P86"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="nWRout"/>
-            <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
+            <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="DIFFM"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L12P_2/M0"/>
-            <item stringID="Direction" value="OUTPUT"/>
-            <item label="IO&#xA;Standard" sort="smart" stringID="IO_Standard" value="LVCMOS25*"/>
+            <item stringID="Direction" value="UNUSED"/>
             <item label="IO Bank&#xA;Number" stringID="IO_Bank_Number" value="2"/>
-            <item label="Drive&#xA;(mA)" stringID="Drive" value="12"/>
-            <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
-            <item label="Termination" stringID="Termination" value="NONE**"/>
-            <item label="Constraint" stringID="Constraint" value="UNLOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
-            <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="87">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P87"/>
@@ -1385,7 +1314,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="109">
@@ -1400,7 +1329,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="110">
@@ -1427,7 +1356,7 @@
             <item label="Slew&#xA;Rate" stringID="Slew_Rate" value="SLOW"/>
             <item label="Termination" stringID="Termination" value="NONE**"/>
             <item label="Constraint" stringID="Constraint" value="LOCATED"/>
-            <item label="IO&#xA;Register" stringID="IO_Register" value="YES"/>
+            <item label="IO&#xA;Register" stringID="IO_Register" value="NO"/>
             <item label="Signal&#xA;Integrity" stringID="Signal_Integrity" value="NONE"/>
           </row>
           <row stringID="row" value="113">
@@ -2177,7 +2106,7 @@
           </row>
           <row stringID="row" value="180">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P180"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="nRDout"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="nWRout"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L08P_0/GCLK6"/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -2240,7 +2169,7 @@
           </row>
           <row stringID="row" value="186">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P186"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;0>"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="nRDout"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L10N_0/GCLK11"/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -2255,7 +2184,7 @@
           </row>
           <row stringID="row" value="187">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P187"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;1>"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;0>"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO"/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -2274,7 +2203,7 @@
           </row>
           <row stringID="row" value="189">
             <item label="Pin&#xA;Number" sort="smart" stringID="Pin_Number" value="P189"/>
-            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;2>"/>
+            <item label="Signal&#xA;Name" stringID="Signal_Name" value="IOAD&lt;1>"/>
             <item label="Pin&#xA;Usage" stringID="Pin_Usage" value="IOB"/>
             <item label="Pin&#xA;Name" sort="smart" stringID="Pin_Name" value="IO_L11P_0"/>
             <item stringID="Direction" value="OUTPUT"/>

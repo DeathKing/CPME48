@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Fri Jul 18 18:08:18 2014">
+  <application stringID="Map" timeStamp="Sun Jul 20 18:06:11 2014">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -16,11 +16,11 @@
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.3\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\\bin\nt;C:\Xilinx\Vivado_HLS\2012.3\bin;C:\Xilinx\14.3\ISE_DS\ISE\bin\nt;C:\Xilinx\14.3\ISE_DS\ISE\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\Vivado\2012.3\bin;C:\Xilinx\14.3\ISE_DS\PlanAhead\bin;C:\Xilinx\14.3\ISE_DS\EDK\bin\nt;C:\Xilinx\14.3\ISE_DS\EDK\lib\nt;C:\Xilinx\14.3\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.3\ISE_DS\common\bin\nt;C:\Xilinx\14.3\ISE_DS\common\lib\nt;C:\Ruby200\bin;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-15_0\lib3p;C:\sybase\OCS-15_0\dll;C:\sybase\OCS-15_0\bin;c:\program files\amd app\bin\x86;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;c:\program files\common files\thunder network\kankan\codecs;c:\program files\ati technologies\ati.ace\core-static;C:\Program Files\MATLAB71\bin\win32;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\backburner 2\;C:\Xilinx91i\bin\nt;C:\msys\bin;C:\msys\mingw\bin;C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT;C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin;C:\Program Files\Microsoft Visual Studio\Common\Tools;C:\Program Files\Microsoft Visual Studio\VC98\bin;C:\Modeltech_xe\win32xoem;C:\sybase\DBISQL\bin"/>
+          <item stringID="value" value="C:\Xilinx\14.3\ISE_DS\ISE\\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\\bin\nt;C:\Xilinx\Vivado_HLS\2012.3\bin;C:\Xilinx\14.3\ISE_DS\ISE\bin\nt;C:\Xilinx\14.3\ISE_DS\ISE\lib\nt;C:\Xilinx\14.3\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\Vivado\2012.3\bin;C:\Xilinx\14.3\ISE_DS\PlanAhead\bin;C:\Xilinx\14.3\ISE_DS\EDK\bin\nt;C:\Xilinx\14.3\ISE_DS\EDK\lib\nt;C:\Xilinx\14.3\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.3\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.3\ISE_DS\common\bin\nt;C:\Xilinx\14.3\ISE_DS\common\lib\nt;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-15_0\lib3p;C:\sybase\OCS-15_0\dll;C:\sybase\OCS-15_0\bin;c:\program files\amd app\bin\x86;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;c:\program files\common files\thunder network\kankan\codecs;c:\program files\ati technologies\ati.ace\core-static;C:\Program Files\MATLAB71\bin\win32;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\backburner 2\;C:\Xilinx91i\bin\nt;C:\msys\bin;C:\msys\mingw\bin;C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT;C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin;C:\Program Files\Microsoft Visual Studio\Common\Tools;C:\Program Files\Microsoft Visual Studio\VC98\bin;C:\Modeltech_xe\win32xoem;C:\sybase\DBISQL\bin"/>
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="PATHEXT"/>
-          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.RB;.RBW"/>
+          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX"/>
@@ -51,7 +51,7 @@
         <item stringID="User_EnvOsname" value="Microsoft Windows XP Professional"/>
         <item stringID="User_EnvOsrelease" value="Service Pack 3  (build 2600)"/>
       </item>
-      <item stringID="User_EnvHost" value="PC712-03"/>
+      <item stringID="User_EnvHost" value="PC712-07"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
@@ -80,31 +80,32 @@
       <section stringID="MAP_DESIGN_SUMMARY">
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="12"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="172692"/>
+        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="2"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="173716"/>
         <item stringID="MAP_TOTAL_REAL_TIME" value="2 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="2 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="9312" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="215">
-          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="31"/>
-          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="184"/>
+        <item AVAILABLE="9312" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="214">
+          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="103"/>
+          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="111"/>
         </item>
-        <item AVAILABLE="9312" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="329">
-          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="15"/>
+        <item AVAILABLE="9312" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="617">
+          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="7"/>
         </item>
-        <item AVAILABLE="4656" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="227">
+        <item AVAILABLE="4656" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="345">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
       <section stringID="MAP_IOB_REPORTING">
         <section stringID="MAP_IOB_DATA">
           <item AVAILABLE="158" dataType="int" stringID="MAP_AGG_BONDED_IO" value="116"/>
-          <item dataType="int" stringID="MAP_NUM_IOB_LATCH" value="88"/>
+          <item dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="8"/>
+          <item dataType="int" stringID="MAP_NUM_IOB_LATCH" value="64"/>
         </section>
       </section>
       <section stringID="MAP_HARD_IP_REPORTING">
-        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="3"/>
+        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="4"/>
       </section>
       <section stringID="MAP_MACRO_RPM_REPORTING">
         <item dataType="int" stringID="MAP_HARD_MACROS" value="0"/>
@@ -593,7 +594,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="50">
@@ -603,7 +603,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="51">
@@ -613,7 +612,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="52">
@@ -623,7 +621,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="53">
@@ -633,7 +630,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="54">
@@ -643,7 +639,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="55">
@@ -653,7 +648,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="56">
@@ -663,7 +657,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="57">
@@ -673,7 +666,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="58">
@@ -683,7 +675,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="59">
@@ -693,7 +684,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="60">
@@ -703,7 +693,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="61">
@@ -713,7 +702,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="62">
@@ -723,7 +711,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="63">
@@ -733,7 +720,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="64">
@@ -743,7 +729,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="65">
@@ -1214,7 +1199,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="18"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="22"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>
