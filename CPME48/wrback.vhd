@@ -29,6 +29,8 @@ entity wrback is
 	        Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
 	        PC     : in   STD_LOGIC_VECTOR(15 downto 0);
            CS     : in   STD_LOGIC_VECTOR(15 downto 0);
+			  SP     : in   STD_LOGIC_VECTOR(7 downto 0);
+			  Rsp    : out  STD_LOGIC_VECTOR(7 downto 0);
 			  Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
            Rdata  : out  STD_LOGIC_VECTOR(7 downto 0);
            PCnew  : out  STD_LOGIC_VECTOR(15 downto 0);
@@ -84,6 +86,8 @@ begin
 	process (en, ALUout, Addr, CS)
 	begin
 		if en'event and en = '1' then
+			Raddr <= Ad1;
+			Rdata <= ALUout;
          case OP is
             when iJMP  => PCnew <= Addr; Rupdate <= '0';
             when iJZ   => if ALUout = 0 then
@@ -92,45 +96,43 @@ begin
 					 			      PCnew <= PC + 1;
 					 			  end if;
 						 		  Rupdate <= '0';
-				when iSUB  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iADD  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iMOV  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iMVI  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iLDA  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iIN   => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
+				when iSUB  => PCnew <= PC + 1; Rupdate <= '1';
+				when iADD  => PCnew <= PC + 1; Rupdate <= '1';
+				when iMOV  => PCnew <= PC + 1; Rupdate <= '1';
+				when iMVI  => PCnew <= PC + 1; Rupdate <= '1';
+				when iLDA  => PCnew <= PC + 1; Rupdate <= '1';
+				when iIN   => PCnew <= PC + 1; Rupdate <= '1';
             -- IR48*
-            when iDEC  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-				when iINC  => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-            when iAMOV => PCnew <= PC + 1; Rdata <= ALUout; Raddr <= AD1; Rupdate <= '1';
-            when iCMP  => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
-            when iJE   => if fZF = '1' then
-                              PCnew <= Addr;
-                          else
-                              PCnew <= PC + 1;
+            when iDEC  => PCnew <= PC + 1; Rupdate <= '1';
+				when iINC  => PCnew <= PC + 1; Rupdate <= '1';
+            when iAMOV => PCnew <= PC + 1; Rupdate <= '1';
+            when iCMP  => PCnew <= PC + 1; Rupdate <= '1';
+            when iJE   => if fZF = '1' then PCnew <= Addr;
+                          else PCnew <= PC + 1;
                           end if;
                           Rupdate <= '0';
-            when iJNE  => if fZf = '0' then
-                              PCnew <= Addr;
-                          else
-                              PCnew <= PC + 1;
+            when iJNE  => if fZf = '0' then PCnew <= Addr;
+                          else PCnew <= PC + 1;
                           end if;
                           Rupdate <= '0';
             when iJFR  => PCnew <= Addr; Rupdate <= '0';
             when iJBR  => PCnew <= Addr; Rupdate <= '0';
-            when iPOP  => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
-            when iSPOP => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
-            when iRET  => PCnew <= Addr;                    Rupdate <= '1';
-            when iCALL => PCnew <= CS + ("00000000" & X);   Rupdate <= '1';
-				when iPUSH => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
-				when iSPSH => PCnew <= PC + 1; Rdata <= ALUout; Rupdate <= '1';
+            when iPOP  => PCnew <= PC + 1; Rsp <= SP - 1; Rupdate <= '1';
+            when iSPOP => PCnew <= PC + 1; Rsp <= SP - 1; Rupdate <= '1';
+            when iRET  => PCnew <= Addr;                    Rsp <= SP - 1; Rupdate <= '1';
+            when iCALL => PCnew <= CS + ("00000000" & X);   Rsp <= SP + 1; Rupdate <= '1';
+				when iPUSH => PCnew <= PC + 1;                  Rsp <= SP + 1; Rupdate <= '1';
+				when iSPSH => PCnew <= PC + 1;                  Rsp <= SP + 1; Rupdate <= '1';
             when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
          PCupdate <= '1';
 		end if;
+		
 		if en = '0' then
          Rupdate <= '0';
 			PCupdate <= '0';
 		end if;
+		
 	end process;
 
 end Behavioral;

@@ -76,10 +76,12 @@ architecture Behavioral of cpme48 is
              Rupdate : in STD_LOGIC;
              Rdata   : in STD_LOGIC_VECTOR(7 downto 0);
 				 
-				 Reg0  : out STD_LOGIC_VECTOR(7 downto 0);
-				 Reg1  : out STD_LOGIC_VECTOR(7 downto 0);
-				 CSout : out STD_LOGIC_VECTOR(15 downto 0);
-				 FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
+				 Reg0    : out STD_LOGIC_VECTOR(7 downto 0);
+				 Reg1    : out STD_LOGIC_VECTOR(7 downto 0);
+				 CSout   : out STD_LOGIC_VECTOR(15 downto 0);
+				 SPout   : out STD_LOGIC_VECTOR(7 downto 0);
+				 SPnew   : in  STD_LOGIC_VECTOR(7 downto 0);
+				 --FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
 				 
              Raddr   : in STD_LOGIC_VECTOR(2 downto 0);
              IR      : in STD_LOGIC_VECTOR(15 downto 0);
@@ -111,15 +113,17 @@ architecture Behavioral of cpme48 is
 
 	-- Written Back Declare
 	component wrback
-		Port ( en     : in   STD_LOGIC;
-			    ALUout : in   STD_LOGIC_VECTOR(7 downto 0);
-			    IR     : in   STD_LOGIC_VECTOR(15 downto 0);
-				 CS     : in   STD_LOGIC_VECTOR(15 downto 0);
-	          Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
-	          PC     : in   STD_LOGIC_VECTOR(15 downto 0);
-			    Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
-             Rdata  : out  STD_LOGIC_VECTOR(7 downto 0);
-             PCnew  : out  STD_LOGIC_VECTOR(15 downto 0);
+		Port ( en       : in   STD_LOGIC;
+			    ALUout   : in   STD_LOGIC_VECTOR(7 downto 0);
+			    IR       : in   STD_LOGIC_VECTOR(15 downto 0);
+				 CS       : in   STD_LOGIC_VECTOR(15 downto 0);
+	          Addr     : in   STD_LOGIC_VECTOR(15 downto 0);
+	          PC       : in   STD_LOGIC_VECTOR(15 downto 0);
+				 SP       : in   STD_LOGIC_VECTOR(7 downto 0);
+			    Rsp      : out  STD_LOGIC_VECTOR(7 downto 0);
+			    Raddr    : out  STD_LOGIC_VECTOr(2 downto 0);
+             Rdata    : out  STD_LOGIC_VECTOR(7 downto 0);
+             PCnew    : out  STD_LOGIC_VECTOR(15 downto 0);
              PCupdate : out  STD_LOGIC;
              Rupdate  : out  STD_LOGIC);
 	 end component;
@@ -156,6 +160,8 @@ architecture Behavioral of cpme48 is
 	  signal wire_wb2alu_ru2ru : STD_LOGIC;
 	  signal wire_wb2alu_rd2rd : STD_LOGIC_VECTOR(7 downto 0);
 	  signal wire_wb2alu_rad2rad : STD_LOGIC_VECTOR(2 downto 0);
+	  signal wire_wb2alu_rsp2rsp : STD_LOGIC_VECTOR(7 downto 0);
+	  signal wire_alu2wb_spo2spo : STD_LOGIC_VECTOR(7 downto 0);
 	  signal wire_alu2mm_adr2adr : STD_LOGIC_VECTOR(15 downto 0);
 	  signal wire_alu2mm_ao2ao : STD_LOGIC_VECTOR(7 downto 0);
 	  signal wire_mc2mm_mdr2rt : STD_LOGIC_VECTOR(7 downto 0);
@@ -206,12 +212,14 @@ begin
 		Reg0     => DBUSout(7 downto 0),
 		Reg1     => DBUSout(15 downto 8),
 		CSout    => wire_CS,
+		SPout    => wire_alu2wb_spo2spo,
+		SPnew    => wire_wb2alu_rsp2rsp,
 		PC       => wire_if2mc_pc2pc,
 		
 		IR       => wire_if2all_irbus,
 		Addr     => wire_alu2mm_adr2adr,
-		ALUout   => wire_alu2mm_ao2ao,
-		FLAGout  => wire_flagout
+		ALUout   => wire_alu2mm_ao2ao
+		--FLAGout  => wire_flagout
    );
 
    -- import memory access unit
@@ -243,6 +251,8 @@ begin
 		CS       => wire_CS,
 		Addr     => wire_mm2mc_adr2adr,
 		PC       => wire_if2mc_pc2pc,
+		SP       => wire_alu2wb_spo2spo,
+		Rsp      => wire_wb2alu_rsp2rsp,
 		Raddr    => wire_wb2alu_rad2rad,
 		Rdata    => wire_wb2alu_rd2rd,
 		PCnew    => wire_wb2if_pcn2pc,
@@ -275,7 +285,7 @@ begin
 	
 	-- DBUSOut <= DBUS;
 	ABUSout(7 downto 0) <= wire_ABUS(7 downto 0);
-	ABUSout(15 downto 8) <= wire_flagout(7 downto 0);
+	ABUSout(15 downto 8) <= wire_alu2wb_spo2spo;--wire_flagout(7 downto 0);
 	ABUS <= wire_ABUS;
 	
 	nWR <= wire_nWR;

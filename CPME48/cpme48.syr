@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Reading design: cpme48.prj
 
@@ -104,20 +104,20 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "F:/CPME48/CPME48/beat.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/beat.vhd" in Library work.
 Architecture behavioral of Entity beat is up to date.
-Compiling vhdl file "F:/CPME48/CPME48/insfetch.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/insfetch.vhd" in Library work.
 Architecture behavioral of Entity insfetch is up to date.
-Compiling vhdl file "F:/CPME48/CPME48/alu.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/alu.vhd" in Library work.
 Entity <alu> compiled.
 Entity <alu> (Architecture <behavioral>) compiled.
-Compiling vhdl file "F:/CPME48/CPME48/memo.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/memo.vhd" in Library work.
 Architecture behavioral of Entity memo is up to date.
-Compiling vhdl file "F:/CPME48/CPME48/wrback.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/wrback.vhd" in Library work.
 Architecture behavioral of Entity wrback is up to date.
-Compiling vhdl file "F:/CPME48/CPME48/memctrl.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/memctrl.vhd" in Library work.
 Architecture behavioral of Entity memctrl is up to date.
-Compiling vhdl file "F:/CPME48/CPME48/cpme48.vhd" in Library work.
+Compiling vhdl file "F:/2-CPME48/CPME48/cpme48.vhd" in Library work.
 Architecture behavioral of Entity cpme48 is up to date.
 
 =========================================================================
@@ -142,7 +142,6 @@ Analyzing hierarchy for entity <memctrl> in library <work> (architecture <behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <cpme48> in library <work> (Architecture <behavioral>).
-WARNING:Xst:753 - "F:/CPME48/CPME48/cpme48.vhd" line 199: Unconnected output port 'SPout' of component 'alu'.
 Entity <cpme48> analyzed. Unit <cpme48> generated.
 
 Analyzing Entity <beat> in library <work> (Architecture <behavioral>).
@@ -152,8 +151,8 @@ Analyzing Entity <insfetch> in library <work> (Architecture <behavioral>).
 Entity <insfetch> analyzed. Unit <insfetch> generated.
 
 Analyzing Entity <alu> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "F:/CPME48/CPME48/alu.vhd" line 107: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <SS>, <CS>, <FLAG>, <PC>, <AD1>, <AD>
+WARNING:Xst:819 - "F:/2-CPME48/CPME48/alu.vhd" line 108: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <SS>, <CS>, <FLAG>, <PC>, <AD1>, <AD>, <SPnew>
 INFO:Xst:2679 - Register <CS> in unit <alu> has a constant value of 0000000000000001 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <DS> in unit <alu> has a constant value of 0000000100000000 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <SS> in unit <alu> has a constant value of 0000001000000000 during circuit operation. The register is replaced by logic.
@@ -192,13 +191,13 @@ INFO:Xst:2561 - Always blocking tristate driving signal <DBUS> in unit <memctrl>
 INFO:Xst:2561 - Always blocking tristate driving signal <DBUS> in unit <memctrl> is removed.
 
 Synthesizing Unit <beat>.
-    Related source file is "F:/CPME48/CPME48/beat.vhd".
+    Related source file is "F:/2-CPME48/CPME48/beat.vhd".
     Found 4-bit register for signal <state>.
 Unit <beat> synthesized.
 
 
 Synthesizing Unit <insfetch>.
-    Related source file is "F:/CPME48/CPME48/insfetch.vhd".
+    Related source file is "F:/2-CPME48/CPME48/insfetch.vhd".
 WARNING:Xst:1780 - Signal <rIR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:737 - Found 16-bit latch for signal <rPC>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 16-bit latch for signal <IRout>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
@@ -206,30 +205,33 @@ Unit <insfetch> synthesized.
 
 
 Synthesizing Unit <alu>.
-    Related source file is "F:/CPME48/CPME48/alu.vhd".
+    Related source file is "F:/2-CPME48/CPME48/alu.vhd".
 WARNING:Xst:646 - Signal <DS> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_7>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <FLAG>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 16-bit latch for signal <Addr>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <SPout>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <ALUout>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-    Found 8-bit register for signal <FLAGout>.
-    Found 8-bit 8-to-1 multiplexer for signal <$varindex0000> created at line 131.
-    Found 8-bit 8-to-1 multiplexer for signal <$varindex0001> created at line 131.
-    Found 8-bit subtractor for signal <Addr$addsub0000> created at line 160.
-    Found 16-bit addsub for signal <Addr$addsub0001>.
-    Found 8-bit subtractor for signal <Addr$sub0000> created at line 160.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_0>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_3>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_4>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_5>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <Reg_6>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 8-bit 8-to-1 multiplexer for signal <$varindex0000> created at line 132.
+    Found 8-bit 8-to-1 multiplexer for signal <$varindex0001> created at line 132.
+    Found 16-bit addsub for signal <Addr$addsub0000>.
+    Found 8-bit subtractor for signal <Addr$sub0000> created at line 161.
     Found 8-bit addsub for signal <ALUout$addsub0000>.
-    Found 8-bit register for signal <FLAG>.
-    Found 64-bit register for signal <Reg>.
-    Found 8-bit addsub for signal <Reg_6$addsub0000>.
     Summary:
-	inferred  80 D-type flip-flop(s).
-	inferred   5 Adder/Subtractor(s).
+	inferred   3 Adder/Subtractor(s).
 	inferred  16 Multiplexer(s).
 Unit <alu> synthesized.
 
 
 Synthesizing Unit <memo>.
-    Related source file is "F:/CPME48/CPME48/memo.vhd".
+    Related source file is "F:/2-CPME48/CPME48/memo.vhd".
 WARNING:Xst:647 - Input <IR<10:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:737 - Found 16-bit latch for signal <MAR>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <MDR>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
@@ -242,19 +244,21 @@ Unit <memo> synthesized.
 
 
 Synthesizing Unit <wrback>.
-    Related source file is "F:/CPME48/CPME48/wrback.vhd".
+    Related source file is "F:/2-CPME48/CPME48/wrback.vhd".
+    Found 8-bit register for signal <Rsp>.
     Found 8-bit register for signal <Rdata>.
     Found 3-bit register for signal <Raddr>.
     Found 16-bit register for signal <PCnew>.
-    Found 16-bit adder for signal <PCnew$share0000> created at line 87.
+    Found 16-bit adder for signal <PCnew$share0000> created at line 91.
+    Found 8-bit addsub for signal <Rsp$addsub0000>.
     Summary:
-	inferred  27 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
+	inferred  35 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
 Unit <wrback> synthesized.
 
 
 Synthesizing Unit <memctrl>.
-    Related source file is "F:/CPME48/CPME48/memctrl.vhd".
+    Related source file is "F:/2-CPME48/CPME48/memctrl.vhd".
     Register <nMREQ> equivalent to <nLHE> has been removed
 WARNING:Xst:737 - Found 1-bit latch for signal <nBHE>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <Rtemp>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
@@ -310,9 +314,10 @@ Unit <memctrl> synthesized.
 
 
 Synthesizing Unit <cpme48>.
-    Related source file is "F:/CPME48/CPME48/cpme48.vhd".
+    Related source file is "F:/2-CPME48/CPME48/cpme48.vhd".
 WARNING:Xst:1780 - Signal <wire_null> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <wire_if2mc_nrd2nfrd> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <wire_flagout> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 Unit <cpme48> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -321,21 +326,21 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 6
+# Adders/Subtractors                                   : 5
  16-bit adder                                          : 1
  16-bit addsub                                         : 1
  8-bit addsub                                          : 2
- 8-bit subtractor                                      : 2
-# Registers                                            : 14
+ 8-bit subtractor                                      : 1
+# Registers                                            : 5
  16-bit register                                       : 1
  3-bit register                                        : 1
  4-bit register                                        : 1
- 8-bit register                                        : 11
-# Latches                                              : 32
+ 8-bit register                                        : 2
+# Latches                                              : 41
  1-bit latch                                           : 20
  16-bit latch                                          : 6
  3-bit latch                                           : 1
- 8-bit latch                                           : 5
+ 8-bit latch                                           : 14
 # Multiplexers                                         : 2
  8-bit 8-to-1 multiplexer                              : 2
 # Tristates                                            : 9
@@ -357,14 +362,14 @@ Macro Statistics
  16-bit adder                                          : 1
  16-bit addsub                                         : 1
  8-bit addsub                                          : 2
- 8-bit subtractor borrow in                            : 1
-# Registers                                            : 111
- Flip-Flops                                            : 111
-# Latches                                              : 32
+ 8-bit subtractor                                      : 1
+# Registers                                            : 39
+ Flip-Flops                                            : 39
+# Latches                                              : 41
  1-bit latch                                           : 20
  16-bit latch                                          : 6
  3-bit latch                                           : 1
- 8-bit latch                                           : 5
+ 8-bit latch                                           : 14
 # Multiplexers                                         : 2
  8-bit 8-to-1 multiplexer                              : 2
 
@@ -379,18 +384,10 @@ Optimizing unit <cpme48> ...
 Optimizing unit <wrback> ...
 
 Optimizing unit <alu> ...
-WARNING:Xst:2677 - Node <ualu/SPout_7> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_6> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_5> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_4> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_3> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_2> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_1> of sequential type is unconnected in block <cpme48>.
-WARNING:Xst:2677 - Node <ualu/SPout_0> of sequential type is unconnected in block <cpme48>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block cpme48, actual ratio is 7.
+Found area constraint ratio of 100 (+ 5) on block cpme48, actual ratio is 8.
 Latch umemctrl/ABUS_7 has been replicated 1 time(s) to handle iob=true attribute.
 Latch umemctrl/ABUS_6 has been replicated 1 time(s) to handle iob=true attribute.
 Latch umemctrl/ABUS_5 has been replicated 1 time(s) to handle iob=true attribute.
@@ -415,6 +412,14 @@ Latch uinsfetch/IRout_3 has been replicated 1 time(s) to handle iob=true attribu
 Latch uinsfetch/IRout_2 has been replicated 1 time(s) to handle iob=true attribute.
 Latch uinsfetch/IRout_1 has been replicated 1 time(s) to handle iob=true attribute.
 Latch uinsfetch/IRout_0 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_7 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_6 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_5 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_4 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_3 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_2 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_1 has been replicated 1 time(s) to handle iob=true attribute.
+Latch ualu/SPout_0 has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -422,8 +427,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 111
- Flip-Flops                                            : 111
+# Registers                                            : 39
+ Flip-Flops                                            : 39
 
 =========================================================================
 
@@ -452,30 +457,26 @@ Design Statistics
 # IOs                              : 116
 
 Cell Usage :
-# BELS                             : 808
+# BELS                             : 867
 #      GND                         : 1
-#      INV                         : 9
-#      LUT2                        : 47
-#      LUT3                        : 185
-#      LUT4                        : 381
-#      LUT4_D                      : 1
-#      LUT4_L                      : 1
-#      MULT_AND                    : 13
+#      LUT2                        : 34
+#      LUT3                        : 250
+#      LUT4                        : 399
+#      MULT_AND                    : 12
 #      MUXCY                       : 44
-#      MUXF5                       : 59
-#      MUXF6                       : 18
+#      MUXF5                       : 61
+#      MUXF6                       : 17
 #      VCC                         : 1
 #      XORCY                       : 48
-# FlipFlops/Latches                : 286
-#      FD                          : 24
+# FlipFlops/Latches                : 302
+#      FD                          : 35
 #      FDC                         : 3
-#      FDCE                        : 72
-#      FDE                         : 11
 #      FDP                         : 1
 #      LD                          : 40
 #      LD_1                        : 4
 #      LDC                         : 56
-#      LDE_1                       : 75
+#      LDCE_1                      : 72
+#      LDE_1                       : 91
 # Clock Buffers                    : 4
 #      BUFG                        : 3
 #      BUFGP                       : 1
@@ -491,9 +492,9 @@ Device utilization summary:
 
 Selected Device : 3s500epq208-4 
 
- Number of Slices:                      334  out of   4656     7%  
- Number of Slice Flip Flops:            214  out of   9312     2%  
- Number of 4 input LUTs:                624  out of   9312     6%  
+ Number of Slices:                      383  out of   4656     8%  
+ Number of Slice Flip Flops:            230  out of   9312     2%  
+ Number of 4 input LUTs:                683  out of   9312     7%  
  Number of IOs:                         116
  Number of bonded IOBs:                 116  out of    158    73%  
     IOB Flip Flops:                      72
@@ -522,14 +523,14 @@ Clock Signal                                                      | Clock buffer
 ------------------------------------------------------------------+---------------------------------+-------+
 clk                                                               | BUFGP                           | 4     |
 ubeat/state_3                                                     | NONE(uinsfetch/IRout_0)         | 32    |
-ubeat/state_01                                                    | BUFG                            | 43    |
-rst                                                               | IBUF+BUFG                       | 79    |
+ubeat/state_01                                                    | BUFG                            | 51    |
+rst                                                               | IBUF+BUFG                       | 95    |
 ubeat/state_1                                                     | NONE(umemo/ACSout_7)            | 8     |
 umemctrl/ABUS_not0001(umemctrl/ABUS_not00011:O)                   | NONE(*)(umemctrl/ABUS_15)       | 24    |
 umemctrl/Mtrien_DBUS<0>_not0001(umemctrl/Mtrien_DBUS<0>_not0001:O)| NONE(*)(umemctrl/Mtrien_DBUS<0>)| 16    |
-wire_wb2alu_ru2ru1(uwrback/Rupdate1:O)                            | BUFG(*)(ualu/Reg_5_7)           | 80    |
+ubeat/state_21                                                    | BUFG                            | 72    |
 ------------------------------------------------------------------+---------------------------------+-------+
-(*) These 3 clock signal(s) are generated by combinatorial logic,
+(*) These 2 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -546,9 +547,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 11.156ns (Maximum Frequency: 89.638MHz)
-   Minimum input arrival time before clock: 7.589ns
-   Maximum output required time after clock: 8.800ns
+   Minimum period: 11.218ns (Maximum Frequency: 89.142MHz)
+   Minimum input arrival time before clock: 7.449ns
+   Maximum output required time after clock: 8.795ns
    Maximum combinational path delay: 7.347ns
 
 Timing Detail:
@@ -578,10 +579,10 @@ Delay:               2.168ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ubeat/state_01'
-  Clock period: 11.156ns (frequency: 89.638MHz)
+  Clock period: 11.218ns (frequency: 89.142MHz)
   Total number of paths / destination ports: 160 / 40
 -------------------------------------------------------------------------
-Delay:               5.578ns (Levels of Logic = 18)
+Delay:               5.609ns (Levels of Logic = 18)
   Source:            uinsfetch/rPC_0 (LATCH)
   Destination:       uwrback/PCnew_15 (FF)
   Source Clock:      ubeat/state_01 falling
@@ -608,12 +609,12 @@ Delay:               5.578ns (Levels of Logic = 18)
      MUXCY:CI->O           1   0.059   0.000  uwrback/Madd_PCnew_share0000_cy<12> (uwrback/Madd_PCnew_share0000_cy<12>)
      MUXCY:CI->O           1   0.059   0.000  uwrback/Madd_PCnew_share0000_cy<13> (uwrback/Madd_PCnew_share0000_cy<13>)
      MUXCY:CI->O           0   0.059   0.000  uwrback/Madd_PCnew_share0000_cy<14> (uwrback/Madd_PCnew_share0000_cy<14>)
-     XORCY:CI->O           1   0.804   0.424  uwrback/Madd_PCnew_share0000_xor<15> (uwrback/PCnew_share0000<15>)
-     LUT4:I3->O            1   0.704   0.000  uwrback/PCnew_mux0001<15>1 (uwrback/PCnew_mux0001<15>)
+     XORCY:CI->O           1   0.804   0.455  uwrback/Madd_PCnew_share0000_xor<15> (uwrback/PCnew_share0000<15>)
+     LUT3:I2->O            1   0.704   0.000  uwrback/PCnew_mux0001<15>1 (uwrback/PCnew_mux0001<15>)
      FD:D                      0.308          uwrback/PCnew_15
     ----------------------------------------
-    Total                      5.578ns (4.486ns logic, 1.092ns route)
-                                       (80.4% logic, 19.6% route)
+    Total                      5.609ns (4.486ns logic, 1.123ns route)
+                                       (80.0% logic, 20.0% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'rst'
@@ -621,28 +622,28 @@ Timing constraint: Default period analysis for Clock 'rst'
   Total number of paths / destination ports: 87 / 63
 -------------------------------------------------------------------------
 Delay:               2.354ns (Levels of Logic = 1)
-  Source:            ualu/ALUout_7 (LATCH)
-  Destination:       ualu/ALUout_7 (LATCH)
+  Source:            umemctrl/nLHE (LATCH)
+  Destination:       umemctrl/nLHE (LATCH)
   Source Clock:      rst rising
   Destination Clock: rst rising
 
-  Data Path: ualu/ALUout_7 to ualu/ALUout_7
+  Data Path: umemctrl/nLHE to umemctrl/nLHE
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LDE_1:G->Q            4   0.676   0.666  ualu/ALUout_7 (ualu/ALUout_7)
-     LUT4:I1->O            1   0.704   0.000  ualu/ALUout_mux0003<7>64 (ualu/ALUout_mux0003<7>)
-     LDE_1:D                   0.308          ualu/ALUout_7
+     LD_1:G->Q             4   0.676   0.666  umemctrl/nLHE (umemctrl/nLHE)
+     LUT3:I1->O            1   0.704   0.000  umemctrl/nLHE_mux00011 (umemctrl/nLHE_mux0001)
+     LD_1:D                    0.308          umemctrl/nLHE
     ----------------------------------------
     Total                      2.354ns (1.688ns logic, 0.666ns route)
                                        (71.7% logic, 28.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ubeat/state_1'
-  Clock period: 2.356ns (frequency: 424.448MHz)
+  Clock period: 2.361ns (frequency: 423.549MHz)
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Delay:               2.356ns (Levels of Logic = 1)
+Delay:               2.361ns (Levels of Logic = 1)
   Source:            umemo/ACSout_0 (LATCH)
   Destination:       umemo/ACSout_0 (LATCH)
   Source Clock:      ubeat/state_1 falling
@@ -652,44 +653,41 @@ Delay:               2.356ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LDC:G->Q              5   0.676   0.668  umemo/ACSout_0 (umemo/ACSout_0)
-     LUT4:I2->O            1   0.704   0.000  umemo/ACSout_mux0002<0>21 (umemo/ACSout_mux0002<0>)
+     LDC:G->Q              6   0.676   0.673  umemo/ACSout_0 (umemo/ACSout_0)
+     LUT4:I3->O            1   0.704   0.000  umemo/ACSout_mux0002<0>21 (umemo/ACSout_mux0002<0>)
      LDC:D                     0.308          umemo/ACSout_0
     ----------------------------------------
-    Total                      2.356ns (1.688ns logic, 0.668ns route)
-                                       (71.6% logic, 28.4% route)
+    Total                      2.361ns (1.688ns logic, 0.673ns route)
+                                       (71.5% logic, 28.5% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'wire_wb2alu_ru2ru1'
-  Clock period: 6.511ns (frequency: 153.586MHz)
-  Total number of paths / destination ports: 101 / 64
+Timing constraint: Default period analysis for Clock 'ubeat/state_21'
+  Clock period: 2.771ns (frequency: 360.881MHz)
+  Total number of paths / destination ports: 80 / 72
 -------------------------------------------------------------------------
-Delay:               6.511ns (Levels of Logic = 5)
-  Source:            ualu/Reg_6_1 (FF)
-  Destination:       ualu/Reg_6_7 (FF)
-  Source Clock:      wire_wb2alu_ru2ru1 rising
-  Destination Clock: wire_wb2alu_ru2ru1 rising
+Delay:               2.771ns (Levels of Logic = 2)
+  Source:            ualu/FLAG_7 (LATCH)
+  Destination:       ualu/FLAG_7 (LATCH)
+  Source Clock:      ubeat/state_21 rising
+  Destination Clock: ubeat/state_21 rising
 
-  Data Path: ualu/Reg_6_1 to ualu/Reg_6_7
+  Data Path: ualu/FLAG_7 to ualu/FLAG_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             8   0.591   0.792  ualu/Reg_6_1 (ualu/Reg_6_1)
-     LUT4:I2->O            3   0.704   0.566  ualu/Reg_6_mux0000<4>2 (ualu/N14)
-     LUT4_D:I2->LO         1   0.704   0.179  ualu/Maddsub_Reg_6_addsub0000_cy<4>11 (N363)
-     LUT3:I1->O            2   0.704   0.451  ualu/Reg_6_mux0000<7>11 (ualu/N17)
-     LUT4_L:I3->LO         1   0.704   0.104  ualu/Reg_6_mux0000<7>28 (ualu/Reg_6_mux0000<7>28)
-     LUT4:I3->O            1   0.704   0.000  ualu/Reg_6_mux0000<7>38 (ualu/Reg_6_mux0000<7>)
-     FDCE:D                    0.308          ualu/Reg_6_7
+     LDCE_1:G->Q           4   0.676   0.762  ualu/FLAG_7 (ualu/FLAG_7)
+     LUT4:I0->O            1   0.704   0.000  ualu/FLAG_mux0003<7>1 (ualu/FLAG_mux0003<7>1)
+     MUXF5:I1->O           1   0.321   0.000  ualu/FLAG_mux0003<7>_f5 (ualu/FLAG_mux0003<7>)
+     LDCE_1:D                  0.308          ualu/FLAG_7
     ----------------------------------------
-    Total                      6.511ns (4.419ns logic, 2.092ns route)
-                                       (67.9% logic, 32.1% route)
+    Total                      2.771ns (2.009ns logic, 0.762ns route)
+                                       (72.5% logic, 27.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ubeat/state_1'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Offset:              3.813ns (Levels of Logic = 3)
+Offset:              3.888ns (Levels of Logic = 3)
   Source:            IOin<7> (PAD)
   Destination:       umemo/ACSout_7 (LATCH)
   Destination Clock: ubeat/state_1 falling
@@ -699,18 +697,18 @@ Offset:              3.813ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             1   1.218   0.455  IOin_7_IBUF (IOin_7_IBUF)
-     LUT3:I2->O            1   0.704   0.424  umemo/ACSout_mux0002<7>10 (umemo/ACSout_mux0002<7>10)
-     LUT4:I3->O            1   0.704   0.000  umemo/ACSout_mux0002<7>21 (umemo/ACSout_mux0002<7>)
+     LUT3:I2->O            1   0.704   0.499  umemo/ACSout_mux0002<7>10 (umemo/ACSout_mux0002<7>10)
+     LUT4:I1->O            1   0.704   0.000  umemo/ACSout_mux0002<7>21 (umemo/ACSout_mux0002<7>)
      LDC:D                     0.308          umemo/ACSout_7
     ----------------------------------------
-    Total                      3.813ns (2.934ns logic, 0.879ns route)
-                                       (76.9% logic, 23.1% route)
+    Total                      3.888ns (2.934ns logic, 0.954ns route)
+                                       (75.5% logic, 24.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'rst'
   Total number of paths / destination ports: 42 / 26
 -------------------------------------------------------------------------
-Offset:              6.557ns (Levels of Logic = 4)
+Offset:              6.417ns (Levels of Logic = 4)
   Source:            rst (PAD)
   Destination:       umemctrl/Rtemp_7 (LATCH)
   Destination Clock: rst rising
@@ -719,14 +717,14 @@ Offset:              6.557ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           146   1.218   1.473  rst_IBUF (rst_IBUF1)
-     LUT4:I0->O            2   0.704   0.451  umemo/nRD53 (wire_mm2mc_nrd2nird)
+     IBUF:I->O           145   1.218   1.333  rst_IBUF (rst_IBUF1)
+     LUT4:I2->O            2   0.704   0.451  umemo/nRD53 (wire_mm2mc_nrd2nird)
      LUT4:I3->O            9   0.704   0.995  umemctrl/Rtemp_mux0002<0>11 (N3)
      LUT3:I0->O            1   0.704   0.000  umemctrl/Rtemp_mux0002<7>1 (umemctrl/Rtemp_mux0002<7>)
      LDE_1:D                   0.308          umemctrl/Rtemp_7
     ----------------------------------------
-    Total                      6.557ns (3.638ns logic, 2.919ns route)
-                                       (55.5% logic, 44.5% route)
+    Total                      6.417ns (3.638ns logic, 2.779ns route)
+                                       (56.7% logic, 43.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'umemctrl/ABUS_not0001'
@@ -741,7 +739,7 @@ Offset:              5.616ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           146   1.218   1.473  rst_IBUF (rst_IBUF1)
+     IBUF:I->O           145   1.218   1.473  rst_IBUF (rst_IBUF1)
      LUT2:I0->O           16   0.704   1.209  umemctrl/ABUS_mux0001<0>11 (N10)
      LUT4:I0->O            1   0.704   0.000  umemctrl/ABUS_mux0001<9>1 (umemctrl/ABUS_mux0001<9>)
      LD:D                      0.308          umemctrl/ABUS_9
@@ -753,7 +751,7 @@ Offset:              5.616ns (Levels of Logic = 3)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'umemctrl/Mtrien_DBUS<0>_not0001'
   Total number of paths / destination ports: 32 / 16
 -------------------------------------------------------------------------
-Offset:              7.589ns (Levels of Logic = 5)
+Offset:              7.449ns (Levels of Logic = 5)
   Source:            rst (PAD)
   Destination:       umemctrl/Mtrien_DBUS<0> (LATCH)
   Destination Clock: umemctrl/Mtrien_DBUS<0>_not0001 falling
@@ -762,36 +760,15 @@ Offset:              7.589ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           146   1.218   1.473  rst_IBUF (rst_IBUF1)
-     LUT4:I0->O            2   0.704   0.451  umemo/nRD53 (wire_mm2mc_nrd2nird)
+     IBUF:I->O           145   1.218   1.333  rst_IBUF (rst_IBUF1)
+     LUT4:I2->O            2   0.704   0.451  umemo/nRD53 (wire_mm2mc_nrd2nird)
      LUT4:I3->O            9   0.704   0.824  umemctrl/Rtemp_mux0002<0>11 (N3)
-     LUT4:I3->O            1   0.704   0.499  umemctrl/Mtrien_DBUS<0>_mux0000_SW1 (N222)
+     LUT4:I3->O            1   0.704   0.499  umemctrl/Mtrien_DBUS<0>_mux0000_SW1 (N138)
      LUT4:I1->O            8   0.704   0.000  umemctrl/Mtrien_DBUS<0>_mux0000 (umemctrl/Mtrien_DBUS<0>_mux0000)
      LD:D                      0.308          umemctrl/Mtrien_DBUS<7>
     ----------------------------------------
-    Total                      7.589ns (4.342ns logic, 3.247ns route)
-                                       (57.2% logic, 42.8% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'wire_wb2alu_ru2ru1'
-  Total number of paths / destination ports: 8 / 8
--------------------------------------------------------------------------
-Offset:              5.695ns (Levels of Logic = 3)
-  Source:            rst (PAD)
-  Destination:       ualu/FLAGout_7 (FF)
-  Destination Clock: wire_wb2alu_ru2ru1 rising
-
-  Data Path: rst to ualu/FLAGout_7
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O           146   1.218   1.333  rst_IBUF (rst_IBUF1)
-     LUT4:I2->O            1   0.704   0.424  ualu/FLAGout_and0000_SW0 (N105)
-     LUT4:I3->O            8   0.704   0.757  ualu/FLAGout_and0000 (ualu/FLAGout_and0000)
-     FDE:CE                    0.555          ualu/FLAGout_0
-    ----------------------------------------
-    Total                      5.695ns (3.181ns logic, 2.514ns route)
-                                       (55.9% logic, 44.1% route)
+    Total                      7.449ns (4.342ns logic, 3.107ns route)
+                                       (58.3% logic, 41.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'umemctrl/Mtrien_DBUS<0>_not0001'
@@ -814,7 +791,7 @@ Offset:              4.368ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'rst'
-  Total number of paths / destination ports: 19 / 19
+  Total number of paths / destination ports: 27 / 27
 -------------------------------------------------------------------------
 Offset:              4.535ns (Levels of Logic = 1)
   Source:            umemctrl/nLHE (LATCH)
@@ -855,7 +832,7 @@ Offset:              6.735ns (Levels of Logic = 2)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ubeat/state_3'
   Total number of paths / destination ports: 70 / 27
 -------------------------------------------------------------------------
-Offset:              8.800ns (Levels of Logic = 3)
+Offset:              8.795ns (Levels of Logic = 3)
   Source:            uinsfetch/IRout_13 (LATCH)
   Destination:       nPWR (PAD)
   Source Clock:      ubeat/state_3 falling
@@ -864,12 +841,12 @@ Offset:              8.800ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LDC:G->Q             69   0.676   1.449  uinsfetch/IRout_13 (uinsfetch/IRout_13)
+     LDC:G->Q             52   0.676   1.444  uinsfetch/IRout_13 (uinsfetch/IRout_13)
      LUT4:I0->O           14   0.704   1.175  umemo/IOAD_mux0002<0>11 (N4)
      LUT4:I0->O            9   0.704   0.820  umemo/nPWR1 (nPWR_OBUF)
      OBUF:I->O                 3.272          nPWR_OBUF (nPWR)
     ----------------------------------------
-    Total                      8.800ns (5.356ns logic, 3.444ns route)
+    Total                      8.795ns (5.356ns logic, 3.439ns route)
                                        (60.9% logic, 39.1% route)
 
 =========================================================================
@@ -892,23 +869,23 @@ Offset:              4.368ns (Levels of Logic = 1)
                                        (90.4% logic, 9.6% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'wire_wb2alu_ru2ru1'
-  Total number of paths / destination ports: 24 / 24
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ubeat/state_21'
+  Total number of paths / destination ports: 16 / 16
 -------------------------------------------------------------------------
-Offset:              4.620ns (Levels of Logic = 1)
-  Source:            ualu/Reg_6_3 (FF)
-  Destination:       DBUSout<3> (PAD)
-  Source Clock:      wire_wb2alu_ru2ru1 rising
+Offset:              4.535ns (Levels of Logic = 1)
+  Source:            ualu/FLAG_7 (LATCH)
+  Destination:       DBUSout<15> (PAD)
+  Source Clock:      ubeat/state_21 rising
 
-  Data Path: ualu/Reg_6_3 to DBUSout<3>
+  Data Path: ualu/FLAG_7 to DBUSout<15>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             8   0.591   0.757  ualu/Reg_6_3 (ualu/Reg_6_3)
-     OBUF:I->O                 3.272          DBUSout_3_OBUF (DBUSout<3>)
+     LDCE_1:G->Q           4   0.676   0.587  ualu/FLAG_7 (ualu/FLAG_7)
+     OBUF:I->O                 3.272          DBUSout_15_OBUF (DBUSout<15>)
     ----------------------------------------
-    Total                      4.620ns (3.863ns logic, 0.757ns route)
-                                       (83.6% logic, 16.4% route)
+    Total                      4.535ns (3.948ns logic, 0.587ns route)
+                                       (87.1% logic, 12.9% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -922,7 +899,7 @@ Delay:               7.347ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           146   1.218   1.333  rst_IBUF (rst_IBUF1)
+     IBUF:I->O           145   1.218   1.333  rst_IBUF (rst_IBUF1)
      LUT4:I2->O            9   0.704   0.820  umemo/nPWR1 (nPWR_OBUF)
      OBUF:I->O                 3.272          nPWR_OBUF (nPWR)
     ----------------------------------------
@@ -932,14 +909,14 @@ Delay:               7.347ns (Levels of Logic = 3)
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 11.53 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.27 secs
  
 --> 
 
-Total memory usage is 167692 kilobytes
+Total memory usage is 170764 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   47 (   0 filtered)
+Number of warnings :   48 (   0 filtered)
 Number of infos    :   38 (   0 filtered)
 

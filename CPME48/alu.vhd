@@ -23,19 +23,20 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity alu is
-   Port ( en      : in STD_LOGIC;
-          rst     : in STD_LOGIC;
-          Rupdate : in STD_LOGIC;
-          Rdata   : in STD_LOGIC_VECTOR(7 downto 0);
-          Raddr   : in STD_LOGIC_VECTOR(2 downto 0);
-          IR      : in STD_LOGIC_VECTOR(15 downto 0);
-			 PC      : in STD_LOGIC_VECTOR(15 downto 0);
+   Port ( en      : in  STD_LOGIC;
+          rst     : in  STD_LOGIC;
+          Rupdate : in  STD_LOGIC;
+          Rdata   : in  STD_LOGIC_VECTOR(7 downto 0);
+          Raddr   : in  STD_LOGIC_VECTOR(2 downto 0);
+          IR      : in  STD_LOGIC_VECTOR(15 downto 0);
+			 PC      : in  STD_LOGIC_VECTOR(15 downto 0);
+			 SPnew   : in  STD_LOGIC_VECTOR(7  downto 0);
           Addr    : out STD_LOGIC_VECTOR(15 downto 0);
           CSout   : out STD_LOGIC_VECTOR(15 downto 0);
 			 SPout   : out STD_LOGIC_VECTOR(7 downto 0);
 			 Reg0    : out STD_LOGIC_VECTOR(7 downto 0);
 			 Reg1    : out STD_LOGIC_VECTOR(7 downto 0);
-			 FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
+			 --FLAGout : out STD_LOGIC_VECTOR(7 downto 0);
           ALUout  : out STD_LOGIC_VECTOR(7 downto 0));
 end alu;
 
@@ -148,45 +149,51 @@ begin
             when iJFR  =>   Addr <= PC + ("00000000" & X);
             when iJBR  =>   Addr <= PC - ("00000000" & X);
             when iPUSH => ALUout <= Reg(CONV_INTEGER(Ad1));
-                            Addr <= SS + 1 + ("00000000" & SP);
-            when iSPSH =>   Addr <= SS + 1 + ("00000000" & SP);
+                            Addr <= SS + ("00000000" & SP);
+            when iSPSH =>   Addr <= SS + ("00000000" & SP);
                           if Ad1 = "000" then
                               ALUout <= PC(7 downto 0);
                           elsif Ad = "111" then
                               ALUout <= FLAG;
                           end if;
-            when iPOP  =>   Addr <= SS + ("00000000" & SP);
-            when iSPOP =>   Addr <= SS + ("00000000" & SP);
-            when iAMOV =>   Addr <= SS + ("00000000" & (BP - X - 1));
+            when iPOP  =>   Addr <= SS - 1 + ("00000000" & SP);
+            when iSPOP =>   Addr <= SS - 1 + ("00000000" & SP);
+            when iAMOV =>   Addr <= SS - 2 + ("00000000" & (BP - X));
             when iDEC  => ALUout <= Reg(CONV_INTEGER(Ad1)) - 1;
             when iINC  => ALUout <= Reg(CONV_INTEGER(Ad1)) + 1;
             when iCALL => ALUout <= PC(7 downto 0) + 1;
-                            Addr <= SS + 1 +("00000000" & SP);
+                            Addr <= SS + ("00000000" & SP);
             when iRET  =>   Addr <= SS + ("00000000" & SP);
             when others => NULL;
          end case;
-      elsif Rupdate'event and Rupdate = '1' then
+      elsif Rupdate = '1' then
          -- Register write
          case op is
+				when iJZ   => NULL;
+			   when iJE   => NULL;
+				when iJNE  => NULL;
+				when iJMP  => NULL;
             when iCMP  => FLAG <= not Rdata;
-            when iSPSH => SP   <= SP + 1;
-            when iPUSH => SP   <= SP + 1;
-            when iPOP  => SP   <= SP - 1;
-            when iSPOP => SP   <= SP - 1;
-            when iRET  => SP   <= SP - 1;
-				when iCALL => SP   <= SP + 1;
-				-- when iINC  => Reg(CONV_INTEGER(Ad1)) <= Reg(CONV_INTEGER(Ad1)) + 1;
+            when iSPSH => SP   <= SPnew;
+            when iPUSH => SP   <= SPnew;
+            when iPOP  => if Raddr = "110" then SP   <= SPnew;
+								  else SP <= SPnew; Reg(CONV_INTEGER(Raddr)) <= Rdata;
+								  end if;
+            when iSPOP => SP   <= SPnew;
+								  if Raddr = "111" then FLAG <= Rdata;
+								  end if;
+            when iRET  => SP   <= SPnew;
+				when iCALL => SP   <= SPnew;
 				when iMVI  => Reg(CONV_INTEGER(Ad1)) <= X;
 				when iMOV  => Reg(CONV_INTEGER(Raddr)) <= Rdata;
-				              Flagout <= Rdata;
             when others => Reg(CONV_INTEGER(Raddr)) <= Rdata;
          end case;
 		end if;
    end process;
 	
    -- For Inspect
-	Reg0 <= SP;
-	Reg1 <= BP;
+	Reg0 <= AX;
+	Reg1 <= FLAG;
    -- Share to wrback modular.
    CSout <= CS;
 	
