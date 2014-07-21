@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require_relative 'lib/version.rb'
+require_relative 'lib/dasm48.rb'
+
+if ARGV.empty? or ARGV.include?("-h") or ARGV.include?("--help")
+  puts <<USAGE
+Usage: dasm [switches] [programfile]
+  -h, --help    Show this help.
+  -r, --report  Generate lst report file.
+  -v, --version Show version.
+USAGE
+elsif ARGV.first == "-v" or ARGV.first == "--version"
+  puts "Dasm48 #{DASM48::VERSION}"
+  puts "IR48* Support: " + (DASM48::IR48X_SUPPORT ? "√" : "×")
+else
+
+  report, file = ARGV.include?("-r") ? [true, ARGV.last] : [false, ARGV.first]
+
+  CPME48::DASM48.new(file, report)
+
+end

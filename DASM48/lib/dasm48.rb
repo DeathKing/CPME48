@@ -1,21 +1,12 @@
-require_relative 'lib/version.rb'
-
 module CPME48
 
   INS = {
-    "NOP" => 0b00000,
-    "JMP" => 0b00001,   "JZ"  => 0b00010,
-    "SUB" => 0b00100,   "ADD" => 0b00110,
-    "MVI" => 0b01000,   "MOV" => 0b01010,
-    "STA" => 0b01100,   "LDA" => 0b01110,
-    "OUT" => 0b10000,   "IN"  => 0b10010,
-    "AMOV" => 0b10001,  "CMP" => 0b10110,
-    "JNE"  => 0b11100,  "JE"  => 0b11011,
-    "JFR"  => 0b10110,  "JBR" => 0b11101,
-    "PUSH" => 0b11001,  "POP" => 0b11110,
-    "SPSH" => 0b11011,  "SPOP" => 0b10011,
-    "CALL" => 0b11000,  "RET" => 0b11111,
-    "INC"  => 0b10101,  "DEC" => 0b10111,
+    "NOP"  => 0b00000, "JMP" => 0b00001, "CALL" => 0b11000, "RET"  => 0b11111,
+    "JZ"   => 0b00010, "JE"  => 0b11010, "JNE"  => 0b11100, "JFR"  => 0b10110, "JBR" => 0b11101,
+    "SUB"  => 0b00100, "ADD" => 0b00110, "MVI"  => 0b01000, "MOV"  => 0b01010,
+    "STA"  => 0b01100, "LDA" => 0b01110, "OUT"  => 0b10000, "IN"   => 0b10010,
+    "AMOV" => 0b10001, "CMP" => 0b10110, "INC"  => 0b10101, "DEC"  => 0b10111,
+    "PUSH" => 0b11001, "POP" => 0b11110, "SPSH" => 0b11011, "SPOP" => 0b10011
   }
 
   INSDUMP = INS.invert
@@ -30,8 +21,8 @@ module CPME48
 
   REQURE_ARGS = [
     %w{RET  NOP},
-    %w{JMP  JNE  JE  JBR  JFR  POP  SPOP  PUSH  SPSH  INC  DEC CALL},
-    %w{MVI  MOV  IN   JZ  CMP  OUT  STA  LDA  ADD   SUB   AMOV }
+    %w{JMP  JNE  JE  JBR  JFR  POP  SPOP  PUSH  SPSH  INC  DEC  CALL},
+    %w{MVI  MOV  IN  JZ   CMP  OUT  STA   LDA   ADD   SUB  AMOV }
   ]
 
   class DASM48
@@ -159,10 +150,3 @@ module CPME48
     end
 
   end
-
-
-
-report = ARGV.include?("-r")
-source = ARGV.last
-
-CPME48::DASM48.new(source, report)
