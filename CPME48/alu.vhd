@@ -102,6 +102,9 @@ architecture Behavioral of alu is
 	constant iRET  : STD_LOGIC_VECTOR := "11111";
 	constant iINC  : STD_LOGIC_VECTOR := "10101";
 	constant iDEC  : STD_LOGIC_VECTOR := "10111";
+	
+	constant iGSTA : STD_LOGIC_VECTOR := "00011";
+	constant iGLDA : STD_LOGIC_VECTOR := "01011";
 
 begin
 
@@ -161,9 +164,9 @@ begin
             when iAMOV =>   Addr <= SS - 2 + ("00000000" & (BP - X));
             when iDEC  => ALUout <= Reg(CONV_INTEGER(Ad1)) - 1;
             when iINC  => ALUout <= Reg(CONV_INTEGER(Ad1)) + 1;
-            when iCALL => ALUout <= PC(7 downto 0) + 1;
+            when iCALL => ALUout <= PC(7 downto 0);
                             Addr <= SS + ("00000000" & SP);
-            when iRET  =>   Addr <= SS + ("00000000" & SP);
+            when iRET  =>   Addr <= SS - 1 + ("00000000" & SP);
             when others => NULL;
          end case;
       elsif Rupdate = '1' then
@@ -193,7 +196,7 @@ begin
 	
    -- For Inspect
 	Reg0 <= AX;
-	Reg1 <= FLAG;
+	Reg1 <= BX;
    -- Share to wrback modular.
    CSout <= CS;
 	

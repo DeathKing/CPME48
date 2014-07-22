@@ -32,7 +32,7 @@ end beat;
 
 architecture Behavioral of beat is
 
-   signal state : STD_LOGIC_VECTOR(3 downto 0) := "0001";
+   signal state : STD_LOGIC_VECTOR(3 downto 0) := "0000";
    
 begin
 
@@ -41,9 +41,13 @@ begin
 	begin
 	
       if rst = '1' then
-         state <= "0001";
+         state <= "0000";
       elsif clk'event and clk='1' then
-         state <= state(0) & state(3 downto 1);
+			if state = "0000" then
+				state <= "1000";
+			else
+				state <= state(0) & state(3 downto 1);
+			end if;
       end if;
       
 	end process;

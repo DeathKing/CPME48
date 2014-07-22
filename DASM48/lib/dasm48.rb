@@ -77,6 +77,11 @@ module CPME48
     end
 
     ###
+    # Process macros
+    def process_macro(macro)
+    end
+
+    ###
     # Parse single line
     def assmeble_line(line)
       return nil if line.nil?
@@ -142,7 +147,8 @@ module CPME48
       @binary.each_with_index do |bin, addr|
         bin = bin.first | @labels[bin.last.upcase] if bin.is_a?(Array)
         bin = 0 if bin.nil?
-        out = sprintf("%04s %04s %016s %16s", addr.to_s(16), bin.to_s(16), bin.to_s(2), @report[addr])
+        out = sprintf("%04s %04s %016s %16s",
+                      addr.to_s(16), bin.to_s(16), bin.to_s(2), @report[addr])
         f.puts out
       end
       f.close

@@ -285,7 +285,7 @@ begin
 	
 	-- DBUSOut <= DBUS;
 	ABUSout(7 downto 0) <= wire_ABUS(7 downto 0);
-	ABUSout(15 downto 8) <= wire_alu2wb_spo2spo;--wire_flagout(7 downto 0);
+	ABUSout(15 downto 8) <= wire_alu2wb_spo2spo;
 	ABUS <= wire_ABUS;
 	
 	nWR <= wire_nWR;

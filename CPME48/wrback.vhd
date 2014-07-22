@@ -119,10 +119,10 @@ begin
             when iJBR  => PCnew <= Addr; Rupdate <= '0';
             when iPOP  => PCnew <= PC + 1; Rsp <= SP - 1; Rupdate <= '1';
             when iSPOP => PCnew <= PC + 1; Rsp <= SP - 1; Rupdate <= '1';
-            when iRET  => PCnew <= Addr;                    Rsp <= SP - 1; Rupdate <= '1';
-            when iCALL => PCnew <= CS + ("00000000" & X);   Rsp <= SP + 1; Rupdate <= '1';
-				when iPUSH => PCnew <= PC + 1;                  Rsp <= SP + 1; Rupdate <= '1';
-				when iSPSH => PCnew <= PC + 1;                  Rsp <= SP + 1; Rupdate <= '1';
+            when iRET  => PCnew <= CS + ("00000000" & ALUout); Rsp <= SP - 1; Rupdate <= '1';
+            when iCALL => PCnew <= CS + ("00000000" & X);      Rsp <= SP + 1; Rupdate <= '1';
+				when iPUSH => PCnew <= PC + 1;                     Rsp <= SP + 1; Rupdate <= '1';
+				when iSPSH => PCnew <= PC + 1;                     Rsp <= SP + 1; Rupdate <= '1';
             when others => PCnew <= PC + 1; Rupdate <= '0';
          end case;
          PCupdate <= '1';

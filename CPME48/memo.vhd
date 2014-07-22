@@ -96,11 +96,12 @@ begin
 				case OP is
 					when iJMP => MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					when iJZ  => MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					when iJE  => ACSout <= ALUout; MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
+					when iJNE => ACSout <= ALUout; MAR    <= Addr;   nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iSUB => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iADD => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iMVI => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iMOV => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
-					-- when iJE  => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iDEC => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iINC => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');
 					-- when iCMP => ACSout <= ALUout; nRD <= '1'; nWR <= '1'; nPRD <= '1'; nPWR <= '1'; nPREQ <= '1'; IOout <= (others => 'Z');

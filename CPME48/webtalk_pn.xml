@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Mon Jul 21 16:26:47 2014">
+<application name="pn" timeStamp="Tue Jul 22 13:27:29 2014">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="E396207F02C547A6940EE4E469C8A98F" type="project"/>
-<property name="ProjectIteration" value="79" type="project"/>
+<property name="ProjectIteration" value="86" type="project"/>
 <property name="ProjectFile" value="F:/2-CPME48/CPME48/CPME48.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2014-07-09T11:27:59" type="project"/>
 </section>
@@ -27,7 +27,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_UserConstraintEditorPreference" value="Text Editor" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2014-07-09T11:27:59" type="design"/>
 <property name="PROP_intWbtProjectID" value="E396207F02C547A6940EE4E469C8A98F" type="design"/>
-<property name="PROP_intWbtProjectIteration" value="79" type="process"/>
+<property name="PROP_intWbtProjectIteration" value="86" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_lockPinsUcfFile" value="changed" type="process"/>
