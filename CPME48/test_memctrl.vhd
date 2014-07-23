@@ -40,25 +40,22 @@ ARCHITECTURE behavior OF test_memctrl IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT memctrl
-    PORT(
-         PC : IN  std_logic_vector(15 downto 0);
-         Addr : IN  std_logic_vector(15 downto 0);
-         Data : IN  std_logic_vector(15 downto 0);
-         ALUout : IN  std_logic_vector(7 downto 0);
-         bst : IN  std_logic_vector(3 downto 0);
-         nfRD : IN  std_logic;
-         niRD : IN  std_logic;
-         niWR : IN  std_logic;
-         IRnew : OUT  std_logic_vector(15 downto 0);
-         Rtemp : OUT  std_logic_vector(7 downto 0);
-         nRD : OUT  std_logic;
-         nWR : OUT  std_logic;
-         nBHE : OUT  std_logic;
-         nLHE : OUT  std_logic;
-         nMREQ : OUT  std_logic;
-         ABUS : OUT  std_logic_vector(15 downto 0);
-         DBUS : INOUT  std_logic_vector(15 downto 0)
-        );
+    Port ( PC     : in    STD_LOGIC_VECTOR(15 downto 0);
+           Addr   : in    STD_LOGIC_VECTOR(15 downto 0);
+           ALUout : in    STD_LOGIC_VECTOR(7 downto 0);
+           bst    : in    STD_LOGIC_VECTOR(3 downto 0);
+			  rst    : in    STD_LOGIC;
+           niRD   : in    STD_LOGIC;
+           niWR   : in    STD_LOGIC;
+           IRnew  : out   STD_LOGIC_VECTOR(15 downto 0);
+           Rtemp  : out   STD_LOGIC_VECTOR(7 downto 0);
+           nRD    : out   STD_LOGIC;
+           nWR    : out   STD_LOGIC;
+           nBHE   : out   STD_LOGIC;
+           nLHE   : out   STD_LOGIC;
+           nMREQ  : out   STD_LOGIC;
+           ABUS   : out   STD_LOGIC_VECTOR(15 downto 0);
+           DBUS   : inout STD_LOGIC_VECTOR(15 downto 0));
     END COMPONENT;
     
     component beat
@@ -71,10 +68,8 @@ ARCHITECTURE behavior OF test_memctrl IS
    --Inputs
    signal PC : std_logic_vector(15 downto 0) := (others => '0');
    signal Addr : std_logic_vector(15 downto 0) := (others => '0');
-   signal Data : std_logic_vector(15 downto 0) := (others => '0');
    signal ALUout : std_logic_vector(7 downto 0) := (others => '0');
    signal bst : std_logic_vector(3 downto 0) := (others => '0');
-   signal nfRD : std_logic := '0';
    signal niRD : std_logic := '0';
    signal niWR : std_logic := '0';
    
@@ -108,10 +103,9 @@ BEGIN
    uut: memctrl PORT MAP (
           PC => PC,
           Addr => Addr,
-          Data => Data,
           ALUout => ALUout,
           bst => wire_bst,
-          nfRD => nfRD,
+          rst => wire_rst,
           niRD => niRD,
           niWR => niWR,
           IRnew => IRnew,

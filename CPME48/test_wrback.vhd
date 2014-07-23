@@ -28,10 +28,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
 ENTITY test_wrback IS
 END test_wrback;
  
@@ -40,18 +36,19 @@ ARCHITECTURE behavior OF test_wrback IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT wrback
-    PORT(
-         en : IN  std_logic;
-         ALUout : IN  std_logic_vector(7 downto 0);
-         IR : IN  std_logic_vector(15 downto 0);
-         Addr : IN  std_logic_vector(15 downto 0);
-         PC : IN  std_logic_vector(15 downto 0);
-         Raddr : OUT  std_logic_vector(2 downto 0);
-         Rdata : OUT  std_logic_vector(7 downto 0);
-         PCnew : OUT  std_logic_vector(15 downto 0);
-         PCupdate : OUT  std_logic;
-         Rupdate : OUT  std_logic
-        );
+    Port ( en     : in   STD_LOGIC;
+			  ALUout : in   STD_LOGIC_VECTOR(7 downto 0);
+			  IR     : in   STD_LOGIC_VECTOR(15 downto 0);
+	        Addr   : in   STD_LOGIC_VECTOR(15 downto 0);
+	        PC     : in   STD_LOGIC_VECTOR(15 downto 0);
+           CS     : in   STD_LOGIC_VECTOR(15 downto 0);
+			  SP     : in   STD_LOGIC_VECTOR(7 downto 0);
+			  Rsp    : out  STD_LOGIC_VECTOR(7 downto 0);
+			  Raddr  : out  STD_LOGIC_VECTOr(2 downto 0);
+           Rdata  : out  STD_LOGIC_VECTOR(7 downto 0);
+           PCnew  : out  STD_LOGIC_VECTOR(15 downto 0);
+           PCupdate : out  STD_LOGIC;
+           Rupdate  : out  STD_LOGIC);
     END COMPONENT;
     
 
@@ -61,8 +58,10 @@ ARCHITECTURE behavior OF test_wrback IS
    signal IR : std_logic_vector(15 downto 0) := (others => '0');
    signal Addr : std_logic_vector(15 downto 0) := (others => '0');
    signal PC : std_logic_vector(15 downto 0) := (others => '0');
-
+   signal CS : std_logic_vector(15 downto 0) := (others => '0');
+   
  	--Outputs
+   signal Rsp   : std_logic_vector(7 downto 0);
    signal Raddr : std_logic_vector(2 downto 0);
    signal Rdata : std_logic_vector(7 downto 0);
    signal PCnew : std_logic_vector(15 downto 0);
@@ -102,6 +101,8 @@ BEGIN
           IR => IR,
           Addr => Addr,
           PC => PC,
+          CS => CS,
+          SP => Rsp,
           Raddr => Raddr,
           Rdata => Rdata,
           PCnew => PCnew,

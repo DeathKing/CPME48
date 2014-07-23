@@ -41,16 +41,20 @@ ARCHITECTURE behavior OF test_alu IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT alu
-    PORT(
-         en : IN  std_logic;
-         rst : IN  std_logic;
-         Rupdate : IN  std_logic;
-         Rdata : IN  std_logic_vector(7 downto 0);
-         Raddr : IN  std_logic_vector(2 downto 0);
-         IR : IN  std_logic_vector(15 downto 0);
-         ALUout : OUT  std_logic_vector(7 downto 0);
-			Addr : OUT std_logic_vector(15 downto 0)
-        );
+      Port ( en      : in  STD_LOGIC;
+             rst     : in  STD_LOGIC;
+             Rupdate : in  STD_LOGIC;
+             Rdata   : in  STD_LOGIC_VECTOR(7 downto 0);
+             Raddr   : in  STD_LOGIC_VECTOR(2 downto 0);
+             IR      : in  STD_LOGIC_VECTOR(15 downto 0);
+             PC      : in  STD_LOGIC_VECTOR(15 downto 0);
+             SPnew   : in  STD_LOGIC_VECTOR(7  downto 0);
+             Addr    : out STD_LOGIC_VECTOR(15 downto 0);
+             CSout   : out STD_LOGIC_VECTOR(15 downto 0);
+             SPout   : out STD_LOGIC_VECTOR(7 downto 0);
+             Reg0    : out STD_LOGIC_VECTOR(7 downto 0);
+             Reg1    : out STD_LOGIC_VECTOR(7 downto 0);
+             ALUout  : out STD_LOGIC_VECTOR(7 downto 0));
     END COMPONENT;
     
 
@@ -61,10 +65,14 @@ ARCHITECTURE behavior OF test_alu IS
    signal Rdata : std_logic_vector(7 downto 0) := (others => '0');
    signal Raddr : std_logic_vector(2 downto 0) := (others => '0');
    signal IR : std_logic_vector(15 downto 0) := (others => '0');
+   signal PC : std_logic_vector(15 downto 0) := (others => '0');
+   signal SPnew : std_logic_vector(7 downto 0);
 
  	--Outputs
    signal ALUout : std_logic_vector(7 downto 0);
 	signal Addr : std_logic_vector(15 downto 0);
+   signal Reg0 : std_logic_vector(7 downto 0);
+   signal Reg1 : std_logic_vector(7 downto 0);
    -- No clocks detected in port list. Replace en below with 
    -- appropriate port name 
  
@@ -92,8 +100,12 @@ BEGIN
           Rupdate => Rupdate,
           Rdata => Rdata,
           Raddr => Raddr,
+          SPnew => SPnew,
           IR => IR,
+          PC => PC,
           ALUout => ALUout,
+          Reg0 => Reg0,
+          Reg1 => Reg1,
 			 Addr => Addr
         );
 

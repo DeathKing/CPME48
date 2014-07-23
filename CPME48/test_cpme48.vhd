@@ -27,11 +27,7 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
- 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
+
 ENTITY test_cpme48 IS
 END test_cpme48;
  
@@ -40,24 +36,30 @@ ARCHITECTURE behavior OF test_cpme48 IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT cpme48
-    PORT(
-         rst : IN  std_logic;
-         clk : IN  std_logic;
-         ABUS : OUT  std_logic_vector(15 downto 0);
-         DBUS : INOUT  std_logic_vector(15 downto 0);
-			IR   : out   STD_LOGIC_VECTOR(15 downto 0);
-         nMREQ : OUT  std_logic;
-         nRD : OUT  std_logic;
-         nWR : OUT  std_logic;
-         nBHE : OUT  std_logic;
-         nBLE : OUT  std_logic;
-         IOAD : OUT  std_logic_vector(2 downto 0);
-         IOin  : in    STD_LOGIC_VECTOR(7 downto 0);
-         IOout : out   STD_LOGIC_VECTOR(7 downto 0);
-         nPREQ : OUT  std_logic;
-         nPRD : OUT  std_logic;
-         nPWR : OUT  std_logic
-        );
+    Port (
+      rst   : in    STD_LOGIC;
+      clk   : in    STD_LOGIC;
+      ABUS  : out   STD_LOGIC_VECTOR(15 downto 0);
+		ABUSout : out STD_LOGIC_VECTOR(15 downto 0);
+      DBUS  : inout STD_LOGIC_VECTOR(15 downto 0);
+		DBUSout : out STD_LOGIC_VECTOR(15 downto 0);
+		IR    : out   STD_LOGIC_VECTOR(15 downto 0);
+      nMREQ : out   STD_LOGIC;
+      nRD   : out   STD_LOGIC;
+      nWR   : out   STD_LOGIC;
+		nBHE  : out   STD_LOGIC;
+		nBLE  : out   STD_LOGIC;
+      IOAD  : out   STD_LOGIC_VECTOR(2 downto 0);
+		IOin  : in    STD_LOGIC_VECTOR(7 downto 0);
+		IOout : out   STD_LOGIC_VECTOR(7 downto 0);
+		bst   : out   STD_LOGIC_VECTOR(3 downto 0);
+      nPREQ : out   STD_LOGIC;
+      nPRD  : out   STD_LOGIC;
+      nPWR  : out   STD_LOGIC;
+      nMREQout : out   STD_LOGIC;
+      nRDout   : out   STD_LOGIC;
+      nWRout   : out   STD_LOGIC
+   ); 
     END COMPONENT;
     
 
@@ -72,6 +74,8 @@ ARCHITECTURE behavior OF test_cpme48 IS
 
  	--Outputs
    signal ABUS : std_logic_vector(15 downto 0);
+   signal DBUSout : std_logic_vector(15 downto 0);
+   signal ABUSout : std_logic_vector(15 downto 0);
    signal nMREQ : std_logic;
    signal nRD : std_logic;
    signal nWR : std_logic;
@@ -82,6 +86,9 @@ ARCHITECTURE behavior OF test_cpme48 IS
    signal nPRD : std_logic;
    signal nPWR : std_logic;
 	signal IR   : STD_LOGIC_VECTOR(15 downto 0);
+   signal nMREQout : STD_LOGIC;
+   signal nRDout : STD_LOGIC;
+   signal nWRout : STD_LOGIC;
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
@@ -107,6 +114,8 @@ BEGIN
           clk => clk,
           ABUS => ABUS,
           DBUS => DBUS,
+          ABUSout => ABUSout,
+          DBUSout => DBUSout,
 			 IR   => IR,
           nMREQ => nMREQ,
           nRD => nRD,
@@ -118,7 +127,10 @@ BEGIN
           IOout => IOout,
           nPREQ => nPREQ,
           nPRD => nPRD,
-          nPWR => nPWR
+          nPWR => nPWR,
+          nMREQout => nMREQout,
+          nRDout => nRDout,
+          nWRout => nWRout
         );
 
    -- Clock process definitions
