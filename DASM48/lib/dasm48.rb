@@ -68,7 +68,7 @@ module CPME48
       return SREG[arg]    if SREG.has_key?(arg)
       return @labels[arg] if @labels.has_key?(arg)
       return arg.to_i(16) if arg =~ /^\d*[Hh]$/
-      return arg.to_i(10) if arg =~ /^\d*$/
+      return arg.to_i(10) if arg =~ /^\d*[Dd]+$/
       return nil
     end
 
